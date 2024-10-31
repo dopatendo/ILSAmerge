@@ -1,0 +1,16 @@
+Package: ILSAmerge
+Type: Package
+Title: Merge International Large-Scale Assessments (ILSA) Data
+Version: 0.8.0
+Authors@R: person(given = "Andrés",
+                    family = "Christiansen",
+                    role = c("aut", "cre"),
+                    email = "andres.christiansen@iea-hamburg.de",
+                    comment = c(ORCID = "https://orcid.org/0000-0003-2692-7843"))
+Maintainer: Andrés Christiansen <andres.christiansen@iea-hamburg.de>
+Description: Merges SPSS data from different International Large-Scale Assessments (ILSA), including: TIMSS, TIMSS Advanced, PIRLS, ICCS, ICILS, CIVED, REDS, RLII, and SITES.
+License: GPL (>= 3.0)
+URL: https://github.com/dopatendo/ILSAmerge
+Imports: haven
+Encoding: UTF-8
+RoxygenNote: 7.3.1
