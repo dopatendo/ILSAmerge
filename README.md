@@ -19,10 +19,18 @@ straightforward as possible.
 
 <!-- badges: start -->
 
+![GitHub R package
+version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-![GitHub R package version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
-
 <!-- badges: end -->
+
+## Installation
+
+You can install the stable the development version of `ILSAmerge` using:
+
+``` r
+remotes::install_github("dopatendo/ILSAmerge")
+```
 
 ## Identifying files - `ILSAfiles.info()`
 
@@ -164,7 +172,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ACGm1 took 2 seconds or 0.03 minutes.
+#> Merging ACGm1 took 1 seconds or 0.02 minutes.
 #> Merging ASAm1. Type 2 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -220,7 +228,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASGm1 took 25 seconds or 0.42 minutes.
+#> Merging ASGm1 took 24 seconds or 0.4 minutes.
 #> Merging ASTm1. Type 4 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -276,6 +284,51 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ATGm1 took 5 seconds or 0.08 minutes.
-#> Merging took 73 seconds or 1.21 minutes.
+#> Merging ATGm1 took 4 seconds or 0.07 minutes.
+#> Merging took 71 seconds or 1.19 minutes.
+```
+
+## Loading data without merging - `justload()`
+
+If we need to load the data but not save it, we can use `justload()`. By
+default, it will load all datasets of an specific population:
+
+``` r
+list <- justload(inputdir = input, population = "ACGm1")
+class(list)
+#> [1] "list"
+sapply(list,dim)
+#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
+#> [1,]  179  135  395  187  188  134  176  124  150   165   180   147    87   142
+#> [2,]  273  273  273  273  273  273  273  273  273   273   273   273   273   273
+#>      [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24] [,25] [,26]
+#> [1,]   150   150   126   135   140   149   157   154   191   122   154   189
+#> [2,]   273   273   273   273   273   273   273   273   273   273   273   273
+```
+
+Nevertheless, it is also possible to load all the datasets of a single
+population without rows, i.e., just the attributes of the columns. This
+could be helpful for running some consistency checks between files:
+
+``` r
+list <- justload(inputdir = input, population = "ACGm1", justattributes = TRUE)
+class(list)
+#> [1] "list"
+sapply(list,dim)
+#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
+#> [1,]    0    0    0    0    0    0    0    0    0     0     0     0     0     0
+#> [2,]  273  273  273  273  273  273  273  273  273   273   273   273   273   273
+#>      [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24] [,25] [,26]
+#> [1,]     0     0     0     0     0     0     0     0     0     0     0     0
+#> [2,]   273   273   273   273   273   273   273   273   273   273   273   273
+
+list[[1]]
+#> # A tibble: 0 × 273
+#> # ℹ 273 variables: VERSION <dbl>, IDCNTRY <dbl>, IDPOP <dbl+lbl>,
+#> #   IDSTRAT <dbl+lbl>, IDSCHOOL <dbl>, ILREPLAC <dbl+lbl>, ITREPLAC <dbl+lbl>,
+#> #   IDGRADER <dbl+lbl>, ITPART <dbl+lbl>, ACBGCOMM <dbl+lbl>,
+#> #   ACBGGRPK <dbl+lbl>, ACBGGRK <dbl+lbl>, ACBGGR1 <dbl+lbl>,
+#> #   ACBGGR2 <dbl+lbl>, ACBGGR3 <dbl+lbl>, ACBGGR4 <dbl+lbl>, ACBGGR5 <dbl+lbl>,
+#> #   ACBGGR6 <dbl+lbl>, ACBGGR7 <dbl+lbl>, ACBGGR8 <dbl+lbl>, ACBGGR9 <dbl+lbl>,
+#> #   ACBGGR10 <dbl+lbl>, ACBGGR11 <dbl+lbl>, ACBGGR12 <dbl+lbl>, …
 ```
