@@ -2,4 +2,5 @@
 
 export(ILSAfile.info)
 export(ILSAmerge)
+export(justload)
 export(spss.syntax)

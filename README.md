@@ -18,6 +18,10 @@ The goal of ILSAmerge is to make this process as simple and as
 straightforward as possible.
 
 <!-- badges: start -->
+
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+![GitHub R package version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
+
 <!-- badges: end -->
 
 ## Identifying files - `ILSAfiles.info()`
@@ -160,7 +164,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ACGm1 took 1 seconds or 0.02 minutes.
+#> Merging ACGm1 took 2 seconds or 0.03 minutes.
 #> Merging ASAm1. Type 2 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -188,7 +192,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASAm1 took 19 seconds or 0.31 minutes.
+#> Merging ASAm1 took 29 seconds or 0.48 minutes.
 #> Merging ASGm1. Type 3 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -216,7 +220,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASGm1 took 16 seconds or 0.26 minutes.
+#> Merging ASGm1 took 25 seconds or 0.42 minutes.
 #> Merging ASTm1. Type 4 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -244,7 +248,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASTm1 took 8 seconds or 0.13 minutes.
+#> Merging ASTm1 took 13 seconds or 0.21 minutes.
 #> Merging ATGm1. Type 5 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -272,6 +276,6 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ATGm1 took 3 seconds or 0.05 minutes.
-#> Merging took 46 seconds or 0.77 minutes.
+#> Merging ATGm1 took 5 seconds or 0.08 minutes.
+#> Merging took 73 seconds or 1.21 minutes.
 ```

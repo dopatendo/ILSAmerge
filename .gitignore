@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+^.*\.Rproj$
+^\.Rproj\.user$
+build/
+README.Rmd
