@@ -6,3 +6,4 @@
 ^\.Rproj\.user$
 build/
 README.Rmd
+.DS_Store
