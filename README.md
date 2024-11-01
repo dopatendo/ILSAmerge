@@ -26,7 +26,7 @@ version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
 
 ## Installation
 
-You can install the stable the development version of `ILSAmerge` using:
+You can install development version of `ILSAmerge` using:
 
 ``` r
 remotes::install_github("dopatendo/ILSAmerge")
