@@ -7,3 +7,5 @@
 build/
 README.Rmd
 .DS_Store
+.gitignore
+.Rbuildignore
