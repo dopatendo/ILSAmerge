@@ -1,8 +1,8 @@
 #' Merge ILSA data
 #'
-#' Merges SPSS data from different International Large-Scale Assessments (ILSA),
-#' including: TIMSS, TIMSS Advanced, PIRLS, ICCS, ICILS, CIVED, REDS, RLII,
-#' and SITES.
+#' Merges SPSS data from different International Large-Scale Assessments (ILSA).
+#' This function has been tested to behave correctly for: TIMSS, TIMSS Advanced, 
+#' PIRLS, ICCS, ICILS, CIVED, REDS, RLII, and SITES (2006).
 #'
 #' @param inputdir a string indicating the path were ILSA SPSS files are stored.
 #' @param outputdir the directory where the merged data will be saved.

@@ -212,7 +212,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASAm1 took 17 seconds or 0.28 minutes.
+#> Merging ASAm1 took 17 seconds or 0.29 minutes.
 #> Merging ASGm1. Type 3 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -297,7 +297,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
 #> Merging ATGm1 took 3 seconds or 0.04 minutes.
-#> Merging took 42 seconds or 0.7 minutes.
+#> Merging took 42 seconds or 0.71 minutes.
 ```
 
 ## Loading data without merging - `justload()`

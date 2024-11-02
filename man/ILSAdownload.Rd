@@ -2,9 +2,9 @@
 % Please edit documentation in R/ILSAdownload.R
 \name{ILSAdownload}
 \alias{ILSAdownload}
-\title{Downloads ILSA data}
+\title{Download ILSA data}
 \usage{
-ILSAdownload(study, year, outputdir, unzip = FALSE)
+ILSAdownload(study, year, outputdir, unzip = FALSE, timeout = 999)
 }
 \arguments{
 \item{study}{a string indicating the name of the study. For available studies
@@ -16,15 +16,19 @@ check the description of this function.}
 
 \item{unzip}{a logical value indicating if files should be unzipped.
 Default is \code{FALSE}.}
+
+\item{timeout}{a numeric value indicating the maximum time allowed for 
+downloading a file. Default is \code{999}.}
 }
 \value{
 Saves SPSS ILSA data locally.
 }
 \description{
-Downloads SPSS data from different International Large-Scale Assessments (ILSA),
-including: TIMSS, TIMSS Advanced, PIRLS, ICCS, ICILS, CIVED, REDS, RLII,
-and SITES. Depending on the study, you will need to read and accept its
-terms and conditions to proceed with the download.
+Downloads SPSS data from different International Large-Scale Assessments (ILSA).
+This functions supports the following ILSA: PISA, TIMSS, TIMSS Advanced, PIRLS, 
+ICCS, ICILS, CIVED, REDS, RLII, and SITES. Depending on the study, 
+you will need to decide which data to download, and
+read and accept its terms and conditions to proceed with the download.
 }
 \examples{
 \dontrun{

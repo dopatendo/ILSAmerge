@@ -46,9 +46,9 @@ of SPSS, typically \code{50}.}
 Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
 }
 \description{
-Merges SPSS data from different International Large-Scale Assessments (ILSA),
-including: TIMSS, TIMSS Advanced, PIRLS, ICCS, ICILS, CIVED, REDS, RLII,
-and SITES.
+Merges SPSS data from different International Large-Scale Assessments (ILSA).
+This function has been tested to behave correctly for: TIMSS, TIMSS Advanced, 
+PIRLS, ICCS, ICILS, CIVED, REDS, RLII, and SITES (2006).
 }
 \examples{
 \dontrun{

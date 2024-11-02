@@ -1,3 +1,7 @@
+# ILSAmerge 0.8.5
+- Added PISA and TALIS to `ILSAdownload`.
+- `ILSAdownload` connects to GitHub to check for most recent links.
+
 # ILSAmerge 0.8.4
 - Fixed internal argument checks.
 - Added `ILSAdownload` for downloading ILSA SPSS datasets.
