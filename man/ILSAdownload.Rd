@@ -4,7 +4,7 @@
 \alias{ILSAdownload}
 \title{Downloads ILSA data}
 \usage{
-ILSAdownload(study, year, outputdir)
+ILSAdownload(study, year, outputdir, unzip = FALSE)
 }
 \arguments{
 \item{study}{a string indicating the name of the study. For available studies
@@ -13,6 +13,9 @@ check the description of this function.}
 \item{year}{a numeric value indicating the year of the study.}
 
 \item{outputdir}{the directory where the merged data will be saved.}
+
+\item{unzip}{a logical value indicating if files should be unzipped.
+Default is \code{FALSE}.}
 }
 \value{
 Saves SPSS ILSA data locally.
@@ -30,8 +33,11 @@ terms and conditions to proceed with the download.
 # Path were files will be saved
 output <- 'C:/'
 
-# Donwloading TIMSS 1995
+# Downloading TIMSS 1995
 ILSAdownload(study = "TIMSS", year = 1995, outputdir = output)
+
+# Downloading TIMSS 1995 and unzipping files
+ILSAdownload(study = "TIMSS", year = 1995, outputdir = output, unzip = TRUE)
 }
 
 }

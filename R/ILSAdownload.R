@@ -9,6 +9,8 @@
 #' check the description of this function.
 #' @param year a numeric value indicating the year of the study.
 #' @param outputdir the directory where the merged data will be saved.
+#' @param unzip a logical value indicating if files should be unzipped.
+#' Default is \code{FALSE}.
 #'
 #' @returns Saves SPSS ILSA data locally.
 #'
@@ -19,13 +21,16 @@
 #' # Path were files will be saved
 #' output <- 'C:/'
 #'
-#' # Donwloading TIMSS 1995
+#' # Downloading TIMSS 1995
 #' ILSAdownload(study = "TIMSS", year = 1995, outputdir = output)
+#' 
+#' # Downloading TIMSS 1995 and unzipping files
+#' ILSAdownload(study = "TIMSS", year = 1995, outputdir = output, unzip = TRUE)
 #' }
 #'
 #' @export
 
-ILSAdownload <- function(study, year, outputdir){
+ILSAdownload <- function(study, year, outputdir, unzip = FALSE){
   
   # Checks ----
   
@@ -56,6 +61,11 @@ ILSAdownload <- function(study, year, outputdir){
     stop(c("\nInvalid input for 'outputdir'.",
            "\nPath does not exist."),call. = FALSE)
   
+  # unzip
+  if(!(is.vector(unzip)&&is.logical(unzip)&&length(unzip==1)))
+    stop(c("\nInvalid input for 'unzip'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
   
   
   # Process & Output ----
@@ -69,7 +79,7 @@ ILSAdownload <- function(study, year, outputdir){
                 ifelse(length(avai)==1,"year is: ","years are: "),
                 paste0(avai,collapse = ", "),"."),call. = FALSE)
   
-  repo <- todownload[,"Repository"]
+  repo <- todownload[,"Repository"][1]
   ark <- todownload[,"Data_SPSS"]
   
   
@@ -100,6 +110,11 @@ ILSAdownload <- function(study, year, outputdir){
     nm <- substring(i,max(gregexpr("/",i)[[1]])+1)
     utils::download.file(url = file.path(mainurl,i),
                          destfile = file.path(outputdir,nm))
+    
+    if(unzip){
+      utils::unzip(zipfile = file.path(outputdir,nm),exdir = outputdir)
+    }
+    
   }
   
   cat(paste0("Visit ",repo," to know how to cite these datasets."))

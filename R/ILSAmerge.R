@@ -96,9 +96,10 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
     stop(c("\nInvalid input for 'filetype'.",
            "\nIt should be a 'rds', 'zsav', or 'sav'."),call. = FALSE)
 
-  if(!(is.vector(MBlimit)&&length(MBlimit)==1&&is.numeric(MBlimit)))
-    stop(c("\nInvalid input for 'MBlimit'.",
-           "\nIt should be a numeric value."),call. = FALSE)
+  if(!is.null(MBlimit))
+    if(!(is.vector(MBlimit)&&length(MBlimit)==1&&is.numeric(MBlimit)))
+      stop(c("\nInvalid input for 'MBlimit'.",
+             "\nIt should be a numeric value."),call. = FALSE)
 
   if(!(is.vector(MBlistlimit)&&length(MBlistlimit)==1&&is.numeric(MBlistlimit)))
     stop(c("\nInvalid input for 'MBlistlimit'.",
