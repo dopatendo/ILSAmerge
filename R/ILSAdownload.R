@@ -41,6 +41,12 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, timeout = 999){
   # outputdir = tests
   # unzip = TRUE
   
+  # Read external ----
+  
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
+  
+  ILSAlinks <- utils::read.csv(where)
+  
   # Checks ----
   
   ## study
