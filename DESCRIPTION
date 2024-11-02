@@ -12,5 +12,8 @@ Description: Merges SPSS data from different International Large-Scale Assessmen
 License: GPL (>= 3.0)
 URL: https://github.com/dopatendo/ILSAmerge
 Imports: haven
+Lazydata: false
 Encoding: UTF-8
 RoxygenNote: 7.3.1
+Depends: 
+    R (>= 3.5.0)
