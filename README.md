@@ -32,6 +32,18 @@ You can install the development version of `ILSAmerge` using:
 remotes::install_github("dopatendo/ILSAmerge")
 ```
 
+## Downloading files - `ILSAdownload()`
+
+We can download SPSS files of supported ILSA using `ILSAdownload()`. If
+we do, a license agreement will be downloaded, and the user will be
+prompted to agree with these terms, otherwise data will not be
+downloaded. We can also decide if we want to unzip them:
+
+``` r
+output <- "C:/"
+ILSAdownload(study = "TIMSS", year = 1995, outputdir = output, unzip = TRUE)
+```
+
 ## Identifying files - `ILSAfiles.info()`
 
 For example, if we download the data of TIMSS 1995 G4 from its original
@@ -172,7 +184,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ACGm1 took 1 seconds or 0.02 minutes.
+#> Merging ACGm1 took 1 seconds or 0.01 minutes.
 #> Merging ASAm1. Type 2 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -200,7 +212,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASAm1 took 29 seconds or 0.48 minutes.
+#> Merging ASAm1 took 17 seconds or 0.28 minutes.
 #> Merging ASGm1. Type 3 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -228,7 +240,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASGm1 took 24 seconds or 0.4 minutes.
+#> Merging ASGm1 took 14 seconds or 0.24 minutes.
 #> Merging ASTm1. Type 4 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -256,7 +268,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASTm1 took 13 seconds or 0.21 minutes.
+#> Merging ASTm1 took 7 seconds or 0.12 minutes.
 #> Merging ATGm1. Type 5 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -284,8 +296,8 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ATGm1 took 4 seconds or 0.07 minutes.
-#> Merging took 71 seconds or 1.19 minutes.
+#> Merging ATGm1 took 3 seconds or 0.04 minutes.
+#> Merging took 42 seconds or 0.7 minutes.
 ```
 
 ## Loading data without merging - `justload()`
