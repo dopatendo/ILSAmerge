@@ -42,16 +42,16 @@ spss.syntax <- function(filelist, name, outputdir, zsav = TRUE, SPSSlimit = 50){
 
   # Checks ----
 
-  if(!is.vector(filelist)&&!is.character(filelist)&&!length(filelist)>1)
+  if(!(is.vector(filelist)&&is.character(filelist)&&length(filelist)>1))
     stop(c("\nInvalid input for 'filelist'.",
            "\nIt should be a character vector of length bigger than 1."),call. = FALSE)
 
 
-  if(!is.vector(name)&&!is.character(name)&&!length(name)==1)
+  if(!(is.vector(name)&&is.character(name)&&length(name)==1))
     stop(c("\nInvalid input for 'name'.",
            "\nIt should be a character vector."),call. = FALSE)
 
-  if(!is.vector(outputdir)&&!is.character(outputdir))
+  if(!(is.vector(outputdir)&&is.character(outputdir)))
     stop(c("\nInvalid input for 'outputdir'.",
            "\nIt should be a character vector."),call. = FALSE)
 
@@ -59,13 +59,13 @@ spss.syntax <- function(filelist, name, outputdir, zsav = TRUE, SPSSlimit = 50){
     stop(c("\nInvalid input for 'outputdir'.",
            "\nPath does not exist."),call. = FALSE)
 
-  if(!is.vector(zsav)&&!is.logical(zsav)&&!length(zsav)==1)
+  if(!(is.vector(zsav)&&is.logical(zsav)&&length(zsav)==1))
     stop(c("\nInvalid input for 'zsav'.",
            "\nIt should be a logical value."),call. = FALSE)
 
-  if(!is.vector(SPSSlimit)&&length(SPSSlimit)!=1&&is.numeric(SPSSlimit))
+  if(!(is.vector(SPSSlimit)&&length(SPSSlimit)==1&&is.numeric(SPSSlimit)))
     stop(c("\nInvalid input for 'SPSSlimit'.",
-           "\nIt should be a numeric valued."),call. = FALSE)
+           "\nIt should be a numeric value."),call. = FALSE)
 
   if(SPSSlimit>50)
     warning("Be aware SPSS tipically can only work with 50 files at a time.",call. = FALSE)

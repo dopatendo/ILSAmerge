@@ -46,7 +46,7 @@ justload <- function(inputdir, population, justattributes = FALSE){
   
   # Checks ----
   
-  if(!is.vector(inputdir)&&!is.character(inputdir))
+  if(!(is.vector(inputdir)&&is.character(inputdir)))
     stop(c("\nInvalid input for 'inputdir'.",
            "\nIt should be a character vector."),call. = FALSE)
   
@@ -54,7 +54,7 @@ justload <- function(inputdir, population, justattributes = FALSE){
     stop(c("\nInvalid input for 'inputdir'.",
            "\nPath does not exist."),call. = FALSE)
   
-  if(!is.vector(justattributes)&&!is.logical(justattributes)&&length(justattributes!=1))
+  if(!(is.vector(justattributes)&&is.logical(justattributes)&&length(justattributes==1)))
     stop(c("\nInvalid input for 'justattributes'.",
            "\nIt should be a logical value."),call. = FALSE)
   
@@ -81,7 +81,7 @@ justload <- function(inputdir, population, justattributes = FALSE){
   upopstu <- unique(popstu)
   
   
-  if(!is.vector(population)&&!is.character(population)&&length(population!=1))
+  if(!(is.vector(population)&&is.character(population)&&length(population==1)))
     stop(c("\nInvalid input for 'population'.",
            "\nIt should be a character vector of length 1."),call. = FALSE)
   

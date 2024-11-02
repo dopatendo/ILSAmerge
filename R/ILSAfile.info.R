@@ -24,7 +24,7 @@ ILSAfile.info <- function(inputdir){
 
   # Checks ----
 
-  if(!is.vector(inputdir)&&!is.character(inputdir))
+  if(!(is.vector(inputdir)&&is.character(inputdir)))
     stop(c("\nInvalid input for 'inputdir'.",
            "\nIt should be a character vector."),call. = FALSE)
 

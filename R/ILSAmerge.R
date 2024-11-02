@@ -72,7 +72,7 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
   # Checks ----
 
-  if(!is.vector(inputdir)&&!is.character(inputdir))
+  if(!(is.vector(inputdir)&&is.character(inputdir)))
     stop(c("\nInvalid input for 'inputdir'.",
            "\nIt should be a character vector."),call. = FALSE)
 
@@ -80,7 +80,7 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
     stop(c("\nInvalid input for 'inputdir'.",
            "\nPath does not exist."),call. = FALSE)
 
-  if(!is.vector(outputdir)&&!is.character(outputdir))
+  if(!(is.vector(outputdir)&&is.character(outputdir)))
     stop(c("\nInvalid input for 'outputdir'.",
            "\nIt should be a character vector."),call. = FALSE)
 
@@ -88,7 +88,7 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
     stop(c("\nInvalid input for 'outputdir'.",
            "\nPath does not exist."),call. = FALSE)
 
-  if(!is.vector(filetype)&&!is.character(filetype))
+  if(!(is.vector(filetype)&&is.character(filetype)))
     stop(c("\nInvalid input for 'filetype'.",
            "\nIt should be a character vector."),call. = FALSE)
 
@@ -96,17 +96,17 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
     stop(c("\nInvalid input for 'filetype'.",
            "\nIt should be a 'rds', 'zsav', or 'sav'."),call. = FALSE)
 
-  if(!is.vector(MBlimit)&&length(MBlimit)!=1&&is.numeric(MBlimit))
+  if(!(is.vector(MBlimit)&&length(MBlimit)==1&&is.numeric(MBlimit)))
     stop(c("\nInvalid input for 'MBlimit'.",
-           "\nIt should be a numeric valued."),call. = FALSE)
+           "\nIt should be a numeric value."),call. = FALSE)
 
-  if(!is.vector(MBlistlimit)&&length(MBlistlimit)!=1&&is.numeric(MBlistlimit))
+  if(!(is.vector(MBlistlimit)&&length(MBlistlimit)==1&&is.numeric(MBlistlimit)))
     stop(c("\nInvalid input for 'MBlistlimit'.",
-           "\nIt should be a numeric valued."),call. = FALSE)
+           "\nIt should be a numeric value."),call. = FALSE)
 
-  if(!is.vector(SPSSlimit)&&length(SPSSlimit)!=1&&is.numeric(SPSSlimit))
+  if(!(is.vector(SPSSlimit)&&length(SPSSlimit)==1&&is.numeric(SPSSlimit)))
     stop(c("\nInvalid input for 'SPSSlimit'.",
-           "\nIt should be a numeric valued."),call. = FALSE)
+           "\nIt should be a numeric value."),call. = FALSE)
 
   if(SPSSlimit>50)
     warning("Be aware SPSS tipically can only work with 50 files at a time.",call. = FALSE)
