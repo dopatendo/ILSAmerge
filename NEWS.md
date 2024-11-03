@@ -1,4 +1,4 @@
-# ILSAmerge 0.8.5
+# ILSAmerge 1.0.0
 - Added PISA and TALIS to `ILSAdownload`.
 - `ILSAdownload` connects to GitHub to check for most recent links.
 
