@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ILSAmerge
+# ILSAmerge <img src="man/figures/logo.png" align="right" height="127" alt="" />
 
 It is common that data from International Large-Scale Assessments
 (ILSA), like TIMSS, TIMSS Advanced, PIRLS, ICCS, ICILS, CIVED, REDS,
@@ -184,7 +184,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ACGm1 took 1 seconds or 0.01 minutes.
+#> Merging ACGm1 took 1 seconds or 0.02 minutes.
 #> Merging ASAm1. Type 2 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -212,7 +212,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASAm1 took 17 seconds or 0.29 minutes.
+#> Merging ASAm1 took 18 seconds or 0.3 minutes.
 #> Merging ASGm1. Type 3 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -240,7 +240,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 24 of 26.
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
-#> Merging ASGm1 took 14 seconds or 0.24 minutes.
+#> Merging ASGm1 took 14 seconds or 0.23 minutes.
 #> Merging ASTm1. Type 4 of 5.
 #> Merging dataset 1 of 26.
 #> Merging dataset 2 of 26.
@@ -297,7 +297,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav
 #> Merging dataset 25 of 26.
 #> Merging dataset 26 of 26.
 #> Merging ATGm1 took 3 seconds or 0.04 minutes.
-#> Merging took 42 seconds or 0.71 minutes.
+#> Merging took 43 seconds or 0.71 minutes.
 ```
 
 ## Loading data without merging - `justload()`
