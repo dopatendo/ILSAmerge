@@ -4,6 +4,5 @@
 build/
 README.Rmd
 data/
-man/figures
 .RData
 .Rhistory
