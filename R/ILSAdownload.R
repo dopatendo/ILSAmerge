@@ -12,7 +12,7 @@
 #' @param outputdir the directory where the merged data will be saved.
 #' @param unzip a logical value indicating if files should be unzipped.
 #' Default is \code{FALSE}.
-#' @param timeout a numeric value indicating the maximum time allowed for 
+#' @param maxtime a numeric value indicating the maximum time allowed for 
 #' downloading a file. Default is \code{999}.
 #'
 #' @returns Saves SPSS ILSA data locally.
@@ -33,7 +33,7 @@
 #'
 #' @export
 
-ILSAdownload <- function(study, year, outputdir, unzip = FALSE, timeout = 999){
+ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
   
   # Examples & Tests ----
   # study = "PISA"
@@ -45,7 +45,15 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, timeout = 999){
   
   where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
   
-  ILSAlinks <- utils::read.csv(where)
+
+  ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+  
+  if("try-error"%in%class(ILSAlinks)){
+    return(cat(paste0("Could not read ILSAlinks file from GitHub.",
+                      "\nPlease be sure that you are connected to the Internet.",
+                      "\nIf you are and this message persists, please contact the mantainer to solve this issue.")))
+  }
+  
   
   # Checks ----
   
@@ -81,10 +89,14 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, timeout = 999){
     stop(c("\nInvalid input for 'unzip'.",
            "\nIt should be a logical value."),call. = FALSE)
   
-  # timeout
-  if(!(is.vector(timeout)&&is.numeric(timeout)&&length(timeout)==1))
-    stop(c("\nInvalid input for 'timeout'.",
+  # maxtime
+  if(!(is.vector(maxtime)&&is.numeric(maxtime)&&length(maxtime)==1))
+    stop(c("\nInvalid input for 'maxtime'.",
            "\nIt should be a numeric value."),call. = FALSE)
+  
+  tmis <- getOption("timeout")
+  options(timeout = maxtime)
+  on.exit(options(timeout = tmis))
   
   # Institution
   
@@ -171,10 +183,22 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, timeout = 999){
     mainurl <- ""
     agree <- "https://www.iea.nl/sites/default/files/2019-05/Disclaimer%20and%20License%20Agreement.pdf"
     
+ 
     
-    utils::download.file(agree,file.path(outputdir,
-                                         "DisclaimerAndLicenseAgreement.pdf"),
-                         quiet = TRUE)
+    tryurl <- suppressWarnings(try(utils::download.file(agree,file.path(outputdir,
+                                                                         "DisclaimerAndLicenseAgreement.pdf"),
+                                                         quiet = TRUE),silent = TRUE))
+    
+    
+    if("try-error"%in%class(tryurl)){
+      
+      return(cat(paste0("Could not read Disclaimer and License Agreement file from www.iea.nl.",
+                        "\nPlease be sure that you are connected to the Internet and that 'maxtime' is high enough.",
+                        "\nIf after that, this message persists, please contact the mantainer to solve this issue.")))
+
+    }
+    
+
     
     cat(paste0("By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.\n"))
     
@@ -190,14 +214,24 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, timeout = 999){
     
     cat(paste0(length(ark)," files found for ",STUDY," ",year,".\n"))
     for(i in 1:length(ark)){
-      i = ark[i]
-      nm <- substring(i,max(gregexpr("/",i)[[1]])+1)
-      utils::download.file(url = file.path(i),
-                           destfile = file.path(outputdir,nm),
-                           options = options(timeout=timeout))
+      # i = ark[i]
+      nm <- substring(ark[i],max(gregexpr("/",ark[i])[[1]])+1)
+      tryurl <- suppressWarnings(try(utils::download.file(url = file.path(ark[i]),
+                                                          destfile = file.path(savedir,nm)),
+                                     silent = TRUE))
       
-      if(unzip){
-        utils::unzip(zipfile = file.path(outputdir,nm),exdir = outputdir)
+      if("try-error"%in%class(tryurl)){
+        
+        return(cat(paste0("Could not download data files.",
+                          "\nPlease be sure that you are connected to the Internet and that 'maxtime' is high enough.",
+                          "\nIf after that, this message persists, please contact the mantainer to solve this issue.")))
+  
+        
+        
+      }
+      
+      if(unzip&zip[i]){
+        utils::unzip(zipfile = file.path(savedir,nm),exdir = file.path(savedir))
       }
       
     }
@@ -223,9 +257,19 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, timeout = 999){
     for(i in 1:length(ark)){
       # i = ark[i]
       nm <- substring(ark[i],max(gregexpr("/",ark[i])[[1]])+1)
-      utils::download.file(url = file.path(ark[i]),
-                           destfile = file.path(savedir,nm),
-                           options = options(timeout=timeout))
+      tryurl <- suppressWarnings(try(utils::download.file(url = file.path(ark[i]),
+                                                          destfile = file.path(savedir,nm)),
+                                     silent = TRUE))
+      
+      if("try-error"%in%class(tryurl)){
+        
+        return(cat(paste0("Could not download data files.",
+                          "\nPlease be sure that you are connected to the Internet and that 'maxtime' is high enough.",
+                          "\nIf after that, this message persists, please contact the mantainer to solve this issue.")))
+        
+        
+        
+      }
       
       if(unzip&zip[i]){
         utils::unzip(zipfile = file.path(savedir,nm),exdir = file.path(savedir))

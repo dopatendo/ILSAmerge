@@ -4,7 +4,7 @@
 \alias{ILSAdownload}
 \title{Download ILSA data}
 \usage{
-ILSAdownload(study, year, outputdir, unzip = FALSE, timeout = 999)
+ILSAdownload(study, year, outputdir, unzip = FALSE, maxtime = 999)
 }
 \arguments{
 \item{study}{a string indicating the name of the study. For available studies
@@ -17,7 +17,7 @@ check the description of this function.}
 \item{unzip}{a logical value indicating if files should be unzipped.
 Default is \code{FALSE}.}
 
-\item{timeout}{a numeric value indicating the maximum time allowed for 
+\item{maxtime}{a numeric value indicating the maximum time allowed for 
 downloading a file. Default is \code{999}.}
 }
 \value{
