@@ -22,6 +22,7 @@ straightforward as possible.
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+![Static Badge](https://img.shields.io/badge/dependencies-haven-brightgreen)
 <!-- badges: end -->
 
 ## Installation
