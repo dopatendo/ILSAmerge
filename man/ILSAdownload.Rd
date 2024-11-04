@@ -4,7 +4,15 @@
 \alias{ILSAdownload}
 \title{Download ILSA data}
 \usage{
-ILSAdownload(study, year, outputdir, unzip = FALSE, maxtime = 999)
+ILSAdownload(
+  study,
+  year,
+  outputdir,
+  unzip = FALSE,
+  maxtime = 999,
+  quiet = FALSE,
+  agreeLicense = FALSE
+)
 }
 \arguments{
 \item{study}{a string indicating the name of the study. For available studies
@@ -19,29 +27,39 @@ Default is \code{FALSE}.}
 
 \item{maxtime}{a numeric value indicating the maximum time allowed for 
 downloading a file. Default is \code{999}.}
+
+\item{quiet}{a logical value indicating if status of progress should be
+shown. If a study has sub-studies, e.g. 'PISA' 2009 and this is \code{TRUE},
+only the main study will be downloaded.
+Default is \code{FALSE}.}
+
+\item{agreeLicense}{a logical value indicating if you agree with
+the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
+you will be prompted to agree with it or else data will not be downloaded.
+Default is \code{FALSE}.}
 }
 \value{
-Saves SPSS ILSA data locally.
+Saves 'SPSS' ILSA data locally.
 }
 \description{
-Downloads SPSS data from different International Large-Scale Assessments (ILSA).
-This functions supports the following ILSA: PISA, TIMSS, TIMSS Advanced, PIRLS, 
-ICCS, ICILS, CIVED, REDS, RLII, and SITES. Depending on the study, 
+Downloads 'SPSS' data from different International Large-Scale Assessments (ILSA).
+This functions supports the following ILSA: 'PISA', 'TIMSS', 'TIMSS Advanced', 'PIRLS', 
+'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
 you will need to decide which data to download, and
 read and accept its terms and conditions to proceed with the download.
 }
 \examples{
-\dontrun{
-# For example, to download TIMSS 1995 data:
+\donttest{
+# For example, to download 'REDS' 2021 data:
 
 # Path were files will be saved
-output <- 'C:/'
+output <- tempdir()
 
-# Downloading TIMSS 1995
-ILSAdownload(study = "TIMSS", year = 1995, outputdir = output)
+# Downloading 'REDS' 2021
+ILSAdownload(study = "REDS", year = 2021, outputdir = output, agreeLicense = TRUE)
 
-# Downloading TIMSS 1995 and unzipping files
-ILSAdownload(study = "TIMSS", year = 1995, outputdir = output, unzip = TRUE)
+# Downloading 'REDS' 2021 and unzipping files
+ILSAdownload(study = "REDS", year = 2021, outputdir = output, unzip = TRUE, agreeLicense = TRUE)
 }
 
 }

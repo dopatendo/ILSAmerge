@@ -1,8 +1,8 @@
 #' Download ILSA data
 #'
-#' Downloads SPSS data from different International Large-Scale Assessments (ILSA).
-#' This functions supports the following ILSA: PISA, TIMSS, TIMSS Advanced, PIRLS, 
-#' ICCS, ICILS, CIVED, REDS, RLII, and SITES. Depending on the study, 
+#' Downloads 'SPSS' data from different International Large-Scale Assessments (ILSA).
+#' This functions supports the following ILSA: 'PISA', 'TIMSS', 'TIMSS Advanced', 'PIRLS', 
+#' 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
 #' you will need to decide which data to download, and
 #' read and accept its terms and conditions to proceed with the download.
 #'
@@ -14,26 +14,37 @@
 #' Default is \code{FALSE}.
 #' @param maxtime a numeric value indicating the maximum time allowed for 
 #' downloading a file. Default is \code{999}.
+#' @param quiet a logical value indicating if status of progress should be
+#' shown. If a study has sub-studies, e.g. 'PISA' 2009 and this is \code{TRUE},
+#' only the main study will be downloaded.
+#' Default is \code{FALSE}.
+#' @param agreeLicense a logical value indicating if you agree with
+#' the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
+#' you will be prompted to agree with it or else data will not be downloaded.
+#' Default is \code{FALSE}.
+#' 
 #'
-#' @returns Saves SPSS ILSA data locally.
+#' @returns Saves 'SPSS' ILSA data locally.
 #'
 #' @examples
-#' \dontrun{
-#' # For example, to download TIMSS 1995 data:
+#' \donttest{
+#' # For example, to download 'REDS' 2021 data:
 #'
 #' # Path were files will be saved
-#' output <- 'C:/'
+#' output <- tempdir()
 #'
-#' # Downloading TIMSS 1995
-#' ILSAdownload(study = "TIMSS", year = 1995, outputdir = output)
+#' # Downloading 'REDS' 2021
+#' ILSAdownload(study = "REDS", year = 2021, outputdir = output, agreeLicense = TRUE)
 #' 
-#' # Downloading TIMSS 1995 and unzipping files
-#' ILSAdownload(study = "TIMSS", year = 1995, outputdir = output, unzip = TRUE)
+#' # Downloading 'REDS' 2021 and unzipping files
+#' ILSAdownload(study = "REDS", year = 2021, outputdir = output, unzip = TRUE, agreeLicense = TRUE)
 #' }
 #'
 #' @export
 
-ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
+ILSAdownload <- function(study, year, outputdir, 
+                          unzip = FALSE, maxtime = 999, 
+                          quiet = FALSE, agreeLicense = FALSE){
   
   # Examples & Tests ----
   # study = "PISA"
@@ -49,9 +60,9 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
   ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
   if("try-error"%in%class(ILSAlinks)){
-    return(cat(paste0("Could not read ILSAlinks file from GitHub.",
+    stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
                       "\nPlease be sure that you are connected to the Internet.",
-                      "\nIf you are and this message persists, please contact the mantainer to solve this issue.")))
+                      "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
   }
   
   
@@ -98,6 +109,16 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
   options(timeout = maxtime)
   on.exit(options(timeout = tmis))
   
+  # quiet
+  if(!(is.vector(quiet)&&is.logical(quiet)&&length(quiet==1)))
+    stop(c("\nInvalid input for 'quiet'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
+  # agreeLicense
+  if(!(is.vector(agreeLicense)&&is.logical(agreeLicense)&&length(agreeLicense==1)))
+    stop(c("\nInvalid input for 'agreeLicense'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
   # Institution
   
   inst <- NULL
@@ -127,21 +148,28 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
   ## Conditional prompts by study ----
   
   if(paste0(STUDY,year)=="PISA2009"){
-    cat(paste0("Which data from PISA 2009 do you wish to download?",
-               "\nType 1 for PISA 2009",
-               "\nType 2 for PISA 2009 Electronic Reading Assessment (ERA)"))
     
-    whichdata <- readline(prompt="")
-    
-    if(!whichdata%in%c(1,2))
-      stop("\nInvalid input for PISA 2009.",call. = FALSE)
-    
-    if(whichdata==1){STUDY <- "PISA"}
-    if(whichdata==2){
-      STUDY <- "PISA_ERA"
-      warning("\nSPSS syntax not yet available for PISA ERA 2009.")
+    if(!quiet){
+      cat(paste0("Which data from PISA 2009 do you wish to download?",
+                 "\nType 1 for PISA 2009",
+                 "\nType 2 for PISA 2009 Electronic Reading Assessment (ERA)"))
       
+      whichdata <- readline(prompt="")
+      
+      if(!whichdata%in%c(1,2))
+        stop("\nInvalid input for PISA 2009.",call. = FALSE)
+      
+      if(whichdata==1){STUDY <- "PISA"}
+      if(whichdata==2){
+        STUDY <- "PISA_ERA"
+        warning("\nSPSS syntax not yet available for PISA ERA 2009.")
+        
       }
+    }else{
+      STUDY <- "PISA"
+    }
+    
+
     
 
   
@@ -150,7 +178,9 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
   }
   
   if(paste0(STUDY,year)=="PISA2012"){
-    cat(paste0("Which data from PISA 2012 do you wish to download?",
+    
+    if(!quiet){
+      cat(paste0("Which data from PISA 2012 do you wish to download?",
                "\nType 1 for PISA 2012",
                "\nType 2 for PISA 2012 Financial Literacy",
                "\nType 3 for PISA 2012 Computer-Based Administration (CBA)"))
@@ -164,6 +194,12 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
     if(whichdata==1){STUDY <- "PISA"}
     if(whichdata==2){STUDY <- "PISA_FINANCIAL"}
     if(whichdata==3){STUDY <- "PISA_CBA"}
+    }else{
+      STUDY <- "PISA"
+    }
+    
+    
+    
     
     
     todownload <- ILSAlinks[ILSAlinks[,"Name"]==STUDY&ILSAlinks[,"Year"]==year,]
@@ -184,6 +220,12 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
     agree <- "https://www.iea.nl/sites/default/files/2019-05/Disclaimer%20and%20License%20Agreement.pdf"
     
  
+    if(create){
+      dir.create(path = file.path(outputdir,paste0(STUDY,year)),showWarnings = FALSE)
+      savedir <- file.path(outputdir,paste0(STUDY,year))
+    }else{
+      savedir <- outputdir
+    }
     
     tryurl <- suppressWarnings(try(utils::download.file(agree,file.path(outputdir,
                                                                          "DisclaimerAndLicenseAgreement.pdf"),
@@ -192,39 +234,58 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
     
     if("try-error"%in%class(tryurl)){
       
-      return(cat(paste0("Could not read Disclaimer and License Agreement file from www.iea.nl.",
-                        "\nPlease be sure that you are connected to the Internet and that 'maxtime' is high enough.",
-                        "\nIf after that, this message persists, please contact the mantainer to solve this issue.")))
+      if(quiet){
+        return(NULL)
+      }else{
+        stop(paste0("Could not read Disclaimer and License Agreement file from www.iea.nl.",
+                          " Please be sure that you are connected to the Internet and that 'maxtime' is high enough.",
+                          " If after that, this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
+      }
+      
+
 
     }
     
 
+    if(!quiet){
+      cat(paste0("By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.\n"))
+      
+    }
     
-    cat(paste0("By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.\n"))
-    
-    cat(paste0("Licencese Agreement downloaded.\n",
-               "Do you agree with these terms and conditions?\n",
-               "Please answer TRUE or FALSE."))
-    
-    doyou <- readline(prompt="")
-    
+    if(!agreeLicense){
+      cat(paste0("License Agreement downloaded.\n",
+                 "Do you agree with these terms and conditions?\n",
+                 "Please answer TRUE or FALSE."))
+      
+      doyou <- readline(prompt="")
+    }else{
+      doyou <- TRUE
+    }
+   
     if(!isTRUE(as.logical(doyou)))
       stop("\nYou did not agree with the terms and conditions.",
            "\nNo data will be downloaded.", call. = FALSE)
     
-    cat(paste0(length(ark)," files found for ",STUDY," ",year,".\n"))
+    if(!quiet){
+      cat(paste0(length(ark)," files found for ",STUDY," ",year,".\n"))
+    }
+    
+    
+
     for(i in 1:length(ark)){
       # i = ark[i]
       nm <- substring(ark[i],max(gregexpr("/",ark[i])[[1]])+1)
-      tryurl <- suppressWarnings(try(utils::download.file(url = file.path(ark[i]),
+      tryurl <- suppressWarnings(try(utils::download.file(url = file.path(ark[i]),quiet = quiet,
                                                           destfile = file.path(savedir,nm)),
                                      silent = TRUE))
       
       if("try-error"%in%class(tryurl)){
         
-        return(cat(paste0("Could not download data files.",
-                          "\nPlease be sure that you are connected to the Internet and that 'maxtime' is high enough.",
-                          "\nIf after that, this message persists, please contact the mantainer to solve this issue.")))
+        
+        
+        stop(paste0("Could not download data files.",
+                          " Please be sure that you are connected to the Internet and that 'maxtime' is high enough.",
+                          " If after that, this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
   
         
         
@@ -253,19 +314,24 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
     
      
 
-    cat(paste0(length(ark)," files found for ",STUDY," ",year,".\n"))
+    if(!quiet){
+      cat(paste0(length(ark)," files found for ",STUDY," ",year,".\n"))
+    }
+    
     for(i in 1:length(ark)){
       # i = ark[i]
       nm <- substring(ark[i],max(gregexpr("/",ark[i])[[1]])+1)
-      tryurl <- suppressWarnings(try(utils::download.file(url = file.path(ark[i]),
+      tryurl <- suppressWarnings(try(utils::download.file(url = file.path(ark[i]),quiet = quiet,
                                                           destfile = file.path(savedir,nm)),
                                      silent = TRUE))
       
       if("try-error"%in%class(tryurl)){
         
-        return(cat(paste0("Could not download data files.",
-                          "\nPlease be sure that you are connected to the Internet and that 'maxtime' is high enough.",
-                          "\nIf after that, this message persists, please contact the mantainer to solve this issue.")))
+        
+        
+        stop(paste0("Could not download data files.",
+                    " Please be sure that you are connected to the Internet and that 'maxtime' is high enough.",
+                    " If after that, this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
         
         
         
@@ -279,5 +345,9 @@ ILSAdownload <- function(study, year, outputdir, unzip = FALSE, maxtime = 999){
   }
   
   
-  cat(paste0("Visit ",repo," to know how to use and cite these datasets."))
+  if(!quiet){
+    cat(paste0("Visit ",repo," to know how to use and cite these datasets."))
+  }
+  
+  
 }

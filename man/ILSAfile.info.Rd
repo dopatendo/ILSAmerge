@@ -7,20 +7,23 @@
 ILSAfile.info(inputdir)
 }
 \arguments{
-\item{inputdir}{a string indicating the path were ILSA SPSS files are stored.}
+\item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}
 }
 \value{
 A data frame with the number of files and MBs per population.
 }
 \description{
-Aggregates ILSA data files information by population.
+Aggregates International Large-Scale Assessments (ILSA) data files information by population.
 }
 \examples{
-\dontrun{
-# For example, after downloading TIMSS 1995 G4 data:
+\donttest{
+# For example, after downloading 'REDS' 2021 G4 data:
 
-# Path were original SPSS files are stored
-input <- 'C:/TIMSS1995_IDB_SPSS_G4/Data/'
+# Downloading 'REDS' 2021 and unzipping files
+ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
+
+# Path were raw 'SPSS' files are
+input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
 
 # Get file information
 ILSAfile.info(inputdir = input)

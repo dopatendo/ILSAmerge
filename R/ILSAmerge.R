@@ -1,10 +1,10 @@
 #' Merge ILSA data
 #'
-#' Merges SPSS data from different International Large-Scale Assessments (ILSA).
-#' This function has been tested to behave correctly for: TIMSS, TIMSS Advanced, 
-#' PIRLS, ICCS, ICILS, CIVED, REDS, RLII, and SITES (2006).
+#' Merges 'SPSS' data from different International Large-Scale Assessments (ILSA).
+#' This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
+#' 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 #'
-#' @param inputdir a string indicating the path were ILSA SPSS files are stored.
+#' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
 #' @param outputdir the directory where the merged data will be saved.
 #' @param filetype a string indicating the type of file to be saved, it can
 #' be \code{"rds"}, \code{"zsav"}, or \code{"sav"}.
@@ -14,36 +14,41 @@
 #' @param MBlimit a numerical value indicating the allowed limit of the combined
 #' storage of the files of one type (see \code{ILSAfile.info()}).
 #' For type files that go over the limit, files will not be merged in R,
-#' but an SPSS syntax will be produced via \code{spss.syntax()}.
+#' but an 'SPSS' syntax will be produced via \code{spss.syntax()}.
 #' If set to \code{NULL}, no limit will be used and all files will be merged
 #' within R. If speed is a problem, we recommend
-#' that this number should not be over \code{200} and merge the rest in SPSS.
+#' that this number should not be over \code{200} and merge the rest in 'SPSS'.
 #' @param MBlistlimit a numerical value indicating the allowed limit of the
 #' combined storage of the files of one type for merging through a list.
 #' Values over the limit will be merged through a matrix, which will be slower
 #' but uses less memory. Default is \code{200}.
 #' @param SPSSlimit a numerical value indicating the limit of files per command
-#' of SPSS, typically \code{50}.
+#' of 'SPSS', typically \code{50}.
+#' @param quiet a logical value indicating if status of progress should be
+#' shown. Default is \code{FALSE}.
 #'
 #' @returns Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
 #'
 #' @examples
-#' \dontrun{
-#' # For example, after downloading TIMSS 1995 G4 data:
+#' \donttest{
+#' # For example, after downloading 'REDS' 2021 G4 data:
 #'
-#' # Path were original SPSS files are stored
-#' input <- 'C:/TIMSS1995_IDB_SPSS_G4/Data/'
+#' # Downloading 'REDS' 2021 and unzipping files
+#' ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
+#'
+#' # Path were raw 'SPSS' files are
+#' input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
 #'
 #' # Path were merged files will be saved
-#' output <- 'C:/TIMSS1995_IDB_SPSS_G4/merged/'
+#' output <- file.path(tempdir(),"REDS2021_IDB_SPSS")
 #'
-#' # Merging TIMSS 1995, as .sav file
+#' # Merging 'REDS' 2021, as .sav file
 #' ILSAmerge(inputdir = input, outputdir = output, filetype = "sav")
 #'
-#' # Merging TIMSS 1995, as .zsav file
+#' # Merging 'REDS' 2021, as .zsav file
 #' ILSAmerge(inputdir = input, outputdir = output, filetype = "zsav")
 #'
-#' # Merging TIMSS 1995, as .rds file
+#' # Merging 'REDS' 2021, as .rds file
 #' ILSAmerge(inputdir = input, outputdir = output, filetype = "rds")
 #'
 #' # Increasing the limit for R merge
@@ -56,7 +61,7 @@
 #' ## Check which populations are available
 #' ILSAfile.info(inputdir = input)
 #' ## Merge
-#' ILSAmerge(inputdir = input, outputdir = output, population = c("ASAm1","ASGm1"))
+#' ILSAmerge(inputdir = input, outputdir = output, population = c("bcgv1","bsgv1"))
 #' }
 #'
 #' @export
@@ -68,7 +73,8 @@
 
 ILSAmerge <- function(inputdir, outputdir, population = NULL,
                       filetype = c("rds", "zsav", "sav"),
-                      MBlimit = NULL, MBlistlimit = 200, SPSSlimit = 50){
+                      MBlimit = NULL, MBlistlimit = 200, SPSSlimit = 50,
+                      quiet = FALSE){
 
   # Checks ----
 
@@ -112,6 +118,11 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
   if(SPSSlimit>50)
     warning("Be aware SPSS tipically can only work with 50 files at a time.",call. = FALSE)
 
+  # quiet
+  if(!(is.vector(quiet)&&is.logical(quiet)&&length(quiet==1)))
+    stop(c("\nInvalid input for 'quiet'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
   ## Process & Output ----
 
   ### Premerge ----
@@ -156,8 +167,12 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
   }
 
 
-  cat(paste0(length(ark)," files detected. Merging into ",
+  if(!quiet){
+    cat(paste0(length(ark)," files detected. Merging into ",
                length(upopstu)," files.\n"))
+  }
+  
+
 
 
   inf <- ILSAfile.info(inputdir)
@@ -178,7 +193,9 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
     ptime2 <- proc.time()
 
-    cat(paste0("Merging ",upopstu[i],". Type ",i," of ",length(upopstu),".\n"))
+    if(!quiet){
+      cat(paste0("Merging ",upopstu[i],". Type ",i," of ",length(upopstu),".\n"))
+    }
 
     erki <- erk[popstu%in%upopstu[i]]
     mbs <- inf[,3][inf[,1]%in%upopstu[i]]
@@ -187,14 +204,14 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
       if(mbs<=(MBlistlimit+0.01)){
 
-        out <- try(.mergebylist(files = erki,verbose = TRUE),silent = TRUE)
+        out <- try(.mergebylist(files = erki,verbose = !quiet),silent = TRUE)
 
         if("try-error"%in%class(out)){
-          out <- .mergebymatrix(files = erki,verbose = TRUE)
+          out <- .mergebymatrix(files = erki,verbose = !quiet)
         }
 
       }else{
-        out <- .mergebymatrix(files = erki,verbose = TRUE)
+        out <- .mergebymatrix(files = erki,verbose = !quiet)
       }
 
       if(filetype%in%"zsav"){
@@ -212,9 +229,12 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
       }
 
 
+      if(!quiet){
+        cat(paste0("Merging ",upopstu[i]," took ",round((proc.time()-ptime2)[3]),
+                   " seconds or ",round((proc.time()-ptime2)[3]/60,2)," minutes.\n"))
+      }
 
-      cat(paste0("Merging ",upopstu[i]," took ",round((proc.time()-ptime2)[3]),
-                 " seconds or ",round((proc.time()-ptime2)[3]/60,2)," minutes.\n"))
+ 
 
     }else{
       out <- NULL
@@ -223,21 +243,28 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
                   zsav = ifelse(filetype=="zsav",TRUE,FALSE),
                   outputdir = outputdir,SPSSlimit = SPSSlimit)
 
-      cat(paste0("SPSS syntax produced for ",upopstu[i],". Type ",i," of ",
-                 length(upopstu),".\n"))
+      if(!quiet){
+        cat(paste0("SPSS syntax produced for ",upopstu[i],". Type ",i," of ",
+                   length(upopstu),".\n"))
+      }
+   
+      
     }
 
 
 
   }
-  cat(paste0("Merging took ",round((proc.time()-ptime)[3]),
-             " seconds or ",round((proc.time()-ptime)[3]/60,2)," minutes.\n"))
+
+  if(!quiet){
+    cat(paste0("Merging took ",round((proc.time()-ptime)[3]),
+               " seconds or ",round((proc.time()-ptime)[3]/60,2)," minutes.\n"))
+  }
 
 }
 
 
 
-.mergebymatrix <- function(files,verbose = FALSE){
+.mergebymatrix <- function(files,verbose = TRUE){
   # first file to load attributes
 
   if(verbose)
@@ -357,7 +384,7 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 }
 
 
-.mergebylist <- function(files,verbose = FALSE){
+.mergebylist <- function(files,verbose = TRUE){
 
 
 

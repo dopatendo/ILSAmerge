@@ -1,6 +1,6 @@
-#' SPSS merge syntax
+#' 'SPSS' merge syntax
 #'
-#' Produces and saves an SPSS merge syntax given a list of files.
+#' Produces and saves an 'SPSS' merge syntax given a list of files.
 #'
 #' @param filelist a character vector with the list of files to be merged.
 #' @param name a string with the name of the merged file (without any
@@ -10,27 +10,30 @@
 #' @param zsav a logical value indicating if the the merged file should
 #' be compressed with zsav. Default is \code{TRUE}.
 #' @param SPSSlimit a numerical value indicating the limit of files per command
-#' of SPSS, typically 50.
+#' of 'SPSS', typically 50.
 #'
-#' @returns Saves an \code{.sps} file with the SPSS syntax for merging the
+#' @returns Saves an \code{.sps} file with the 'SPSS' syntax for merging the
 #' desired files.
 #'
 #' @examples
 #'
-#' \dontrun{
-#' # For example, after downloading TIMSS 1995 G4 data:
+#' \donttest{
+#' # For example, after downloading 'REDS' 2021 G4 data:
 #'
-#' # Path were original SPSS files are stored
-#' input <- 'C:/TIMSS1995_IDB_SPSS_G4/Data/'
+#' # Downloading 'REDS' 2021 and unzipping files
+#' ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
+#'
+#' # Path were raw 'SPSS' files are
+#' input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
 #'
 #' # Path were merged files will be saved
-#' output <- 'C:/TIMSS1995_IDB_SPSS_G4/merged/'
+#' output <- tempdir()
 #'
-#' # List of ACGm1 files to be merged
-#' files <- list.files(pattern = "ACG.+m1")
+#' # List of bcgv1 files to be merged
+#' files <- list.files(path = input, pattern = "bcg.+v1")
 #'
-#' # Create SPSS syntax
-#' spss.syntax(filelist = files, name = "ACGm1", outputdir = output, zsav = TRUE)
+#' # Create 'SPSS' syntax
+#' spss.syntax(filelist = files, name = "bcgv1", outputdir = output, zsav = TRUE)
 #'
 #' }
 #'

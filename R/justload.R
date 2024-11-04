@@ -1,10 +1,10 @@
 #' Loading ILSA data into a list
 #'
-#' Load SPSS data from different International Large-Scale Assessments (ILSA),
-#' including: TIMSS, TIMSS Advanced, PIRLS, ICCS, ICILS, CIVED, REDS, RLII,
-#' and SITES into a list.
+#' Load 'SPSS' data from different International Large-Scale Assessments (ILSA),
+#' including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII',
+#' and 'SITES' into a list.
 #'
-#' @param inputdir a string indicating the path were ILSA SPSS files are stored.
+#' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
 #' @param population a character value indicating which files should be merged. 
 #' For more information on available populations, run \code{ILSAfile.info()} first.
 #' @param justattributes a logical value indicating if 0 rows should be loaded.
@@ -14,20 +14,20 @@
 #' @returns A list of tibbles.
 #'
 #' @examples
-#' \dontrun{
-#' # For example, after downloading TIMSS 1995 G4 data:
+#' \donttest{
+#' # For example, after downloading 'REDS' 2021 G4 data:
 #'
-#' # Path were original SPSS files are stored
-#' input <- "C:/TIMSS1995_IDB_SPSS_G4/Data/"
+#' # Downloading 'REDS' 2021 and unzipping files
+#' ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
 #'
-#' # Check which populations are available
-#' ILSAfile.info(inputdir = input)
+#' # Path were raw 'SPSS' files are
+#' input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
 #' 
 #' # Load only attributes
-#' justload(inputdir = input, population = "ASAm1", justattributes = TRUE)
+#' justload(inputdir = input, population = "bcgv1", justattributes = TRUE)
 #' 
 #' # Load complete data
-#' justload(inputdir = input, population = "ASAm1", justattributes = FALSE)
+#' justload(inputdir = input, population = "bsgv1", justattributes = FALSE)
 #' }
 #'
 #' @export

@@ -11,11 +11,12 @@ ILSAmerge(
   filetype = c("rds", "zsav", "sav"),
   MBlimit = NULL,
   MBlistlimit = 200,
-  SPSSlimit = 50
+  SPSSlimit = 50,
+  quiet = FALSE
 )
 }
 \arguments{
-\item{inputdir}{a string indicating the path were ILSA SPSS files are stored.}
+\item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}
 
 \item{outputdir}{the directory where the merged data will be saved.}
 
@@ -29,10 +30,10 @@ be \code{"rds"}, \code{"zsav"}, or \code{"sav"}.}
 \item{MBlimit}{a numerical value indicating the allowed limit of the combined
 storage of the files of one type (see \code{ILSAfile.info()}).
 For type files that go over the limit, files will not be merged in R,
-but an SPSS syntax will be produced via \code{spss.syntax()}.
+but an 'SPSS' syntax will be produced via \code{spss.syntax()}.
 If set to \code{NULL}, no limit will be used and all files will be merged
 within R. If speed is a problem, we recommend
-that this number should not be over \code{200} and merge the rest in SPSS.}
+that this number should not be over \code{200} and merge the rest in 'SPSS'.}
 
 \item{MBlistlimit}{a numerical value indicating the allowed limit of the
 combined storage of the files of one type for merging through a list.
@@ -40,33 +41,39 @@ Values over the limit will be merged through a matrix, which will be slower
 but uses less memory. Default is \code{200}.}
 
 \item{SPSSlimit}{a numerical value indicating the limit of files per command
-of SPSS, typically \code{50}.}
+of 'SPSS', typically \code{50}.}
+
+\item{quiet}{a logical value indicating if status of progress should be
+shown. Default is \code{FALSE}.}
 }
 \value{
 Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
 }
 \description{
-Merges SPSS data from different International Large-Scale Assessments (ILSA).
-This function has been tested to behave correctly for: TIMSS, TIMSS Advanced, 
-PIRLS, ICCS, ICILS, CIVED, REDS, RLII, and SITES (2006).
+Merges 'SPSS' data from different International Large-Scale Assessments (ILSA).
+This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
+'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 }
 \examples{
-\dontrun{
-# For example, after downloading TIMSS 1995 G4 data:
+\donttest{
+# For example, after downloading 'REDS' 2021 G4 data:
 
-# Path were original SPSS files are stored
-input <- 'C:/TIMSS1995_IDB_SPSS_G4/Data/'
+# Downloading 'REDS' 2021 and unzipping files
+ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
+
+# Path were raw 'SPSS' files are
+input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
 
 # Path were merged files will be saved
-output <- 'C:/TIMSS1995_IDB_SPSS_G4/merged/'
+output <- file.path(tempdir(),"REDS2021_IDB_SPSS")
 
-# Merging TIMSS 1995, as .sav file
+# Merging 'REDS' 2021, as .sav file
 ILSAmerge(inputdir = input, outputdir = output, filetype = "sav")
 
-# Merging TIMSS 1995, as .zsav file
+# Merging 'REDS' 2021, as .zsav file
 ILSAmerge(inputdir = input, outputdir = output, filetype = "zsav")
 
-# Merging TIMSS 1995, as .rds file
+# Merging 'REDS' 2021, as .rds file
 ILSAmerge(inputdir = input, outputdir = output, filetype = "rds")
 
 # Increasing the limit for R merge
@@ -79,7 +86,7 @@ ILSAmerge(inputdir = input, outputdir = output, MBlimit = NULL)
 ## Check which populations are available
 ILSAfile.info(inputdir = input)
 ## Merge
-ILSAmerge(inputdir = input, outputdir = output, population = c("ASAm1","ASGm1"))
+ILSAmerge(inputdir = input, outputdir = output, population = c("bcgv1","bsgv1"))
 }
 
 }
