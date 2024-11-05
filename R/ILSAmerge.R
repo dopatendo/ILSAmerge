@@ -297,7 +297,7 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
 
   out1 <- try(haven::read_spss(file = files[whtoload], user_na = TRUE, col_select = NULL,
-                               skip = 0, n_max = 0, .name_repair = "unique"),
+                               skip = 0, n_max = 1, .name_repair = "unique"),
               silent = TRUE)
   if("try-error"%in%class(out1)){
     out1 <- haven::read_sav(file = files[whtoload], user_na = TRUE, col_select = NULL,
@@ -335,8 +335,11 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
 
 
-  lapply(1:length(files),function(j){
+  for(j in 1:length(files)){
 
+    
+    # lapply(1:length(files),function(j){
+      
     if(verbose)
       cat(paste0("Merging dataset ",j," of ",length(files),".\n"))
 
@@ -369,7 +372,16 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
     })
     unt <- do.call(cbind.data.frame, unt)
 
-    out[first[j]:last[j],match(cunt,colN)] <- unt })
+    mts <- match(cunt,colN)
+    
+    for(k in 1:length(cunt)){
+      out[first[j]:last[j],mts[k]] <- unt[,k]
+    }
+    
+    # out[first[j]:last[j],match(cunt,colN)] <- unt
+    
+  }
+    # })
 
 
 
@@ -377,7 +389,7 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
   colnames(out) <- colnames(out1)
 
 
-  out <- rbind(out1,out)
+  out <- rbind(out1,out)[-1,]
 
   return(out)
 
@@ -404,4 +416,6 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
   return(out)
 
 }
+
+
 
