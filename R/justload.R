@@ -98,9 +98,16 @@ justload <- function(inputdir, population, justattributes = FALSE){
   
   out <- lapply(1:length(erki),function(j){
     
-    outj <- haven::read_spss(file = erki[j], user_na = TRUE, col_select = NULL,
-                             skip = 0, n_max = ifelse(justattributes, 0, Inf),
-                             .name_repair = "unique")
+    outj <- try(haven::read_spss(file = erki[j], user_na = TRUE, col_select = NULL,
+                                 skip = 0, n_max = ifelse(justattributes, 0, Inf),
+                                 .name_repair = "unique"),silent = TRUE)
+    
+    if("try-error"%in%class(outj)){
+      outj <- haven::read_sav(file = erki[j], user_na = TRUE, col_select = NULL,
+                              skip = 0, n_max = ifelse(justattributes, 0, Inf),
+                              .name_repair = "unique",
+                              encoding = 'latin1')
+    }
     
     outj
   })
