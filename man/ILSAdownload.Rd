@@ -49,17 +49,14 @@ you will need to decide which data to download, and
 read and accept its terms and conditions to proceed with the download.
 }
 \examples{
-\donttest{
-# For example, to download 'REDS' 2021 data:
+# For example, to download 'RLII' 1991 data:
 
 # Path were files will be saved
 output <- tempdir()
 
-# Downloading 'REDS' 2021
-ILSAdownload(study = "REDS", year = 2021, outputdir = output, agreeLicense = TRUE)
 
-# Downloading 'REDS' 2021 and unzipping files
-ILSAdownload(study = "REDS", year = 2021, outputdir = output, unzip = TRUE, agreeLicense = TRUE)
-}
+# Downloading 'RLII' 1991 and unzipping files
+ILSAdownload(study = "RLII", year = 1991, outputdir = output, unzip = TRUE, agreeLicense = TRUE)
+
 
 }

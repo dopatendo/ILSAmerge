@@ -30,39 +30,19 @@
 #' @returns Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
 #'
 #' @examples
-#' \donttest{
-#' # For example, after downloading 'REDS' 2021 G4 data:
+#' # For example, after downloading 'RLII' 1991 G4 data:
 #'
-#' # Downloading 'REDS' 2021 and unzipping files
-#' ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
-#'
+#' # Downloading 'RLII' 1991 and unzipping files
+#' ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
+#' 
 #' # Path were raw 'SPSS' files are
-#' input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
-#'
+#' input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
+#' 
 #' # Path were merged files will be saved
-#' output <- file.path(tempdir(),"REDS2021_IDB_SPSS")
-#'
-#' # Merging 'REDS' 2021, as .sav file
-#' ILSAmerge(inputdir = input, outputdir = output, filetype = "sav")
-#'
-#' # Merging 'REDS' 2021, as .zsav file
-#' ILSAmerge(inputdir = input, outputdir = output, filetype = "zsav")
-#'
-#' # Merging 'REDS' 2021, as .rds file
-#' ILSAmerge(inputdir = input, outputdir = output, filetype = "rds")
-#'
-#' # Increasing the limit for R merge
-#' ILSAmerge(inputdir = input, outputdir = output, MBlimit = 200)
-#'
-#' # Removing the limit for R merge
-#' ILSAmerge(inputdir = input, outputdir = output, MBlimit = NULL)
-#'
-#' # Selecting only some populations
-#' ## Check which populations are available
-#' ILSAfile.info(inputdir = input)
-#' ## Merge
-#' ILSAmerge(inputdir = input, outputdir = output, population = c("bcgv1","bsgv1"))
-#' }
+#' output <- file.path(tempdir(),"RLII1991_IDB_SPSS")
+#' 
+#' # Merging 'RLII' 1991, as .rds file
+#' ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
 #'
 #' @export
 

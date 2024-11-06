@@ -17,25 +17,22 @@
 #'
 #' @examples
 #'
-#' \donttest{
-#' # For example, after downloading 'REDS' 2021 G4 data:
+#' # For example, after downloading 'RLII' 1991 G4 data:
 #'
-#' # Downloading 'REDS' 2021 and unzipping files
-#' ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
+#' # Downloading 'RLII' 1991 and unzipping files
+#' ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
 #'
 #' # Path were raw 'SPSS' files are
-#' input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
+#' input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
 #'
 #' # Path were merged files will be saved
 #' output <- tempdir()
 #'
-#' # List of bcgv1 files to be merged
-#' files <- list.files(path = input, pattern = "bcg.+v1")
+#' # List of ASCt1 files to be merged
+#' files <- list.files(path = input, pattern = "ASC.+t1")
 #'
 #' # Create 'SPSS' syntax
-#' spss.syntax(filelist = files, name = "bcgv1", outputdir = output, zsav = TRUE)
-#'
-#' }
+#' spss.syntax(filelist = files, name = "ASCt1", outputdir = output, zsav = TRUE)
 #'
 #' @export
 

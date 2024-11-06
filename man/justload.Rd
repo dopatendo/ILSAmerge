@@ -25,20 +25,18 @@ including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS',
 and 'SITES' into a list.
 }
 \examples{
-\donttest{
-# For example, after downloading 'REDS' 2021 G4 data:
+# For example, after downloading 'RLII' 1991 G4 data:
 
-# Downloading 'REDS' 2021 and unzipping files
-ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
+# Downloading 'RLII' 1991 and unzipping files
+ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
 
 # Path were raw 'SPSS' files are
-input <- file.path(tempdir(),"REDS2021_IDB_SPSS/Data")
+input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
 
 # Load only attributes
-justload(inputdir = input, population = "bcgv1", justattributes = TRUE)
+emptylist <- justload(inputdir = input, population = "ASCt1", justattributes = TRUE)
 
 # Load complete data
-justload(inputdir = input, population = "bsgv1", justattributes = FALSE)
-}
+fullist <- justload(inputdir = input, population = "ASCt1", justattributes = FALSE)
 
 }
