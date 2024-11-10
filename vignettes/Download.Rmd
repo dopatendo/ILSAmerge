@@ -1,5 +1,5 @@
 ---
-title: "Download an ILSA dataset"
+title: "Download ILSA files"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Download}
@@ -43,7 +43,7 @@ for(i in 1:length(ilsasU)){
 ```
 
 
-## Downloading the datasets for a particular study
+## Download the datasets for a particular study
 
 Depending on the study datasets are uploaded in 1 or more .zip files. That is why
 `ILSAdownload()` will handle by itself how many and which .zip files to download.
@@ -61,13 +61,13 @@ As we can see, some studies will require that you agree with their license
 agreements. If that is the case, you will be required to answer if you agree 
 or not. In order to continue, you will need to agree. If you know that you
 will agree with the study terms, then you can also avoid this prompt via
-`agreeLicense`:
+`agreeLicense = TRUE`:
 ```{r, eval = TRUE}
 ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
              agreeLicense = TRUE)
 ```
 
-## Unzipping
+## Unzip
 
 This function can also unzip downloaded files using `unzip = TRUE`:
 
@@ -86,7 +86,7 @@ ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
              quiet = TRUE, agreeLicense = TRUE)
 ```
 
-## Downloading time
+## Download time
 
 Timeout times for downloading are controlled by `maxtime`, which you can set
 for a desired number of seconds:

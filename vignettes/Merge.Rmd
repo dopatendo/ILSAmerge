@@ -1,0 +1,81 @@
+---
+title: "Merge ILSA files"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Merge ILSA files}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE
+)
+```
+
+```{r setup}
+library(ILSAmerge)
+```
+
+First, as an example, using `ILSAdownload()` we can download the datasets of 
+'RLII' 1991:
+```{r}
+ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+             unzip = TRUE, agreeLicense = TRUE)
+```
+
+In the case of 'RLII' 1991, we have X files and only 1 population:
+```{r}
+ILSAfile.info(inputdir = file.path(tempdir(),"RLII1991_IDB_SPSS/Data"))
+```
+
+With `ILSAmerge()` we can combine all the files into the number of populations
+we have.
+
+For example, let us create a new path, where the merged files will be 
+saved:
+
+```{r}
+dir.create(file.path(tempdir(),"RLII1991_IDB_SPSS/MERGED"),showWarnings = FALSE)
+output <- file.path(tempdir(),"RLII1991_IDB_SPSS/MERGED")
+input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
+```
+
+Then, we can simply run `ILSAmerge()` and all files will be merged. The default
+type will be an "rds", but also we can make "zsav" and "sav" files:
+
+```{r, eval=FALSE}
+ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav"))
+```
+
+
+## Adjust merge options
+
+Depending on your goals or the capabilities of your computer, 
+you may consider adjusting some options of `ILSAmerge()`:
+
+- `population`: If you need to merge only some of the populations from the
+path, you could include them here as a character vector. It should be in the 
+same format as the output of `ILSAfile.info()`.
+- `MBlimit`: If set to `NULL`, the default, all files will be
+merged within R. If set a numeric value that will establish a limit (from the
+output of `ILSAfile.info()`) of which files are going to be merged by R, 
+the populations that go over this limit will not be merged by R, but instead an
+SPSS syntax will be produced. Later, you can use this syntax to merge the files.
+- `MBlistlimit`: In `ILSAmerge()` files are merged in two ways: using a list
+produced by an lapply function, or an empty matrix filled up by subscripts.
+The first method is almost always faster, but it can use a lot of memory.
+This argument establishes a limit for merging by list and not by matrix.
+We recommend not setting this higher than 200.
+- `SPSSlimit`: If SPSS syntaxes are going to be produced it is important to
+take into account the SPSS requirements for handling files. This could vary
+by SPSS version, but normally it is a total of 50 files per command.
+
+## Progress and time for merging
+
+When `ILSAmerge()` runs, information about the progress of the merging and the
+running time will be produced:
+
+```{r, eval=TRUE}
+ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav"))
+```

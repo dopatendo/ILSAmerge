@@ -13,8 +13,61 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r, echo=FALSE}
 library(ILSAmerge)
 ```
 
-[asdas](vignette("IdentifyILSAfiles"))
+As seen in before, we can [identify ILSA files](https://dopatendo.github.io/ILSAmerge/articles/IdentifyILSAfiles.html)
+using `ILSAfile.info()` we can identify different populations within an ILSA.
+
+Moreover, we can also use this information for loading an specific population
+into the memory. Following the 'REDS' 2021 example:
+```{r}
+
+ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(),
+             unzip = TRUE, quiet = TRUE, agreeLicense = TRUE)
+
+ILSAfile.info(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"))
+
+```
+
+## Load all information
+
+We can decide to load a population, like `bcgv1`, using `justload()`:
+```{r}
+loaded <- justload(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"),
+         population = "bcgv1")
+```
+
+This will result in a list of elements loaded by `haven`, in our example, a list
+of 11 elements:
+```{r}
+class(loaded)
+
+length(loaded)
+
+loaded[[1]]
+```
+
+## Load only column information
+
+For some purposes, we might need to load only the column information, most 
+probably to check if the attributes are correct. We can do this by setting
+`justattributes = TRUE`:
+```{r}
+loaded <- justload(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"),
+         population = "bcgv1", justattributes = TRUE)
+```
+
+This will load all 11 datasets with 0 rows each:
+```{r}
+length(loaded)
+
+loaded[[1]]
+```
+
+
+
+
+
+
