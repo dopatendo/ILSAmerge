@@ -1,0 +1,91 @@
+---
+title: "Downloading an ILSA dataset"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ILSAdownload}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup,echo=FALSE}
+library(ILSAmerge)
+```
+
+
+
+## Available datasets
+
+Currently [`ILSAmerge`](https://cran.r-project.org/package=ILSAmerge) is able
+to download several ILSA datasets, including: 'PISA', 'TALIS', 'TIMSS', 
+'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES.'
+
+The links of these datasets are allocated in 
+[GitHub](https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv),
+so links can be corrected if they are down.
+
+With a small script, we can check which datasets are available to download:
+```{r, eval = TRUE}
+ilsaliks <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
+ilsas <- unique(read.csv(ilsaliks)[,1:2])
+ilsas <- ilsas[!ilsas$Name%in%"Other",]
+ilsasU <- sort(unique(ilsas$Name))
+
+for(i in 1:length(ilsasU)){
+  cat(paste0(ilsasU[i],": ",
+             paste0(ilsas$Year[ilsas$Name%in%ilsasU[i]],collapse = ", "),".\n"))
+}
+```
+
+
+## Downloading the datasets for a particular study
+
+Depending on the study datasets are uploaded in 1 or more .zip files. That is why
+`ILSAdownload()` will handle by itself how many and which .zip files to download.
+
+As an example, we let us say we want to download the data of 'RLII' 1991. Then,
+at least we need to opt for three arguments; `study`, `year`, and `outputdir`:
+```{r, eval = FALSE}
+ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir())
+```
+```{r, eval = TRUE, echo=FALSE}
+try(ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir()),silent = TRUE)
+```
+
+As we can see, some studies will require that you agree with their license 
+agreements. If that is the case, you will be required to answer if you agree 
+or not. In order to continue, you will need to agree. If you know that you
+will agree with the study terms, then you can also avoid this prompt via
+`agreeLicense`:
+```{r, eval = TRUE}
+ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+             agreeLicense = TRUE)
+```
+
+## Unzipping
+
+This function can also unzip downloaded files using `unzip = TRUE`:
+
+```{r, eval = FALSE}
+ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+             unzip = TRUE)
+```
+
+## Avoid printing
+
+It is possible to avoid any printing by `quiet = TRUE`, but you will still
+be prompted to agree. To avoid both prints you can use both arguments:
+
+```{r, eval = FALSE}
+ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+             quiet = TRUE, agreeLicense = TRUE)
+```
+
+## Downloading time
+
+Timeout times for downloading are controlled by `maxtime`, which you can set
+for a desired number of seconds:
+
+```{r, eval=FALSE}
+ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
+             maxtime = 60)
+```

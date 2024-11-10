@@ -1,4 +1,4 @@
 url: https://dopatendo.github.io/ILSAmerge/
 template:
   bootstrap: 5
-
+  light-switch: true
