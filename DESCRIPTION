@@ -6,7 +6,7 @@ Authors@R: person(given = "Andrés",
                     family = "Christiansen",
                     role = c("aut", "cre"),
                     email = "andres.christiansen@iea-hamburg.de",
-                    comment = c(ORCID = "https://orcid.org/0000-0003-2692-7843"))
+                    comment = c(ORCID = "0000-0003-2692-7843"))
 Maintainer: Andrés Christiansen <andres.christiansen@iea-hamburg.de>
 Description: Merges and downloads 'SPSS' data from different International Large-Scale Assessments (ILSA), including: Trends in International Mathematics and Science Study (TIMSS), Progress in International Reading Literacy Study (PIRLS), Programme for International Student Assessment (PISA), and others.
 License: GPL (>= 3.0)
