@@ -6,3 +6,7 @@ README.Rmd
 data/
 .RData
 .Rhistory
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
