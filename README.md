@@ -52,17 +52,14 @@ For merging ILSA data, we can use `ILSAmerge()`. For an example see
 ## Downloading files
 
 For downloading ILSA data, we can use `ILSAdownload()`. For an example
-see [“Download ILSA
-files](https://dopatendo.github.io/ILSAmerge/articles/Download.html)
+see `vignette("Download")`.
 
 ## Identify ILSA files
 
 For identifying populations within a study, we can use
-`ILSAfiles.info()`. For an example see [“Identify ILSA
-files](https://dopatendo.github.io/ILSAmerge/articles/IdentifyILSAfiles.html)
+`ILSAfiles.info()`. For an example see `vignette("IndentifyILSAfiles")`.
 
 ## Load data without merging
 
 If we need to load ILSA data but not save it, we can use `justload()`.
-For an example see [“Load ILSA
-files](https://dopatendo.github.io/ILSAmerge/articles/Load.html)
+For an example see `vignette("Load")`.
