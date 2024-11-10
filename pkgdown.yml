@@ -5,7 +5,8 @@ articles:
   Download: Download.html
   IdentifyILSAfiles: IdentifyILSAfiles.html
   Load: Load.html
-last_built: 2024-11-10T22:25Z
+  Merge: Merge.html
+last_built: 2024-11-10T23:23Z
 urls:
   reference: https://dopatendo.github.io/ILSAmerge/reference
   article: https://dopatendo.github.io/ILSAmerge/articles
