@@ -1,14 +1,20 @@
 ---
-title: "Downloading an ILSA dataset"
+title: "Download an ILSA dataset"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ILSAdownload}
+  %\VignetteIndexEntry{Download}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup,echo=FALSE}
 library(ILSAmerge)
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE
+)
 ```
 
 

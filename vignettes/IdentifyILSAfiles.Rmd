@@ -1,0 +1,40 @@
+---
+title: "Identify ILSA files"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Identify ILSA files}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE
+)
+```
+
+```{r setup, echo = FALSE}
+library(ILSAmerge)
+```
+
+
+It is common that ILSA files come an unaggregated format, i.e., separated by
+country. If that is the case [`ILSAmerge`](https://cran.r-project.org/package=ILSAmerge)
+is able to identify which files should be merged together.
+
+If we want know how many files were downloaded and into which many files
+they can be merged, we can use `ILSAfile.info()` targeting the folder with
+the unzipped data:
+
+```{r}
+
+ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(),
+             unzip = TRUE, quiet = TRUE, agreeLicense = TRUE)
+
+ILSAfile.info(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"))
+
+```
+
+As we can see, for 'REDS' 2021 we have 3 file 'types' or populations: `bcgv1` 
+(schools), `bsgv1` (students), and `btgv1` (teachers). This will become important
+when we need to work with only one population.

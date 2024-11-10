@@ -1,0 +1,20 @@
+---
+title: "Load ILSA files"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Load}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE
+)
+```
+
+```{r setup}
+library(ILSAmerge)
+```
+
+[asdas](vignette("IdentifyILSAfiles"))
