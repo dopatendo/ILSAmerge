@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 library(ILSAmerge)
 ```
 
+## Check what can be loaded
+
 As seen in before, we can [identify ILSA files](https://dopatendo.github.io/ILSAmerge/articles/IdentifyILSAfiles.html)
 using `ILSAfile.info()` we can identify different populations within an ILSA.
 

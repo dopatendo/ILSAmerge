@@ -3,5 +3,6 @@
 export(ILSAdownload)
 export(ILSAfile.info)
 export(ILSAmerge)
+export(availableILSA)
 export(justload)
 export(spss.syntax)

@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 library(ILSAmerge)
 ```
 
+## Download data
+
 First, as an example, using `ILSAdownload()` we can download the datasets of 
 'RLII' 1991:
 ```{r}

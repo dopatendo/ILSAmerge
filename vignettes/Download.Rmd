@@ -29,17 +29,9 @@ The links of these datasets are allocated in
 [GitHub](https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv),
 so links can be corrected if they are down.
 
-With a small script, we can check which datasets are available to download:
+With `availableILSA()`, we can check which datasets are available:
 ```{r, eval = TRUE}
-ilsaliks <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
-ilsas <- unique(read.csv(ilsaliks)[,1:2])
-ilsas <- ilsas[!ilsas$Name%in%"Other",]
-ilsasU <- sort(unique(ilsas$Name))
-
-for(i in 1:length(ilsasU)){
-  cat(paste0(ilsasU[i],": ",
-             paste0(ilsas$Year[ilsas$Name%in%ilsasU[i]],collapse = ", "),".\n"))
-}
+availableILSA()
 ```
 
 
