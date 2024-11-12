@@ -90,23 +90,15 @@ is able to download several ILSA datasets, including: ‘PISA’, ‘TALIS’,
 ‘RLII’, and ‘SITES.’</p>
 <p>The links of these datasets are allocated in <a href="https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv" class="external-link">GitHub</a>,
 so links can be corrected if they are down.</p>
-<p>With a small script, we can check which datasets are available to
-download:</p>
+<p>With <code><a href="../reference/availableILSA.html">availableILSA()</a></code>, we can check which datasets are
+available:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ilsaliks</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"</span></span>
-<span><span class="va">ilsas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">ilsaliks</span><span class="op">)</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">ilsas</span> <span class="op">&lt;-</span> <span class="va">ilsas</span><span class="op">[</span><span class="op">!</span><span class="va">ilsas</span><span class="op">$</span><span class="va">Name</span><span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span><span class="st">"Other"</span>,<span class="op">]</span></span>
-<span><span class="va">ilsasU</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">ilsas</span><span class="op">$</span><span class="va">Name</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">ilsasU</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">ilsasU</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,<span class="st">": "</span>,</span>
-<span>             <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">ilsas</span><span class="op">$</span><span class="va">Year</span><span class="op">[</span><span class="va">ilsas</span><span class="op">$</span><span class="va">Name</span><span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span><span class="va">ilsasU</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span>,<span class="st">".\n"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/availableILSA.html">availableILSA</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## CIVED: 1999.</span></span>
 <span><span class="co">## ICCS: 2009, 2016, 2022.</span></span>
 <span><span class="co">## ICILS: 2013, 2018.</span></span>
 <span><span class="co">## PIRLS: 2001, 2006, 2011, 2016, 2021.</span></span>
-<span><span class="co">## PISA: 2022, 2018, 2015, 2012, 2009, 2006, 2003, 2000.</span></span>
+<span><span class="co">## PISA: 2000, 2003, 2006, 2009, 2012, 2015, 2018, 2022.</span></span>
 <span><span class="co">## PISA_CBA: 2012.</span></span>
 <span><span class="co">## PISA_ERA: 2009.</span></span>
 <span><span class="co">## PISA_FINANCIAL: 2012.</span></span>

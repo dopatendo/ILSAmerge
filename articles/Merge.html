@@ -83,6 +83,9 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dopatendo/ILSAmerge" class="external-link">ILSAmerge</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="download-data">Download data<a class="anchor" aria-label="anchor" href="#download-data"></a>
+</h2>
 <p>First, as an example, using <code><a href="../reference/ILSAdownload.html">ILSAdownload()</a></code> we can
 download the datasets of ‘RLII’ 1991:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -110,6 +113,7 @@ be merged. The default type will be an “rds”, but also we can make
 “zsav” and “sav” files:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ILSAmerge.html">ILSAmerge</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="va">input</span>, outputdir <span class="op">=</span> <span class="va">output</span>, filetype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rds"</span>, <span class="st">"zsav"</span>, <span class="st">"sav"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
 <div class="section level2">
 <h2 id="adjust-merge-options">Adjust merge options<a class="anchor" aria-label="anchor" href="#adjust-merge-options"></a>
 </h2>
