@@ -54,13 +54,13 @@ ILSAfile.info <- function(inputdir){
   stu <- unlist(lapply(ext,function(i) i[[1]]))
   ext <- unlist(lapply(ext,function(i) i[[2]]))
 
-  popstu <- paste0(pop,stu)
+  popstu <- toupper(paste0(pop,stu))
   upopstu <- unique(popstu)
 
   siz <- file.size(erk)
   siz <- stats::aggregate(siz,by = list(popstu),sum)
 
-  out <- as.data.frame(table(popstu))
+  out <- as.data.frame(table(popstu),stringsAsFactors = FALSE)
   colnames(out) <- c('Population','Files')
   out <- cbind.data.frame(out,MB = round(siz[,2]/1000/1000,1))
 

@@ -23,10 +23,10 @@
 #' input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
 #' 
 #' # Load only attributes
-#' emptylist <- justload(inputdir = input, population = "ASCt1", justattributes = TRUE)
+#' emptylist <- justload(inputdir = input, population = "ASCT1", justattributes = TRUE)
 #' 
 #' # Load complete data
-#' fullist <- justload(inputdir = input, population = "ASCt1", justattributes = FALSE)
+#' fullist <- justload(inputdir = input, population = "ASCT1", justattributes = FALSE)
 #'
 #' @export
 
@@ -75,7 +75,7 @@ justload <- function(inputdir, population, justattributes = FALSE){
   ext <- unlist(lapply(ext,function(i) i[[2]]))
   
   
-  popstu <- paste0(pop,stu)
+  popstu <- toupper(paste0(pop,stu))
   upopstu <- unique(popstu)
   
   

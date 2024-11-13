@@ -128,7 +128,7 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
 
 
-  popstu <- paste0(pop,stu)
+  popstu <- toupper(paste0(pop,stu))
   upopstu <- sort(unique(popstu))
 
   if(!is.null(population)){

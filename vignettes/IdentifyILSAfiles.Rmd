@@ -35,6 +35,6 @@ ILSAfile.info(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"))
 
 ```
 
-As we can see, for 'REDS' 2021 we have 3 file 'types' or populations: `bcgv1` 
-(schools), `bsgv1` (students), and `btgv1` (teachers). This will become important
+As we can see, for 'REDS' 2021 we have 3 file 'types' or populations: `BCGV1` 
+(schools), `BSGV1` (students), and `BTGV1` (teachers). This will become important
 when we need to work with only one population.

@@ -35,10 +35,10 @@ ILSAfile.info(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"))
 
 ## Load all information
 
-We can decide to load a population, like `bcgv1`, using `justload()`:
+We can decide to load a population, like `BCGV1`, using `justload()`:
 ```{r}
 loaded <- justload(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"),
-         population = "bcgv1")
+         population = "BCGV1")
 ```
 
 This will result in a list of elements loaded by `haven`, in our example, a list
@@ -58,7 +58,7 @@ probably to check if the attributes are correct. We can do this by setting
 `justattributes = TRUE`:
 ```{r}
 loaded <- justload(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"),
-         population = "bcgv1", justattributes = TRUE)
+         population = "BCGV1", justattributes = TRUE)
 ```
 
 This will load all 11 datasets with 0 rows each:

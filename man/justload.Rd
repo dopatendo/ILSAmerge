@@ -34,9 +34,9 @@ ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, a
 input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
 
 # Load only attributes
-emptylist <- justload(inputdir = input, population = "ASCt1", justattributes = TRUE)
+emptylist <- justload(inputdir = input, population = "ASCT1", justattributes = TRUE)
 
 # Load complete data
-fullist <- justload(inputdir = input, population = "ASCt1", justattributes = FALSE)
+fullist <- justload(inputdir = input, population = "ASCT1", justattributes = FALSE)
 
 }

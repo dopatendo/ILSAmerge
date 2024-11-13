@@ -1,3 +1,7 @@
+# ILSAmerge 1.0.2
+- PIRLS 2001 has multiple capitalization styles. This generated a problem for 
+merging. This is solved in this version.
+
 # ILSAmerge 1.0.1
 - Added extensive new documentation.
 - Added `availableILSA()` to check which ILSA can be downloaded.
