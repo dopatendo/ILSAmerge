@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ILSAmerge</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,7 +99,7 @@ population:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ILSAfile.info.html">ILSAfile.info</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"RLII1991_IDB_SPSS/Data"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##   Population Files   MB</span></span>
-<span><span class="co">## 1      ASCt1     9 19.9</span></span></code></pre></div>
+<span><span class="co">## 1      ASCT1     9 19.9</span></span></code></pre></div>
 <p>With <code><a href="../reference/ILSAmerge.html">ILSAmerge()</a></code> we can combine all the files into the
 number of populations we have.</p>
 <p>For example, let us create a new path, where the merged files will be
@@ -154,7 +154,7 @@ the merging and the running time will be produced:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ILSAmerge.html">ILSAmerge</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="va">input</span>, outputdir <span class="op">=</span> <span class="va">output</span>, filetype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rds"</span>, <span class="st">"zsav"</span>, <span class="st">"sav"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## 9 files detected. Merging into 1 files.</span></span>
-<span><span class="co">## Merging ASCt1. Type 1 of 1.</span></span>
+<span><span class="co">## Merging ASCT1. Type 1 of 1.</span></span>
 <span><span class="co">## Merging dataset 1 of 9.</span></span>
 <span><span class="co">## Merging dataset 2 of 9.</span></span>
 <span><span class="co">## Merging dataset 3 of 9.</span></span>
@@ -164,8 +164,8 @@ the merging and the running time will be produced:</p>
 <span><span class="co">## Merging dataset 7 of 9.</span></span>
 <span><span class="co">## Merging dataset 8 of 9.</span></span>
 <span><span class="co">## Merging dataset 9 of 9.</span></span>
-<span><span class="co">## Merging ASCt1 took 3 seconds or 0.05 minutes.</span></span>
-<span><span class="co">## Merging took 3 seconds or 0.05 minutes.</span></span></code></pre></div>
+<span><span class="co">## Merging ASCT1 took 3 seconds or 0.06 minutes.</span></span>
+<span><span class="co">## Merging took 3 seconds or 0.06 minutes.</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

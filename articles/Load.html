@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ILSAmerge</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,18 +96,18 @@ population into the memory. Following the ‘REDS’ 2021 example:</p>
 <span></span>
 <span><span class="fu"><a href="../reference/ILSAfile.info.html">ILSAfile.info</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021_IDB_SPSS/Data"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">##   Population Files   MB</span></span>
-<span><span class="co">## 1      bcgv1    11  2.4</span></span>
-<span><span class="co">## 2      bsgv1     8 16.1</span></span>
-<span><span class="co">## 3      btgv1    10 11.6</span></span></code></pre></div>
+<span><span class="co">## 1      BCGV1    11  2.4</span></span>
+<span><span class="co">## 2      BSGV1     8 16.1</span></span>
+<span><span class="co">## 3      BTGV1    10 11.6</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="load-all-information">Load all information<a class="anchor" aria-label="anchor" href="#load-all-information"></a>
 </h2>
-<p>We can decide to load a population, like <code>bcgv1</code>, using
+<p>We can decide to load a population, like <code>BCGV1</code>, using
 <code><a href="../reference/justload.html">justload()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/justload.html">justload</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021_IDB_SPSS/Data"</span><span class="op">)</span>,</span>
-<span>         population <span class="op">=</span> <span class="st">"bcgv1"</span><span class="op">)</span></span></code></pre></div>
+<span>         population <span class="op">=</span> <span class="st">"BCGV1"</span><span class="op">)</span></span></code></pre></div>
 <p>This will result in a list of elements loaded by <code>haven</code>,
 in our example, a list of 11 elements:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -147,7 +147,7 @@ most probably to check if the attributes are correct. We can do this by
 setting <code>justattributes = TRUE</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/justload.html">justload</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021_IDB_SPSS/Data"</span><span class="op">)</span>,</span>
-<span>         population <span class="op">=</span> <span class="st">"bcgv1"</span>, justattributes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span>         population <span class="op">=</span> <span class="st">"BCGV1"</span>, justattributes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>This will load all 11 datasets with 0 rows each:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">loaded</span><span class="op">)</span></span>
