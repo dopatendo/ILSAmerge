@@ -368,8 +368,21 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
   colnames(out) <- colnames(out1)
 
-
+  # Fix date
+  out <- as.data.frame(out)
+  
+  
+  isdate <- which(sapply(1:ncol(out1),function(k) "Date"%in%class(out1[,k,drop = TRUE])))
+  
+  if(length(isdate)>0){
+    for(d in isdate){
+      out[,d]<- as.Date.numeric(out[,d],origin="1970-01-01")
+    }
+    
+  }
+  
   out <- rbind(out1,out)[-1,]
+
 
   return(out)
 
