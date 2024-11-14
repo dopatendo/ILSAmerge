@@ -1,9 +1,13 @@
-# ILSAmerge 1.0.3
-- Fixed a problem with merging dates for TIMSS 2011. 
 
-# ILSAmerge 1.0.2
-- PIRLS 2001 has multiple capitalization styles. This generated a problem for 
-merging. This is solved in this version.
+
+# ILSAmerge 1.0.3
+- Fixed a problem caused by PIRLS 2021 having an empty dataset.
+- Fixed a problem with merging dates for TIMSS 2011. 
+- Fixed a problem originated from PIRLS 2001 with its multiple capitalization styles. 
+
+### Remaining issues
+- No unzip of PISA and TALIS downloads.
+
 
 # ILSAmerge 1.0.1
 - Added extensive new documentation.

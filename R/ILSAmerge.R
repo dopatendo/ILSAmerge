@@ -18,6 +18,8 @@
 #' If set to \code{NULL}, no limit will be used and all files will be merged
 #' within R. If speed is a problem, we recommend
 #' that this number should not be over \code{200} and merge the rest in 'SPSS'.
+#' Beware that some ILSA will have files with different columns and this could
+#' cause some 'SPSS' syntaxes to fail. If this happens, merge through \code{R}.
 #' @param MBlistlimit a numerical value indicating the allowed limit of the
 #' combined storage of the files of one type for merging through a list.
 #' Values over the limit will be merged through a matrix, which will be slower
@@ -300,7 +302,9 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
 
     nrow(load)
   })
-
+  
+  hasdata <- sapply(last,function(j) j!=0)
+  
 
   # last <- lapply(files[-1],function(j){
   #   nrow(haven::read_spss(file = j,col_select = 'IDCNTRY'))
@@ -323,42 +327,48 @@ ILSAmerge <- function(inputdir, outputdir, population = NULL,
     if(verbose)
       cat(paste0("Merging dataset ",j," of ",length(files),".\n"))
 
-
-
-    unt <- try(haven::read_spss(file = files[j],
-                                user_na = TRUE,
-                                col_select = NULL,
-                                skip = 0,
-                                n_max = Inf,
-                                .name_repair = "unique"),
-               silent = TRUE)
-
-    if("try-error"%in%class(unt)){
-      unt <- haven::read_sav(file = files[j],
-                              user_na = TRUE,
-                              col_select = NULL,
-                              skip = 0,
-                              n_max = Inf,
-                              .name_repair = "unique",
-                              encoding = "latin1")
+    if(hasdata[j]){
+      unt <- try(haven::read_spss(file = files[j],
+                                  user_na = TRUE,
+                                  col_select = NULL,
+                                  skip = 0,
+                                  n_max = Inf,
+                                  .name_repair = "unique"),
+                 silent = TRUE)
+      
+      if("try-error"%in%class(unt)){
+        unt <- haven::read_sav(file = files[j],
+                               user_na = TRUE,
+                               col_select = NULL,
+                               skip = 0,
+                               n_max = Inf,
+                               .name_repair = "unique",
+                               encoding = "latin1")
+      }
+      
+      
+      cunt <- toupper(colnames(unt))
+      unt <- lapply(1:ncol(unt), function(X) {
+        as.vector(unt[, X, drop = TRUE])
+      })
+      unt <- do.call(cbind.data.frame, unt)
+      
+      mts <- match(cunt,colN)
+      
+      for(k in 1:length(cunt)){
+        out[first[j]:last[j],mts[k]] <- unt[,k]
+      }
+      
+      # out[first[j]:last[j],match(cunt,colN)] <- unt
+      
     }
 
 
 
 
-    cunt <- toupper(colnames(unt))
-    unt <- lapply(1:ncol(unt), function(X) {
-      as.vector(unt[, X, drop = TRUE])
-    })
-    unt <- do.call(cbind.data.frame, unt)
 
-    mts <- match(cunt,colN)
-    
-    for(k in 1:length(cunt)){
-      out[first[j]:last[j],mts[k]] <- unt[,k]
-    }
-    
-    # out[first[j]:last[j],match(cunt,colN)] <- unt
+
+ 
     
   }
     # })
