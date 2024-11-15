@@ -27,7 +27,7 @@
 #' list.files(file.path(tempdir(),"REDS2021"))
 #' 
 #' # Rename files
-#' rename(inputdir = file.path(tempdir(),"REDS2021"))
+#' ILSArename(inputdir = file.path(tempdir(),"REDS2021"))
 #' 
 #' # Show files new names 
 #' list.files(file.path(tempdir(),"REDS2021"))
@@ -35,7 +35,7 @@
 #' @export
 
 
-rename <- function(inputdir, codeTOname = TRUE, overwrite = TRUE, quiet = FALSE){
+ILSArename <- function(inputdir, codeTOname = TRUE, overwrite = TRUE, quiet = FALSE){
   # Checks ------------------------------------------------------------------
   
   # inputdir

@@ -18,7 +18,7 @@ library(ILSAmerge)
 ```
 
 Quiet often ILSA file names come in codes representing different respondents,
-and cycles. To make this codes comprehensible, we can use `rename()` to give new
+and cycles. To make this codes comprehensible, we can use `ILSArename()` to give new
 names to merged files.
 
 First, we need to use `ILSAmerge()` to merge the files:
@@ -37,10 +37,10 @@ This will create 3 files with codes for respondent and cycle:
 list.files(file.path(tempdir(),"REDS2021"))
 ```
 
-With `rename()` we can convert these names:
+With `ILSArename()` we can convert these names:
 
 ```{r, eval=TRUE}
-rename(inputdir = file.path(tempdir(),"REDS2021"))
+ILSArename(inputdir = file.path(tempdir(),"REDS2021"))
 list.files(file.path(tempdir(),"REDS2021"))
 
 ```
