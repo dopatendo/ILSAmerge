@@ -67,7 +67,7 @@ rename <- function(inputdir, codeTOname = TRUE, overwrite = TRUE, quiet = FALSE)
   
   
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/rename/data/ILSApops.csv"
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
   
   ILSApops <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
