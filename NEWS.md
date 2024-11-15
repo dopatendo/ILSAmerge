@@ -1,6 +1,7 @@
 
 
-# ILSAmerge 1.0.3
+# ILSAmerge 1.0.4
+- Added `rename()` for creating comprehensible file names.
 - Fixed a problem caused by PIRLS 2021 having an empty dataset.
 - Fixed a problem with merging dates for TIMSS 2011. 
 - Fixed a problem originated from PIRLS 2001 with its multiple capitalization styles. 
