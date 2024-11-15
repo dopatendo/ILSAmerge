@@ -19,17 +19,13 @@ library(ILSAmerge)
 
 ## Check what can be loaded
 
-As seen in before, we can [identify ILSA files](https://dopatendo.github.io/ILSAmerge/articles/IdentifyILSAfiles.html)
-using `ILSAfile.info()` we can identify different populations within an ILSA.
+Using `ILSAfile.info()` we can identify different populations within an ILSA.
 
 Moreover, we can also use this information for loading an specific population
-into the memory. Following the 'REDS' 2021 example:
+into the memory. Using the 'REDS' 2021 example data provided by this package:
 ```{r}
 
-ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(),
-             unzip = TRUE, quiet = TRUE, agreeLicense = TRUE)
-
-ILSAfile.info(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"))
+ILSAfile.info(inputdir = system.file("extdata", package = "ILSAmerge"))
 
 ```
 
@@ -37,7 +33,7 @@ ILSAfile.info(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"))
 
 We can decide to load a population, like `BCGV1`, using `justload()`:
 ```{r}
-loaded <- justload(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"),
+loaded <- justload(inputdir = system.file("extdata", package = "ILSAmerge"),
          population = "BCGV1")
 ```
 
@@ -57,7 +53,7 @@ For some purposes, we might need to load only the column information, most
 probably to check if the attributes are correct. We can do this by setting
 `justattributes = TRUE`:
 ```{r}
-loaded <- justload(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"),
+loaded <- justload(inputdir = system.file("extdata", package = "ILSAmerge"),
          population = "BCGV1", justattributes = TRUE)
 ```
 

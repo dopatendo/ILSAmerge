@@ -32,18 +32,13 @@
 #' @returns Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
 #'
 #' @examples
-#' # For example, after downloading 'RLII' 1991 G4 data:
-#'
-#' # Downloading 'RLII' 1991 and unzipping files
-#' ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
-#' 
 #' # Path were raw 'SPSS' files are
-#' input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
+#' input <- system.file("extdata", package = "ILSAmerge")
 #' 
 #' # Path were merged files will be saved
-#' output <- file.path(tempdir(),"RLII1991_IDB_SPSS")
+#' output <- file.path(tempdir())
 #' 
-#' # Merging 'RLII' 1991, as .rds file
+#' # Merging 'REDS' 2021, as .rds file
 #' ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
 #'
 #' @export

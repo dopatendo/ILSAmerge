@@ -1,0 +1,46 @@
+---
+title: "Rename ILSAmerge files"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Rename ILSAmerge files}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE
+)
+```
+
+```{r setup, echo=FALSE}
+library(ILSAmerge)
+```
+
+Quiet often ILSA file names come in codes representing different respondents,
+and cycles. To make this codes comprehensible, we can use `rename()` to give new
+names to merged files.
+
+First, we need to use `ILSAmerge()` to merge the files:
+
+```{r, eval=TRUE}
+dir.create(file.path(tempdir(),"REDS2021"),showWarnings = FALSE)
+
+ILSAmerge(inputdir = system.file("extdata", package = "ILSAmerge"), 
+          outputdir = file.path(tempdir(),"REDS2021"), 
+          filetype = c("rds", "zsav", "sav"),quiet = TRUE)
+```
+
+This will create 3 files with codes for respondent and cycle:
+
+```{r, eval=TRUE}
+list.files(file.path(tempdir(),"REDS2021"))
+```
+
+With `rename()` we can convert these names:
+
+```{r, eval=TRUE}
+rename(inputdir = file.path(tempdir(),"REDS2021"))
+list.files(file.path(tempdir(),"REDS2021"))
+
+```

@@ -3,11 +3,11 @@
 .gitignore
 build/
 README.Rmd
-data/
 .RData
 .Rhistory
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
 ^\.github$
-
+data/ILSApops.csv
+data/ILSAlinks.csv

@@ -33,7 +33,9 @@ For type files that go over the limit, files will not be merged in R,
 but an 'SPSS' syntax will be produced via \code{spss.syntax()}.
 If set to \code{NULL}, no limit will be used and all files will be merged
 within R. If speed is a problem, we recommend
-that this number should not be over \code{200} and merge the rest in 'SPSS'.}
+that this number should not be over \code{200} and merge the rest in 'SPSS'.
+Beware that some ILSA will have files with different columns and this could
+cause some 'SPSS' syntaxes to fail. If this happens, merge through \code{R}.}
 
 \item{MBlistlimit}{a numerical value indicating the allowed limit of the
 combined storage of the files of one type for merging through a list.
@@ -55,18 +57,13 @@ This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced'
 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 }
 \examples{
-# For example, after downloading 'RLII' 1991 G4 data:
-
-# Downloading 'RLII' 1991 and unzipping files
-ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
-
 # Path were raw 'SPSS' files are
-input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
+input <- system.file("extdata", package = "ILSAmerge")
 
 # Path were merged files will be saved
-output <- file.path(tempdir(),"RLII1991_IDB_SPSS")
+output <- file.path(tempdir())
 
-# Merging 'RLII' 1991, as .rds file
+# Merging 'REDS' 2021, as .rds file
 ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
 
 }

@@ -19,7 +19,7 @@ library(ILSAmerge)
 
 
 It is common that ILSA files come an unaggregated format, i.e., separated by
-country. If that is the case [`ILSAmerge`](https://cran.r-project.org/package=ILSAmerge)
+country. If that is the case `ILSAmerge()`
 is able to identify which files should be merged together.
 
 If we want know how many files were downloaded and into which many files
@@ -28,10 +28,7 @@ the unzipped data:
 
 ```{r}
 
-ILSAdownload(study = "REDS", year = 2021, outputdir = tempdir(),
-             unzip = TRUE, quiet = TRUE, agreeLicense = TRUE)
-
-ILSAfile.info(inputdir = file.path(tempdir(),"REDS2021_IDB_SPSS/Data"))
+ILSAfile.info(inputdir = system.file("extdata", package = "ILSAmerge"))
 
 ```
 

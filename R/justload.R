@@ -14,19 +14,14 @@
 #' @returns A list of tibbles.
 #'
 #' @examples
-#' # For example, after downloading 'RLII' 1991 G4 data:
-#'
-#' # Downloading 'RLII' 1991 and unzipping files
-#' ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(), unzip = TRUE, agreeLicense = TRUE)
-#'
 #' # Path were raw 'SPSS' files are
-#' input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
+#' input <- system.file("extdata", package = "ILSAmerge")
 #' 
 #' # Load only attributes
-#' emptylist <- justload(inputdir = input, population = "ASCT1", justattributes = TRUE)
+#' emptylist <- justload(inputdir = input, population = "BCGV1", justattributes = TRUE)
 #' 
 #' # Load complete data
-#' fullist <- justload(inputdir = input, population = "ASCT1", justattributes = FALSE)
+#' fullist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
 #'
 #' @export
 

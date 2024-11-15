@@ -13,41 +13,29 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, echo=FALSE}
 library(ILSAmerge)
 ```
 
-## Download data
+## Downloaded data
 
-First, as an example, using `ILSAdownload()` we can download the datasets of 
-'RLII' 1991:
-```{r}
-ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
-             unzip = TRUE, agreeLicense = TRUE)
-```
+As an example, we can use the data of 'REDS' 2021 provided by the package.
 
-In the case of 'RLII' 1991, we have X files and only 1 population:
+In the case of 'REDS' 2021, we have 29 files and 3 populations:
 ```{r}
-ILSAfile.info(inputdir = file.path(tempdir(),"RLII1991_IDB_SPSS/Data"))
+ILSAfile.info(inputdir = system.file("extdata", package = "ILSAmerge"))
 ```
 
 With `ILSAmerge()` we can combine all the files into the number of populations
 we have.
 
-For example, let us create a new path, where the merged files will be 
-saved:
-
-```{r}
-dir.create(file.path(tempdir(),"RLII1991_IDB_SPSS/MERGED"),showWarnings = FALSE)
-output <- file.path(tempdir(),"RLII1991_IDB_SPSS/MERGED")
-input <- file.path(tempdir(),"RLII1991_IDB_SPSS/Data")
-```
-
-Then, we can simply run `ILSAmerge()` and all files will be merged. The default
+The default
 type will be an "rds", but also we can make "zsav" and "sav" files:
 
 ```{r, eval=FALSE}
-ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav"))
+ILSAmerge(inputdir = system.file("extdata", package = "ILSAmerge"), 
+          outputdir = tempdir(), 
+          filetype = c("rds", "zsav", "sav"))
 ```
 
 
@@ -79,5 +67,7 @@ When `ILSAmerge()` runs, information about the progress of the merging and the
 running time will be produced:
 
 ```{r, eval=TRUE}
-ILSAmerge(inputdir = input, outputdir = output, filetype = c("rds", "zsav", "sav"))
+ILSAmerge(inputdir = system.file("extdata", package = "ILSAmerge"), 
+          outputdir = tempdir(), 
+          filetype = c("rds", "zsav", "sav"))
 ```
