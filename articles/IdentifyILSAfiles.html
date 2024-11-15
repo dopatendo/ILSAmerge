@@ -43,6 +43,7 @@
     <li><a class="dropdown-item" href="../articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Load.html">Load ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Merge.html">Merge ILSA files</a></li>
+    <li><a class="dropdown-item" href="../articles/Rename.html">Rename ILSAmerge files</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -82,21 +83,18 @@
     
     
 <p>It is common that ILSA files come an unaggregated format, i.e.,
-separated by country. If that is the case <a href="https://cran.r-project.org/package=ILSAmerge" class="external-link"><code>ILSAmerge</code></a>
-is able to identify which files should be merged together.</p>
+separated by country. If that is the case <code><a href="../reference/ILSAmerge.html">ILSAmerge()</a></code> is
+able to identify which files should be merged together.</p>
 <p>If we want know how many files were downloaded and into which many
 files they can be merged, we can use <code><a href="../reference/ILSAfile.info.html">ILSAfile.info()</a></code>
 targeting the folder with the unzipped data:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="../reference/ILSAdownload.html">ILSAdownload</a></span><span class="op">(</span>study <span class="op">=</span> <span class="st">"REDS"</span>, year <span class="op">=</span> <span class="fl">2021</span>, outputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>             unzip <span class="op">=</span> <span class="cn">TRUE</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span>, agreeLicense <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/ILSAfile.info.html">ILSAfile.info</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021_IDB_SPSS/Data"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">##   Population Files   MB</span></span>
-<span><span class="co">## 1      BCGV1    11  2.4</span></span>
-<span><span class="co">## 2      BSGV1     8 16.1</span></span>
-<span><span class="co">## 3      BTGV1    10 11.6</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/ILSAfile.info.html">ILSAfile.info</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"ILSAmerge"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">##   Population Files  MB</span></span>
+<span><span class="co">## 1      BCGV1    11 0.9</span></span>
+<span><span class="co">## 2      BSGV1     8 0.7</span></span>
+<span><span class="co">## 3      BTGV1    10 0.7</span></span></code></pre></div>
 <p>As we can see, for ‘REDS’ 2021 we have 3 file ‘types’ or populations:
 <code>BCGV1</code> (schools), <code>BSGV1</code> (students), and
 <code>BTGV1</code> (teachers). This will become important when we need

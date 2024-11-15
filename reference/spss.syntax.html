@@ -22,6 +22,7 @@
     <li><a class="dropdown-item" href="../articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Load.html">Load ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Merge.html">Merge ILSA files</a></li>
+    <li><a class="dropdown-item" href="../articles/Rename.html">Rename ILSAmerge files</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -90,26 +91,17 @@ desired files.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># For example, after downloading 'RLII' 1991 G4 data:</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Downloading 'RLII' 1991 and unzipping files</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="ILSAdownload.html">ILSAdownload</a></span><span class="op">(</span>study <span class="op">=</span> <span class="st">"RLII"</span>, year <span class="op">=</span> <span class="fl">1991</span>, outputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, unzip <span class="op">=</span> <span class="cn">TRUE</span>, agreeLicense <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 files found for RLII 1991.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Visit https://www.iea.nl/data-tools/repository/readingliteracy to know how to use and cite these datasets.</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Path were raw 'SPSS' files are</span></span></span>
-<span class="r-in"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"RLII1991_IDB_SPSS/Data"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Path were raw 'SPSS' files are</span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"ILSAmerge"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Path were merged files will be saved</span></span></span>
 <span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># List of ASCt1 files to be merged</span></span></span>
-<span class="r-in"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">input</span>, pattern <span class="op">=</span> <span class="st">"ASC.+t1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># List of BCGV1 files to be merged</span></span></span>
+<span class="r-in"><span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">input</span>, pattern <span class="op">=</span> <span class="st">"BCG.+V1|bcg.+v1"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create 'SPSS' syntax</span></span></span>
-<span class="r-in"><span><span class="fu">spss.syntax</span><span class="op">(</span>filelist <span class="op">=</span> <span class="va">files</span>, name <span class="op">=</span> <span class="st">"ASCt1"</span>, outputdir <span class="op">=</span> <span class="va">output</span>, zsav <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">spss.syntax</span><span class="op">(</span>filelist <span class="op">=</span> <span class="va">files</span>, name <span class="op">=</span> <span class="st">"BCGV1"</span>, outputdir <span class="op">=</span> <span class="va">output</span>, zsav <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

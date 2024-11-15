@@ -43,6 +43,7 @@
     <li><a class="dropdown-item" href="../articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Load.html">Load ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Merge.html">Merge ILSA files</a></li>
+    <li><a class="dropdown-item" href="../articles/Rename.html">Rename ILSAmerge files</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -84,21 +85,18 @@
 <div class="section level2">
 <h2 id="check-what-can-be-loaded">Check what can be loaded<a class="anchor" aria-label="anchor" href="#check-what-can-be-loaded"></a>
 </h2>
-<p>As seen in before, we can <a href="https://dopatendo.github.io/ILSAmerge/articles/IdentifyILSAfiles.html">identify
-ILSA files</a> using <code><a href="../reference/ILSAfile.info.html">ILSAfile.info()</a></code> we can identify
-different populations within an ILSA.</p>
+<p>Using <code><a href="../reference/ILSAfile.info.html">ILSAfile.info()</a></code> we can identify different
+populations within an ILSA.</p>
 <p>Moreover, we can also use this information for loading an specific
-population into the memory. Following the ‘REDS’ 2021 example:</p>
+population into the memory. Using the ‘REDS’ 2021 example data provided
+by this package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="../reference/ILSAdownload.html">ILSAdownload</a></span><span class="op">(</span>study <span class="op">=</span> <span class="st">"REDS"</span>, year <span class="op">=</span> <span class="fl">2021</span>, outputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>             unzip <span class="op">=</span> <span class="cn">TRUE</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span>, agreeLicense <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/ILSAfile.info.html">ILSAfile.info</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021_IDB_SPSS/Data"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">##   Population Files   MB</span></span>
-<span><span class="co">## 1      BCGV1    11  2.4</span></span>
-<span><span class="co">## 2      BSGV1     8 16.1</span></span>
-<span><span class="co">## 3      BTGV1    10 11.6</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/ILSAfile.info.html">ILSAfile.info</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"ILSAmerge"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">##   Population Files  MB</span></span>
+<span><span class="co">## 1      BCGV1    11 0.9</span></span>
+<span><span class="co">## 2      BSGV1     8 0.7</span></span>
+<span><span class="co">## 3      BTGV1    10 0.7</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="load-all-information">Load all information<a class="anchor" aria-label="anchor" href="#load-all-information"></a>
@@ -106,7 +104,7 @@ population into the memory. Following the ‘REDS’ 2021 example:</p>
 <p>We can decide to load a population, like <code>BCGV1</code>, using
 <code><a href="../reference/justload.html">justload()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">loaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/justload.html">justload</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021_IDB_SPSS/Data"</span><span class="op">)</span>,</span>
+<code class="sourceCode R"><span><span class="va">loaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/justload.html">justload</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"ILSAmerge"</span><span class="op">)</span>,</span>
 <span>         population <span class="op">=</span> <span class="st">"BCGV1"</span><span class="op">)</span></span></code></pre></div>
 <p>This will result in a list of elements loaded by <code>haven</code>,
 in our example, a list of 11 elements:</p>
@@ -118,7 +116,7 @@ in our example, a list of 11 elements:</p>
 <span><span class="co">## [1] 11</span></span>
 <span></span>
 <span><span class="va">loaded</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="co">## <span style="color: #949494;"># A tibble: 172 × 314</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 10 × 314</span></span></span>
 <span><span class="co">##    IDCNTRY             IDSCHOOL ITLANGC      IP1G00A   IP1G00B      IP1G00C     </span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl+lb&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>   </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>001     53<span style="color: #949494;"> [Arabic]</span>  2<span style="color: #949494;"> [Mid]</span>   3<span style="color: #949494;"> [March]</span>    9<span style="color: #BB0000;"> (NA)</span><span style="color: #949494;"> [Omi…</span></span></span>
@@ -131,13 +129,13 @@ in our example, a list of 11 elements:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>008     53<span style="color: #949494;"> [Arabic]</span>  1<span style="color: #949494;"> [Early]</span> 3<span style="color: #949494;"> [March]</span>    2<span style="color: #949494;"> [Mid]</span>     </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>009     53<span style="color: #949494;"> [Arabic]</span>  2<span style="color: #949494;"> [Mid]</span>   3<span style="color: #949494;"> [March]</span>    1<span style="color: #949494;"> [Early]</span>   </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>010     53<span style="color: #949494;"> [Arabic]</span>  2<span style="color: #949494;"> [Mid]</span>   6<span style="color: #949494;"> [June]</span>     3<span style="color: #949494;"> [Late]</span>    </span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 162 more rows</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 308 more variables: IP1G00D &lt;dbl+lbl&gt;, IP1GIAA &lt;dbl+lbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   IP1GIAB &lt;dbl+lbl&gt;, IP1GIAC &lt;dbl+lbl&gt;, IP1GIAD &lt;dbl+lbl&gt;, IP1GIAE &lt;dbl+lbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   IP1GIAF &lt;dbl+lbl&gt;, IP1GIAG &lt;dbl+lbl&gt;, IP1GIBA &lt;dbl+lbl&gt;, IP1GIBB &lt;dbl+lbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;, IP1G01B &lt;dbl+lbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;, IP2G01A1 &lt;dbl+lbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, IP1G02B &lt;dbl+lbl&gt;, …</span></span></span></code></pre></div>
+<span><span class="co">## <span style="color: #949494;">#   IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, IP1G02B &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IP1G02C &lt;dbl+lbl&gt;, IP1G02D &lt;dbl+lbl&gt;, IP1G02E &lt;dbl+lbl&gt;, …</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="load-only-column-information">Load only column information<a class="anchor" aria-label="anchor" href="#load-only-column-information"></a>
@@ -146,7 +144,7 @@ in our example, a list of 11 elements:</p>
 most probably to check if the attributes are correct. We can do this by
 setting <code>justattributes = TRUE</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">loaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/justload.html">justload</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021_IDB_SPSS/Data"</span><span class="op">)</span>,</span>
+<code class="sourceCode R"><span><span class="va">loaded</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/justload.html">justload</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, package <span class="op">=</span> <span class="st">"ILSAmerge"</span><span class="op">)</span>,</span>
 <span>         population <span class="op">=</span> <span class="st">"BCGV1"</span>, justattributes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>This will load all 11 datasets with 0 rows each:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
