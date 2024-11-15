@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ILSAmerge</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,7 +84,7 @@
     
 <p>Quiet often ILSA file names come in codes representing different
 respondents, and cycles. To make this codes comprehensible, we can use
-<code><a href="../reference/rename.html">rename()</a></code> to give new names to merged files.</p>
+<code><a href="../reference/ILSArename.html">ILSArename()</a></code> to give new names to merged files.</p>
 <p>First, we need to use <code><a href="../reference/ILSAmerge.html">ILSAmerge()</a></code> to merge the
 files:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -97,9 +97,9 @@ files:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## [1] "BCGV1.rds" "BSGV1.rds" "BTGV1.rds"</span></span></code></pre></div>
-<p>With <code><a href="../reference/rename.html">rename()</a></code> we can convert these names:</p>
+<p>With <code><a href="../reference/ILSArename.html">ILSArename()</a></code> we can convert these names:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/rename.html">rename</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ILSArename.html">ILSArename</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## 3  ILSAmerge() file(s) found.</span></span>
 <span><span class="co">## 3  ILSAmerge() file(s) renamed.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS2021"</span><span class="op">)</span><span class="op">)</span></span>
