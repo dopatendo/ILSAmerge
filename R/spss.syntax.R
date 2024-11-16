@@ -35,7 +35,7 @@
 
 
 
-spss.syntax <- function(filelist, name, outputdir, zsav = TRUE, SPSSlimit = 50){
+spss.syntax <- function(filelist, name, outputdir = getwd(), zsav = TRUE, SPSSlimit = 50){
 
 
   # Checks ----
@@ -49,10 +49,11 @@ spss.syntax <- function(filelist, name, outputdir, zsav = TRUE, SPSSlimit = 50){
     stop(c("\nInvalid input for 'name'.",
            "\nIt should be a character vector."),call. = FALSE)
 
-  if(!(is.vector(outputdir)&&is.character(outputdir)))
+  ## outputdir
+  if(!(is.vector(outputdir)&&is.character(outputdir)&&length(outputdir)==1))
     stop(c("\nInvalid input for 'outputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
-
+           "\nIt should be a string."),call. = FALSE)
+  
   if(!file.exists(outputdir))
     stop(c("\nInvalid input for 'outputdir'.",
            "\nPath does not exist."),call. = FALSE)

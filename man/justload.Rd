@@ -4,7 +4,7 @@
 \alias{justload}
 \title{Loading ILSA data into a list}
 \usage{
-justload(inputdir, population, justattributes = FALSE)
+justload(inputdir = getwd(), population, justattributes = FALSE)
 }
 \arguments{
 \item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}

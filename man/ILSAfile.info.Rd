@@ -4,7 +4,7 @@
 \alias{ILSAfile.info}
 \title{ILSA data files information}
 \usage{
-ILSAfile.info(inputdir)
+ILSAfile.info(inputdir = getwd())
 }
 \arguments{
 \item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}

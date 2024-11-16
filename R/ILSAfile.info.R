@@ -15,17 +15,19 @@
 #'
 #' @export
 
-ILSAfile.info <- function(inputdir){
+ILSAfile.info <- function(inputdir = getwd()){
 
   # Checks ----
 
-  if(!(is.vector(inputdir)&&is.character(inputdir)))
+  ## inputdir
+  if(!(is.vector(inputdir)&&is.character(inputdir)&&length(inputdir)==1))
     stop(c("\nInvalid input for 'inputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
-
+           "\nIt should be a string."),call. = FALSE)
+  
   if(!file.exists(inputdir))
     stop(c("\nInvalid input for 'inputdir'.",
            "\nPath does not exist."),call. = FALSE)
+
 
   # Process & Output ----
 

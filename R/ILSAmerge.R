@@ -48,25 +48,27 @@
 
 
 
-ILSAmerge <- function(inputdir, outputdir, population = NULL,
+ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL,
                       filetype = c("rds", "zsav", "sav"),
                       MBlimit = NULL, MBlistlimit = 200, SPSSlimit = 50,
                       quiet = FALSE){
 
   # Checks ----
 
-  if(!(is.vector(inputdir)&&is.character(inputdir)))
+  ## inputdir
+  if(!(is.vector(inputdir)&&is.character(inputdir)&&length(inputdir)==1))
     stop(c("\nInvalid input for 'inputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
-
+           "\nIt should be a string."),call. = FALSE)
+  
   if(!file.exists(inputdir))
     stop(c("\nInvalid input for 'inputdir'.",
            "\nPath does not exist."),call. = FALSE)
-
-  if(!(is.vector(outputdir)&&is.character(outputdir)))
+  
+  ## outputdir
+  if(!(is.vector(outputdir)&&is.character(outputdir)&&length(outputdir)==1))
     stop(c("\nInvalid input for 'outputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
-
+           "\nIt should be a string."),call. = FALSE)
+  
   if(!file.exists(outputdir))
     stop(c("\nInvalid input for 'outputdir'.",
            "\nPath does not exist."),call. = FALSE)

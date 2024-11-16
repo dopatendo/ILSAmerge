@@ -4,7 +4,7 @@
 \alias{spss.syntax}
 \title{'SPSS' merge syntax}
 \usage{
-spss.syntax(filelist, name, outputdir, zsav = TRUE, SPSSlimit = 50)
+spss.syntax(filelist, name, outputdir = getwd(), zsav = TRUE, SPSSlimit = 50)
 }
 \arguments{
 \item{filelist}{a character vector with the list of files to be merged.}

@@ -4,7 +4,12 @@
 \alias{ILSArename}
 \title{Rename \code{\link{ILSAmerge}} files}
 \usage{
-ILSArename(inputdir, codeTOname = TRUE, overwrite = TRUE, quiet = FALSE)
+ILSArename(
+  inputdir = getwd(),
+  codeTOname = TRUE,
+  overwrite = TRUE,
+  quiet = FALSE
+)
 }
 \arguments{
 \item{inputdir}{a string indicating the path were \code{\link{ILSAmerge}} files are stored.}

@@ -39,7 +39,7 @@
 #'
 #' @export
 
-ILSAdownload <- function(study, year, outputdir, 
+ILSAdownload <- function(study, year, outputdir = getwd(), 
                           unzip = FALSE, maxtime = 999, 
                           quiet = FALSE, agreeLicense = FALSE){
   
@@ -84,9 +84,9 @@ ILSAdownload <- function(study, year, outputdir,
                 "\nIt should be a numeric value."))
   
   ## outputdir
-  if(!(is.vector(outputdir)&&is.character(outputdir)))
+  if(!(is.vector(outputdir)&&is.character(outputdir)&&length(outputdir)==1))
     stop(c("\nInvalid input for 'outputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
+           "\nIt should be a string."),call. = FALSE)
   
   if(!file.exists(outputdir))
     stop(c("\nInvalid input for 'outputdir'.",

@@ -5,8 +5,8 @@
 \title{Merge ILSA data}
 \usage{
 ILSAmerge(
-  inputdir,
-  outputdir,
+  inputdir = getwd(),
+  outputdir = getwd(),
   population = NULL,
   filetype = c("rds", "zsav", "sav"),
   MBlimit = NULL,

@@ -27,7 +27,7 @@
 
 
 
-justload <- function(inputdir, population, justattributes = FALSE){
+justload <- function(inputdir = getwd(), population, justattributes = FALSE){
   
   # Example & Test ----
   
@@ -39,9 +39,10 @@ justload <- function(inputdir, population, justattributes = FALSE){
   
   # Checks ----
   
-  if(!(is.vector(inputdir)&&is.character(inputdir)))
+  ## inputdir
+  if(!(is.vector(inputdir)&&is.character(inputdir)&&length(inputdir)==1))
     stop(c("\nInvalid input for 'inputdir'.",
-           "\nIt should be a character vector."),call. = FALSE)
+           "\nIt should be a string."),call. = FALSE)
   
   if(!file.exists(inputdir))
     stop(c("\nInvalid input for 'inputdir'.",

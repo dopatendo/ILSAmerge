@@ -7,7 +7,7 @@
 ILSAdownload(
   study,
   year,
-  outputdir,
+  outputdir = getwd(),
   unzip = FALSE,
   maxtime = 999,
   quiet = FALSE,
