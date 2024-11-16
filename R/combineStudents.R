@@ -81,7 +81,7 @@ combineStudents <- function(inputdir = getwd(),
                 "\nPlease be sure that you are connected to the Internet.",
                 "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
   }
-  ILSApops
+
   
   # Identify populations ----------------------------------------------------
   
