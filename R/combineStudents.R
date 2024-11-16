@@ -40,6 +40,9 @@ combineStudents <- function(inputdir = getwd(),
                             quiet = FALSE){
   # Checks ------------------------------------------------------------------
   
+
+  
+  
   ## inputdir
   if(!(is.vector(inputdir)&&is.character(inputdir)&&length(inputdir)==1))
     stop(c("\nInvalid input for 'inputdir'.",
@@ -67,9 +70,18 @@ combineStudents <- function(inputdir = getwd(),
   
   # Load data ---------------------------------------------------------------
   
-  pp = "/Users/andreschristiansen/RandA Dropbox/Andrés Christiansen/khipuverse/ILSAmerge/build/ilsapops.xlsx"
-  ILSApops <- as.data.frame(readxl::read_xlsx(pp))
+
   
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/combinestudents/data/ILSApops.csv"
+  
+  ILSApops <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+  
+  if("try-error"%in%class(ILSApops)){
+    stop(paste0("Could not read ILSApops file from 'GitHub'.",
+                "\nPlease be sure that you are connected to the Internet.",
+                "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
+  }
+  ILSApops
   
   # Identify populations ----------------------------------------------------
   
