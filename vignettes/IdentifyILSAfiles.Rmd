@@ -28,7 +28,7 @@ the unzipped data:
 
 ```{r}
 
-ILSAfile.info(inputdir = system.file("extdata", package = "ILSAmerge"))
+ILSAfile.info(inputdir = system.file("extdata/reds", package = "ILSAmerge"))
 
 ```
 
