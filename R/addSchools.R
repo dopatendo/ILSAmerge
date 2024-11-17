@@ -119,18 +119,34 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
     # Combining students if needed --------------------------------------------
     if(length(tocom)>0){
       
-      if(!all(tocom%in%pop))
-        stop(paste0("\nNo ILSAmerge() student files for combining found in 'inputdir'.",
-                    "\nCheck your data."),call. = FALSE)
       
-      if(!quiet){
-        cat(paste0("Combining students for ",bindto$Pop[i],".\n"))
+      
+      srch <- paste0(bindto$preName[i],"_",bindto$R1[i],".",extto[i])
+      if(srch%in%list.files(outputdir)){
+        
+        if(!quiet){
+          cat(paste0("Combined students found for ",bindto$Pop[i],".\n"))
+        }
+        
+        addto <- readILSA(file.path(outputdir,srch))
+      }else{
+        if(!all(tocom%in%pop))
+          stop(paste0("\nNo ILSAmerge() student files for combining found in 'inputdir'.",
+                      "\nCheck your data."),call. = FALSE)
+        
+        if(!quiet){
+          cat(paste0("Combining students for ",bindto$Pop[i],".\n"))
+        }
+        
+        addto <- .combineStudents(inpfiles = inpfiles[pop%in%tocom|pop%in%bindto$Pop[i]],
+                                  inputdir = inputdir,
+                                  outputdir = outputdir,
+                                  quiet = TRUE, save = FALSE)
       }
       
-      addto <- .combineStudents(inpfiles = inpfiles[pop%in%tocom|pop%in%bindto$Pop[i]],
-                                            inputdir = inputdir,
-                                            outputdir = outputdir,
-                                            quiet = TRUE, save = FALSE)
+      
+      
+
       
     }
     
