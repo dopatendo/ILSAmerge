@@ -23,7 +23,7 @@ As an example, we can use the data of 'REDS' 2021 provided by the package.
 
 In the case of 'REDS' 2021, we have 29 files and 3 populations:
 ```{r}
-ILSAfile.info(inputdir = system.file("extdata", package = "ILSAmerge"))
+ILSAfile.info(inputdir = system.file("extdata/reds", package = "ILSAmerge"))
 ```
 
 With `ILSAmerge()` we can combine all the files into the number of populations
@@ -33,7 +33,7 @@ The default
 type will be an "rds", but also we can make "zsav" and "sav" files:
 
 ```{r, eval=FALSE}
-ILSAmerge(inputdir = system.file("extdata", package = "ILSAmerge"), 
+ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 
           outputdir = tempdir(), 
           filetype = c("rds", "zsav", "sav"))
 ```
@@ -67,7 +67,7 @@ When `ILSAmerge()` runs, information about the progress of the merging and the
 running time will be produced:
 
 ```{r, eval=TRUE}
-ILSAmerge(inputdir = system.file("extdata", package = "ILSAmerge"), 
+ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 
           outputdir = tempdir(), 
           filetype = c("rds", "zsav", "sav"))
 ```

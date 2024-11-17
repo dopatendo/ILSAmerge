@@ -4,17 +4,20 @@
 #' are available.
 #'
 #' @param print a logical value indicating if results should be printed or not.
+#' @param FOR a string indicating the availability of ILSA data for different 
+#' purposes. Valid strings are \code{"download"}, \code{"combine.students"},
+#' and \code{add.schools}.
 #' 
 #'
 #' @returns A list with the names of the ILSA and the available years.
 #'
 #' @examples
 #' 
-#' availableILSA(print = TRUE)
+#' availableILSA(print = TRUE, )
 #'
 #' @export
 
-availableILSA <- function(print = TRUE){
+availableILSA <- function(print = TRUE, FOR = "download"){
   
   # Checks ----
   
@@ -24,7 +27,7 @@ availableILSA <- function(print = TRUE){
   
   # Process ----
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/combinestudents/data/ILSAlinks.csv"
   
   
   ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
@@ -35,17 +38,24 @@ availableILSA <- function(print = TRUE){
                 "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
   }
 
+  
+  if(FOR=="download"){
+    ilsas <- unique(ILSAlinks[,1:2])
+    ilsas <- ilsas[!ilsas$Name%in%"Other",]
+    ilsas <- ilsas[order(ilsas$Year),]
+    ilsasU <- sort(unique(ilsas$Name))
+    
+    
+    out <- lapply(ilsasU,function(i){
+      as.numeric(ilsas$Year[ilsas$Name%in%i])
+    })
+    names(out) <- ilsasU
+  }
 
-  ilsas <- unique(ILSAlinks[,1:2])
-  ilsas <- ilsas[!ilsas$Name%in%"Other",]
-  ilsas <- ilsas[order(ilsas$Year),]
-  ilsasU <- sort(unique(ilsas$Name))
+  # if(FOR=="combine.students"){
+  #   
+  # }
 
-
-  out <- lapply(ilsasU,function(i){
-    as.numeric(ilsas$Year[ilsas$Name%in%i])
-  })
-  names(out) <- ilsasU
 
   # Output ----
   

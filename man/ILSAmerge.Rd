@@ -58,10 +58,11 @@ This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced'
 }
 \examples{
 # Path were raw 'SPSS' files are
-input <- system.file("extdata", package = "ILSAmerge")
+input <- system.file("extdata/reds", package = "ILSAmerge")
 
 # Path were merged files will be saved
-output <- file.path(tempdir())
+dir.create(file.path(tempdir(),"ILSAmerge"))
+output <- file.path(tempdir(),"ILSAmerge")
 
 # Merging 'REDS' 2021, as .rds file
 ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)

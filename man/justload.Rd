@@ -26,7 +26,7 @@ and 'SITES' into a list.
 }
 \examples{
 # Path were raw 'SPSS' files are
-input <- system.file("extdata", package = "ILSAmerge")
+input <- system.file("extdata/reds", package = "ILSAmerge")
 
 # Load only attributes
 emptylist <- justload(inputdir = input, population = "BCGV1", justattributes = TRUE)

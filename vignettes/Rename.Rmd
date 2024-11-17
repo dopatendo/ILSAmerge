@@ -26,7 +26,7 @@ First, we need to use `ILSAmerge()` to merge the files:
 ```{r, eval=TRUE}
 dir.create(file.path(tempdir(),"REDS2021"),showWarnings = FALSE)
 
-ILSAmerge(inputdir = system.file("extdata", package = "ILSAmerge"), 
+ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 
           outputdir = file.path(tempdir(),"REDS2021"), 
           filetype = c("rds", "zsav", "sav"),quiet = TRUE)
 ```

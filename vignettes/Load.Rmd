@@ -25,7 +25,7 @@ Moreover, we can also use this information for loading an specific population
 into the memory. Using the 'REDS' 2021 example data provided by this package:
 ```{r}
 
-ILSAfile.info(inputdir = system.file("extdata", package = "ILSAmerge"))
+ILSAfile.info(inputdir = system.file("extdata/reds", package = "ILSAmerge"))
 
 ```
 
@@ -33,7 +33,7 @@ ILSAfile.info(inputdir = system.file("extdata", package = "ILSAmerge"))
 
 We can decide to load a population, like `BCGV1`, using `justload()`:
 ```{r}
-loaded <- justload(inputdir = system.file("extdata", package = "ILSAmerge"),
+loaded <- justload(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
          population = "BCGV1")
 ```
 
@@ -53,7 +53,7 @@ For some purposes, we might need to load only the column information, most
 probably to check if the attributes are correct. We can do this by setting
 `justattributes = TRUE`:
 ```{r}
-loaded <- justload(inputdir = system.file("extdata", package = "ILSAmerge"),
+loaded <- justload(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
          population = "BCGV1", justattributes = TRUE)
 ```
 

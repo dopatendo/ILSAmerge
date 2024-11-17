@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' # Path were raw 'SPSS' files are
-#' input <- system.file("extdata", package = "ILSAmerge")
+#' input <- system.file("extdata/reds", package = "ILSAmerge")
 #'
 #' # Get file information
 #' ILSAfile.info(inputdir = input)

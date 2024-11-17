@@ -30,10 +30,11 @@ Produces and saves an 'SPSS' merge syntax given a list of files.
 }
 \examples{
 # Path were raw 'SPSS' files are
-input <- system.file("extdata", package = "ILSAmerge")
+input <- system.file("extdata/reds", package = "ILSAmerge")
 
 # Path were merged files will be saved
-output <- tempdir()
+dir.create(file.path(tempdir(),"spsssyntax"))
+output <- file.path(tempdir(),"spsssyntax")
 
 # List of BCGV1 files to be merged
 files <- list.files(path = input, pattern = "BCG.+V1|bcg.+v1")

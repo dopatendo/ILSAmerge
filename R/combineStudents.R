@@ -15,7 +15,8 @@
 #' input <- system.file("extdata/timssadv", package = "ILSAmerge")
 #' 
 #' # Path were merged files will be saved
-#' output <- file.path(tempdir())
+#' dir.create(file.path(tempdir(),"combineStudents"))
+#' output <- file.path(tempdir(),"combineStudents")
 #' 
 #' # Merging 'TIMSS' Advanced 1995, as .rds file
 #' ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
@@ -38,10 +39,6 @@
 combineStudents <- function(inputdir = getwd(),
                             outputdir = getwd(),
                             quiet = FALSE){
-  # Checks ------------------------------------------------------------------
-  
-
-  
   
   ## inputdir
   if(!(is.vector(inputdir)&&is.character(inputdir)&&length(inputdir)==1))
@@ -51,6 +48,31 @@ combineStudents <- function(inputdir = getwd(),
   if(!file.exists(inputdir))
     stop(c("\nInvalid input for 'inputdir'.",
            "\nPath does not exist."),call. = FALSE)
+  
+  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav")
+  
+  
+  .combineStudents(inputdir = inputdir,
+                   inpfiles = inpfiles,
+                   outputdir = outputdir,
+                   quiet = quiet,
+                   save = TRUE)
+
+}
+
+
+
+.combineStudents <- function(inputdir = inputdir,
+                             inpfiles = inpfiles,
+                             outputdir = getwd(),
+                             quiet = FALSE,
+                             save = TRUE){
+  # Checks ------------------------------------------------------------------
+  
+  
+  
+  
+ 
   
   ## outputdir
   if(!(is.vector(outputdir)&&is.character(outputdir)&&length(outputdir)==1))
@@ -67,10 +89,15 @@ combineStudents <- function(inputdir = getwd(),
            "\nIt should be a logical value."),call. = FALSE)
   
   
+  ## save
+  if(!(isTRUE(save)|isFALSE(save)))
+    stop(c("\nInvalid input for 'save'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
   
   # Load data ---------------------------------------------------------------
   
-
+  
   
   where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/combinestudents/data/ILSApops.csv"
   
@@ -81,13 +108,12 @@ combineStudents <- function(inputdir = getwd(),
                 "\nPlease be sure that you are connected to the Internet.",
                 "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
   }
-
+  
   
   # Identify populations ----------------------------------------------------
   
   ptime <- proc.time()
   
-  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav")
   ext <- lapply(inpfiles,function(i){
     dot <- max(gregexpr("\\.",i)[[1]])
     list(substr(i,1,dot-1),substring(i,dot+1))
@@ -109,12 +135,12 @@ combineStudents <- function(inputdir = getwd(),
   popto <- pop[pop%in%bindto$Pop]
   inpto <- inpfiles[pop%in%bindto$Pop]
   extto <- ext[pop%in%bindto$Pop]
-
+  
   
   ## Not a single file
   if(nrow(bindto)==0)
     stop(paste0("\nNo ILSAmerge() student files for combining found in 'inputdir'.",
-                "\nCheck availability using availableILSA(for = \"combine.students\")"),call. = FALSE)
+                "\nCheck availability using availableILSA(FOR = \"combine.students\")"),call. = FALSE)
   
   ## Missing files
   necpops <- unlist(strsplit(x = bindto$STUDcbind,split = ";"))
@@ -219,6 +245,9 @@ combineStudents <- function(inputdir = getwd(),
     
     ## save ----
     
+    if(!save)
+      return(ach)
+    
     if(extto[i]%in%"zsav"){
       haven::write_sav(data = ach,compress = "zsav",
                        path = file.path(outputdir,
@@ -253,8 +282,4 @@ combineStudents <- function(inputdir = getwd(),
   
   
 }
-
-
-
-
 

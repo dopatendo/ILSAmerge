@@ -30,7 +30,8 @@
 #' # For example, to download 'RLII' 1991 data:
 #'
 #' # Path were files will be saved
-#' output <- tempdir()
+#' dir.create(file.path(tempdir(),"ILSAdownload"))
+#' output <- file.path(tempdir(),"ILSAdownload")
 #'
 #' 
 #' # Downloading 'RLII' 1991 and unzipping files

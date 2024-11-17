@@ -37,7 +37,7 @@ This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced'
 
 # Merge files
 dir.create(file.path(tempdir(),"REDS2021"),showWarnings = FALSE)
-ILSAmerge(inputdir = system.file("extdata", package = "ILSAmerge"), 
+ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 
 outputdir = file.path(tempdir(),"REDS2021"))
 
 # Show files with raw names
