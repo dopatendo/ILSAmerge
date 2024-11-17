@@ -6,9 +6,7 @@
 #' @param uID a string separated by ;.
 #'
 #' @returns A character vector.
-#'
-
-
+#' @noRd
 
 
 uID <- function(x,uID){

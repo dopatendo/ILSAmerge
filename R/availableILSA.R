@@ -43,7 +43,7 @@ availableILSA <- function(print = TRUE,
   
   # Process ----
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/combinestudents/data/ILSAlinks.csv"
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
   
   
   ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))

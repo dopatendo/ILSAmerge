@@ -43,7 +43,7 @@ ILSAready <- function(study, year, outputdir = getwd(),
   
   # Read external ----
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/combinestudents/data/ILSAlinks.csv"
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
   
   
   ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
@@ -106,7 +106,7 @@ ILSAready <- function(study, year, outputdir = getwd(),
   
   # Identify ----------------------------------------------------------------
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/combinestudents/data/ILSApops.csv"
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
   
   ILSApops <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
@@ -183,3 +183,4 @@ ILSAready <- function(study, year, outputdir = getwd(),
   if(!quiet){cat("Data ready.\n")}
   
 }
+

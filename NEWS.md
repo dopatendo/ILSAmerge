@@ -1,3 +1,12 @@
+# ILSAmerge 1.0.9
+- Added `combineStudents()` for combining achievement and  background questionnaires.
+- Added `addSchools()` for adding school data.
+- Added `ILSAready()` as wrapper of `ILSAdownload()`, `ILSAmerge()`, `ILSArename()`,
+`combineStudents()`, and `addSchools()`.
+
+### Remaining issues
+- No unzip of PISA and TALIS downloads.
+- Identify ISO codes for IDCNTRY.
 
 
 # ILSAmerge 1.0.5
@@ -5,9 +14,6 @@
 - Fixed a problem caused by PIRLS 2021 having an empty dataset.
 - Fixed a problem with merging dates for TIMSS 2011. 
 - Fixed a problem originated from PIRLS 2001 with its multiple capitalization styles. 
-
-### Remaining issues
-- No unzip of PISA and TALIS downloads.
 
 
 # ILSAmerge 1.0.1

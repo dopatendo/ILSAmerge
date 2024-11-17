@@ -99,7 +99,7 @@ combineStudents <- function(inputdir = getwd(),
   
   
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/combinestudents/data/ILSApops.csv"
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
   
   ILSApops <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
