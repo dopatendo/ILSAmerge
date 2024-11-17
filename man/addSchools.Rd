@@ -20,6 +20,7 @@ Saves combined student data and teacher data with added school data.
 \description{
 Add school data to student and teacher files merged by \code{\link{ILSAmerge}}.
 It will run \code{\link{combineStudents}} internally.
+To see which ILSA are available for adding school data use \code{\link{availableILSA}}.
 }
 \examples{
 # Path were raw 'SPSS' files are

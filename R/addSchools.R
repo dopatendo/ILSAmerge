@@ -2,6 +2,7 @@
 #'
 #' Add school data to student and teacher files merged by \code{\link{ILSAmerge}}.
 #' It will run \code{\link{combineStudents}} internally.
+#' To see which ILSA are available for adding school data use \code{\link{availableILSA}}.
 #'
 #' @param inputdir a string indicating the path were \code{\link{ILSAmerge}} files are stored.
 #' @param outputdir a string indicating where the combined data will be saved.

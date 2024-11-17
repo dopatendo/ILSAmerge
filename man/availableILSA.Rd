@@ -4,14 +4,17 @@
 \alias{availableILSA}
 \title{Check available ILSA data}
 \usage{
-availableILSA(print = TRUE, FOR = "download")
+availableILSA(
+  print = TRUE,
+  FOR = c("download", "combine.students", "add.schools", "ILSAready")
+)
 }
 \arguments{
 \item{print}{a logical value indicating if results should be printed or not.}
 
 \item{FOR}{a string indicating the availability of ILSA data for different 
 purposes. Valid strings are \code{"download"}, \code{"combine.students"},
-and \code{add.schools}.}
+\code{add.schools}, and \code{"ILSAready"}.}
 }
 \value{
 A list with the names of the ILSA and the available years.
@@ -22,6 +25,6 @@ are available.
 }
 \examples{
 
-availableILSA(print = TRUE, )
+availableILSA(print = TRUE)
 
 }
