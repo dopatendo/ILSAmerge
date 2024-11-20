@@ -3,7 +3,6 @@
 export(ILSAdownload)
 export(ILSAfile.info)
 export(ILSAmerge)
-export(ILSAready)
 export(ILSArename)
 export(addSchools)
 export(availableILSA)

@@ -80,7 +80,7 @@ availableILSA <- function(print = TRUE,
   
   
   out <- lapply(ilsasU,function(i){
-    as.numeric(ilsas$Year[ilsas$Name%in%i])
+    sort(unique(as.numeric(ilsas$Year[ilsas$Name%in%i])))
   })
   names(out) <- ilsasU
 
