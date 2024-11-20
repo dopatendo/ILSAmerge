@@ -1,12 +1,13 @@
-# ILSAmerge 1.0.9
+# ILSAmerge 1.3.0
 - Added `combineStudents()` for combining achievement and  background questionnaires.
 - Added `addSchools()` for adding school data.
 - Added `ILSAready()` as wrapper of `ILSAdownload()`, `ILSAmerge()`, `ILSArename()`,
 `combineStudents()`, and `addSchools()`.
+- Added labels to countries and creates variables with country codes and country names.
 
 ### Remaining issues
 - No unzip of PISA and TALIS downloads.
-- Identify ISO codes for IDCNTRY.
+
 
 
 # ILSAmerge 1.0.5

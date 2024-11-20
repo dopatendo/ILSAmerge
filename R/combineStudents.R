@@ -49,7 +49,7 @@ combineStudents <- function(inputdir = getwd(),
     stop(c("\nInvalid input for 'inputdir'.",
            "\nPath does not exist."),call. = FALSE)
   
-  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav")
+  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav",recursive = FALSE)
   
   
   .combineStudents(inputdir = inputdir,

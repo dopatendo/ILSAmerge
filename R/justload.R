@@ -101,7 +101,7 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
   erki <- erk[popstu%in%upopstu]
   
   if(addcountries){
-    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/countries/data/ILSAcou.csv"
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAcou.csv"
     
     
     where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))

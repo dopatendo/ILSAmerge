@@ -62,7 +62,7 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
   
   ptime <- proc.time()
   
-  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav")
+  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav",recursive = FALSE)
   ext <- lapply(inpfiles,function(i){
     dot <- max(gregexpr("\\.",i)[[1]])
     list(substr(i,1,dot-1),substring(i,dot+1))
@@ -108,9 +108,12 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
     cat(paste0("Adding schools to ",nrow(bindto)," file(s).\n"))
   }
   
+  # rownames(bindto) <- NULL
   
   i=1
   for(i in 1:nrow(bindto)){
+    
+    # print(i)
     
     # Precombine students
     
@@ -171,34 +174,40 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
     klass <- class(addto)
     schoo <- readILSA(file.path(inputdir,inpfiles[pop%in%bindto$SCHcbind[i]][1]))
     uids <- ILSApops$uID[ILSApops$Pop%in%bindto$SCHcbind[i]]
-    addto <- cbind(uID = uID(x = addto, uID = uids), addto)
-    uID <- uID(x = schoo, uID = uids)
+    addto <- cbind(uIDs = uID(x = addto, uID = uids), addto)
+    uIDs <- uID(x = schoo, uID = uids)
     schoo <- schoo[,-which(colnames(schoo)%in%intersect(colnames(addto),colnames(schoo)))]
-    schoo <- cbind(uID, schoo)
+    schoo <- cbind(uIDs, schoo)
     
-    addto <- merge(addto,schoo,by = "uID",all = TRUE,sort = FALSE)
+    addto <- merge(addto,schoo,by = "uIDs",all = TRUE,sort = FALSE)
     
     
     addto <- addto[,-1]
     class(addto) <- klass
+    
+    if(bindto$R1[i]%in%"student"){
+      fname <- paste0(bindto$preName[i],"_",bindto$R1[i])
+    }else{
+      fname <- paste0(bindto$Name[i])
+    }
     
     
     
     if(extto[i]%in%"zsav"){
       haven::write_sav(data = addto,compress = "zsav",
                        path = file.path(outputdir,
-                                        paste0(bindto$preName[i],"_",bindto$R1[i],"&","school",".zsav")))
+                                        paste0(fname,"&","school",".zsav")))
     }
     
     if(extto[i]%in%"sav"){
       haven::write_sav(data = addto,compress = "byte",
                        path = file.path(outputdir,
-                                        paste0(bindto$preName[i],"_",bindto$R1[i],"&","school",".sav")))
+                                        paste0(fname,"&","school",".sav")))
     }
     
     if(extto[i]%in%"rds"){
       saveRDS(addto,file = file.path(outputdir,
-                                     paste0(bindto$preName[i],"_",bindto$R1[i],"&","school",".rds")))
+                                     paste0(fname,"&","school",".rds")))
     }
     
   }

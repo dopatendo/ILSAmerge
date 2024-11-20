@@ -111,8 +111,8 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
   filetype <- match.arg(filetype,c("rds", "zsav", "sav"))
 
-  ark <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV")
-  erk <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV",full.names = TRUE)
+  ark <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV",recursive = FALSE)
+  erk <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV",full.names = TRUE,recursive = FALSE)
 
   pop <- substr(ark,1,3)
   cou <- substr(ark,4,6)
@@ -169,9 +169,9 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
   ### Merge ----
   
-  # Add countries
+  # Add country
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/countries/data/ILSAcou.csv"
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAcou.csv"
   
   
   where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
@@ -307,13 +307,20 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
 
   out1 <- try(haven::read_spss(file = files[whtoload], user_na = TRUE, col_select = NULL,
-                               skip = 0, n_max = 1, .name_repair = "unique"),
+                               skip = 0, n_max = 0, .name_repair = "unique"),
               silent = TRUE)
   if("try-error"%in%class(out1)){
     out1 <- haven::read_sav(file = files[whtoload], user_na = TRUE, col_select = NULL,
                             skip = 0, n_max = 0, .name_repair = "unique",
                             encoding = 'latin1')
+    
+
   }
+  colnames(out1) <- toupper(colnames(out1))
+  
+  atrs <- lapply(1:ncol(out1),function(h){
+    attributes(out1[,h,drop = TRUE])
+  })
 
 
 
@@ -407,11 +414,10 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
 
 
-  colnames(out) <- colnames(out1)
+  # colnames(out) <- colnames(out1)
 
   # Fix date
-  out <- as.data.frame(out)
-  
+
   
   isdate <- which(sapply(1:ncol(out1),function(k) "Date"%in%class(out1[,k,drop = TRUE])))
   
@@ -422,17 +428,36 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     
   }
   
-  out <- rbind(out1,out)[-1,]
+  out <- as.data.frame(out)
+  
+  # REPAIR attributes
+  
+    class(out) <- class(out1)
+    for(h in 1:ncol(out)){
+      attributes(out[,h,drop = TRUE]) <- atrs[[h]]
+    }
+    
+
+  
+  
+  
+  # out <- rbind(out1,out)[-1,]
   
 
   
   # add labels to IDCNTRY
+  
+  # if(is.character(out$IDCNTRY)){
+  #   out$IDCNTRY <- as.numeric(out$IDCNTRY)
+  # }
   attr(out$IDCNTRY,'labels') <- couLS
+
   
   # Add country string
   if(!"IDCNTRY_STR"%in%colnames(out)){
     cl <- class(out)
-    out <- cbind(IDCNTRY_STR = names(couL)[match(as.numeric(out$IDCNTRY),couL)], out)
+    idstr <- as.numeric(as.character(out$IDCNTRY))
+    out <- cbind(IDCNTRY_STR = names(couL)[match(idstr,couL)], out)
     class(out) <- cl
   }
   
