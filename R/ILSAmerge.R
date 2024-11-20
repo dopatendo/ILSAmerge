@@ -5,9 +5,8 @@
 #' 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 #' 
 #' For files merged within R it will also add country information where needed. 
-#' Country information will be retrieved from GitHub if possible. If not, it will
-#' use the package internal data. Please, bear in mind, that if there is no internet
-#' connection, the country information is not necessarily the latest available
+#' Country information will be retrieved from 'GitHub' if possible. If not, it will
+#' use the package internal data. 
 #'
 #' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
 #' @param outputdir the directory where the merged data will be saved.
@@ -172,14 +171,27 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   
   # Add countries
   
-  where = "/Users/andreschristiansen/RandA Dropbox/Andrés Christiansen/khipuverse/ILSAmerge/build/ilsacou.xlsx"
-  ILSAcou <- as.data.frame(readxl::read_xlsx(where,sheet = "dtb"))
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/countries/data/ILSAcou.csv"
+  
+  
+  where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+  
+  if("try-error"%in%class(where)){
+    warning(paste0("Could not read country information from 'GitHub'.",
+                "\nInternal data will be used for adding country labels.",
+                "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
+    
+    ILSAcou <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSAcou.csv"))
+  }else{
+    ILSAcou <- where
+  }
+  
+  
   ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
-  ILSAcou <- ILSAcou[order(ILSAcou$Name),]
   couL <- ILSAcou$IEAcode
   names(couL) <- ILSAcou$Name
-  couLS <- (couL[ILSAcou$toLabel%in%1])
-  couL <- (couL)
+  couLS <- sort(couL[ILSAcou$toLabel%in%1])
+  couL <- sort(couL)
   
 
 
@@ -200,14 +212,14 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
       if(mbs<=(MBlistlimit+0.01)){
 
-        out <- try(.mergebylist(files = erki,verbose = !quiet, cous = coui),silent = TRUE)
+        out <- try(.mergebylist(files = erki,verbose = !quiet, cous = coui, couL = couL, couLS = couLS),silent = TRUE)
 
         if("try-error"%in%class(out)){
-          out <- .mergebymatrix(files = erki,verbose = !quiet)
+          out <- .mergebymatrix(files = erki,verbose = !quiet, couL = couL, couLS = couLS)
         }
 
       }else{
-        out <- .mergebymatrix(files = erki,verbose = !quiet)
+        out <- .mergebymatrix(files = erki,verbose = !quiet, couL = couL, couLS = couLS)
       }
 
       if(filetype%in%"zsav"){
@@ -260,9 +272,9 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
 
 
-.mergebymatrix <- function(files,verbose = TRUE){
+.mergebymatrix <- function(files,verbose = TRUE, couL, couLS){
   
-  print("bymatrix")
+
   # first file to load attributes
 
   if(verbose)
@@ -439,9 +451,9 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 }
 
 
-.mergebylist <- function(files,verbose = TRUE, cous){
+.mergebylist <- function(files,verbose = TRUE, cous, couL, couLS){
 
-print("bylist")
+
 
   out <- lapply(1:length(files),function(j){
 
@@ -456,7 +468,7 @@ print("bylist")
     
     
     # add labels to IDCNTRY
-    attr(outj$IDCNTRY,'labels') <- couL
+    attr(outj$IDCNTRY,'labels') <- couLS
     
     # Add country string
     if(!"IDCNTRY_STR"%in%colnames(outj)){

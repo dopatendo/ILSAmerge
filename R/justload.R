@@ -14,9 +14,8 @@
 #' be added to the elements of the list. This means adding the variable \code{CNTRY}
 #' where needed and adding labels for \code{IDCNTRY} where needed. If \code{FALSE}
 #' (the default), data will be loaded as is.
-#' Country information will be retrieved from GitHub if possible. If not, it will
-#' use the package internal data. Please, bear in mind, that if there is no internet
-#' connection, the country information is not necessarily the latest available.
+#' Country information will be retrieved from 'GitHub' if possible. If not, it will
+#' use the package internal data.
 #'
 #' @returns A list of tibbles.
 #'
@@ -29,6 +28,9 @@
 #' 
 #' # Load complete data
 #' fullist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
+#' 
+#' # Load complete data and add country labels
+#' withcou <- justload(inputdir = input, population = "BCGV1", addcountries = TRUE)
 #'
 #' @export
 
@@ -98,6 +100,31 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
   
   erki <- erk[popstu%in%upopstu]
   
+  if(addcountries){
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/countries/data/ILSAcou.csv"
+    
+    
+    where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+    
+    if("try-error"%in%class(where)){
+      warning(paste0("Could not read country information from 'GitHub'.",
+                     "\nInternal data will be used for adding country labels.",
+                     "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
+      
+      ILSAcou <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSAcou.csv"))
+    }else{
+      ILSAcou <- where
+    }
+    
+    
+    ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
+    couL <- ILSAcou$IEAcode
+    names(couL) <- ILSAcou$Name
+    couLS <- sort(couL[ILSAcou$toLabel%in%1])
+    couL <- sort(couL)
+  }
+  
+  
   out <- lapply(1:length(erki),function(j){
     
     outj <- try(haven::read_spss(file = erki[j], user_na = TRUE, col_select = NULL,
@@ -113,13 +140,8 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
     
     
     if(addcountries){
-      where = "/Users/andreschristiansen/RandA Dropbox/Andrés Christiansen/khipuverse/ILSAmerge/build/ilsacou.xlsx"
-      ILSAcou <- as.data.frame(readxl::read_xlsx(where))
-      ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
-      couL <- ILSAcou$IEAcode
-      names(couL) <- ILSAcou$Name
-      couLS <- sort(couL[ILSAcou$toLabel%in%1])
-      couL <- sort(couL)
+      
+  
       
       
       

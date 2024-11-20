@@ -56,6 +56,11 @@ Merges 'SPSS' data from different International Large-Scale Assessments (ILSA).
 This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 }
+\details{
+For files merged within R it will also add country information where needed. 
+Country information will be retrieved from 'GitHub' if possible. If not, it will
+use the package internal data.
+}
 \examples{
 # Path were raw 'SPSS' files are
 input <- system.file("extdata/reds", package = "ILSAmerge")

@@ -37,7 +37,7 @@ Default is \code{FALSE}.}
 Saves merged and renamed ILSA data.
 }
 \description{
-Downloads ILSA data, merges it, combines students and add school information.
+Downloads ILSA data, merges it, combines students and adds school information.
 This function is a wrapper for \code{\link{ILSAdownload}}, \code{\link{ILSAmerge}},
 \code{\link{ILSArename}}, \code{\link{combineStudents}}, and \code{\link{addSchools}}. 
 To see which ILSA are available for this function use \code{\link{availableILSA}}.
@@ -49,7 +49,10 @@ dir.create(file.path(tempdir(),"ILSAready"))
 output <- file.path(tempdir(),"ILSAready")
 
 # Downloading and preparing 'RLII' 1991 data
-ILSAready("RLII",1991,outputdir = output, agreeLicense = TRUE)
+ILSAready("RLII",1991,outputdir = output, agreeLicense = TRUE,quiet = TRUE)
+
+# List of ready files
+list.files(output)
 
 
 }

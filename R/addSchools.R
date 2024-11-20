@@ -44,12 +44,16 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
   
   where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
   
-  ILSApops <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+  where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
-  if("try-error"%in%class(ILSApops)){
-    stop(paste0("Could not read ILSApops file from 'GitHub'.",
-                "\nPlease be sure that you are connected to the Internet.",
-                "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
+  if("try-error"%in%class(where)){
+    stop(paste0("Could not read population information from 'GitHub'.",
+                "\nInternal data will be used to combine respondents.",
+                "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
+    
+    ILSApops <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSApops.csv"))
+  }else{
+    ILSApops <- where
   }
   
 
