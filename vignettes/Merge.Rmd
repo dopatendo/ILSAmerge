@@ -132,4 +132,20 @@ list.files(output,pattern = ".rds")
 As we can see, a new file was created combining the information of students
 and schools.
 
+## Downloading and merging at the same time
+
+`ILSAready()` is a wrapper for downloading, renaming, and merging all the datasets of a single study. This function will leave all files ready for the 
+analysis. For example, downloading 'REDS' 2021 data:
+
+```{r, eval=TRUE}
+dir.create(file.path(tempdir(),"ILSAready"))
+output <- file.path(tempdir(),"ILSAready")
+
+ILSAready(study = "REDS", year = 2021, outputdir = output,agreeLicense = TRUE)
+
+list.files(output)
+```
+```{r, echo=FALSE}
+unlink(output)
+```
 
