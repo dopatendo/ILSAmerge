@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ILSAmerge</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -245,85 +245,6 @@ files, using ‘TIMSS’ Advanced 1995:</p>
 <p>As we can see, a new file was created combining the information of
 students and schools.</p>
 </div>
-</div>
-<div class="section level2">
-<h2 id="downloading-and-merging-at-the-same-time">Downloading and merging at the same time<a class="anchor" aria-label="anchor" href="#downloading-and-merging-at-the-same-time"></a>
-</h2>
-<p><code><a href="../reference/ILSAready.html">ILSAready()</a></code> is a wrapper for downloading, renaming, and
-merging all the datasets of a single study. This function will leave all
-files ready for the analysis. For example, downloading ‘REDS’ 2021
-data:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"ILSAready"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"ILSAready"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/ILSAready.html">ILSAready</a></span><span class="op">(</span>study <span class="op">=</span> <span class="st">"REDS"</span>, year <span class="op">=</span> <span class="fl">2021</span>, outputdir <span class="op">=</span> <span class="va">output</span>,agreeLicense <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">## By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.</span></span>
-<span><span class="co">## 1 files found for REDS 2021.</span></span>
-<span><span class="co">## Visit https://www.iea.nl/data-tools/repository/reds to know how to use and cite these datasets.Files downloaded.</span></span>
-<span><span class="co">## 29 files detected. Merging into 3 files.</span></span>
-<span><span class="co">## Merging BCGV1. Type 1 of 3.</span></span>
-<span><span class="co">## Merging dataset 1 of 11.</span></span>
-<span><span class="co">## Merging dataset 2 of 11.</span></span>
-<span><span class="co">## Merging dataset 3 of 11.</span></span>
-<span><span class="co">## Merging dataset 4 of 11.</span></span>
-<span><span class="co">## Merging dataset 5 of 11.</span></span>
-<span><span class="co">## Merging dataset 6 of 11.</span></span>
-<span><span class="co">## Merging dataset 7 of 11.</span></span>
-<span><span class="co">## Merging dataset 8 of 11.</span></span>
-<span><span class="co">## Merging dataset 9 of 11.</span></span>
-<span><span class="co">## Merging dataset 10 of 11.</span></span>
-<span><span class="co">## Merging dataset 11 of 11.</span></span>
-<span><span class="co">## Merging dataset 1 of 11.</span></span>
-<span><span class="co">## Merging dataset 1 of 11.</span></span>
-<span><span class="co">## Merging dataset 2 of 11.</span></span>
-<span><span class="co">## Merging dataset 3 of 11.</span></span>
-<span><span class="co">## Merging dataset 4 of 11.</span></span>
-<span><span class="co">## Merging dataset 5 of 11.</span></span>
-<span><span class="co">## Merging dataset 6 of 11.</span></span>
-<span><span class="co">## Merging dataset 7 of 11.</span></span>
-<span><span class="co">## Merging dataset 8 of 11.</span></span>
-<span><span class="co">## Merging dataset 9 of 11.</span></span>
-<span><span class="co">## Merging dataset 10 of 11.</span></span>
-<span><span class="co">## Merging dataset 11 of 11.</span></span>
-<span><span class="co">## Merging BCGV1 took 1 seconds or 0.02 minutes.</span></span>
-<span><span class="co">## Merging BSGV1. Type 2 of 3.</span></span>
-<span><span class="co">## Merging dataset 1 of 8.</span></span>
-<span><span class="co">## Merging dataset 2 of 8.</span></span>
-<span><span class="co">## Merging dataset 3 of 8.</span></span>
-<span><span class="co">## Merging dataset 4 of 8.</span></span>
-<span><span class="co">## Merging dataset 5 of 8.</span></span>
-<span><span class="co">## Merging dataset 6 of 8.</span></span>
-<span><span class="co">## Merging dataset 7 of 8.</span></span>
-<span><span class="co">## Merging dataset 8 of 8.</span></span>
-<span><span class="co">## Merging BSGV1 took 2 seconds or 0.04 minutes.</span></span>
-<span><span class="co">## Merging BTGV1. Type 3 of 3.</span></span>
-<span><span class="co">## Merging dataset 1 of 10.</span></span>
-<span><span class="co">## Merging dataset 2 of 10.</span></span>
-<span><span class="co">## Merging dataset 3 of 10.</span></span>
-<span><span class="co">## Merging dataset 4 of 10.</span></span>
-<span><span class="co">## Merging dataset 5 of 10.</span></span>
-<span><span class="co">## Merging dataset 6 of 10.</span></span>
-<span><span class="co">## Merging dataset 7 of 10.</span></span>
-<span><span class="co">## Merging dataset 8 of 10.</span></span>
-<span><span class="co">## Merging dataset 9 of 10.</span></span>
-<span><span class="co">## Merging dataset 10 of 10.</span></span>
-<span><span class="co">## Merging BTGV1 took 1 seconds or 0.02 minutes.</span></span>
-<span><span class="co">## Merging took 5 seconds or 0.08 minutes.</span></span>
-<span><span class="co">## Files merged.</span></span>
-<span><span class="co">## Files renamed.</span></span>
-<span><span class="co">## 4  ILSAmerge()/ILSArename() file(s) found. Adding schools to 2 file(s).</span></span>
-<span><span class="co">## Adding schools to BSGV1, file 1 of 2.</span></span>
-<span><span class="co">## Adding schools to BTGV1, file 2 of 2.</span></span>
-<span><span class="co">## Adding schools took 4 seconds or 0.06 minutes.</span></span>
-<span><span class="co">## Schools added.</span></span>
-<span><span class="co">## Files copied.</span></span>
-<span><span class="co">## Data ready.</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span>
-<span><span class="co">## [1] "REDS_2021_school.rds"         "REDS_2021_student.rds"       </span></span>
-<span><span class="co">## [3] "REDS_2021_student&amp;school.rds" "REDS_2021_teacher.rds"       </span></span>
-<span><span class="co">## [5] "REDS_2021_teacher&amp;school.rds"</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
