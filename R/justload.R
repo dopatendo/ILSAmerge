@@ -2,7 +2,7 @@
 #'
 #' Load 'SPSS' data from different International Large-Scale Assessments (ILSA),
 #' including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII',
-#' and 'SITES' into a list.
+#' and 'SITES' (2006) into a list.
 #'
 #' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
 #' @param population a character value indicating which files should be merged. 
@@ -10,6 +10,13 @@
 #' @param justattributes a logical value indicating if 0 rows should be loaded.
 #' This can be used when we just need to check column attributes. Default is 
 #' \code{FALSE}.
+#' @param addcountries a logical value indicating if country information should
+#' be added to the elements of the list. This means adding the variable \code{CNTRY}
+#' where needed and adding labels for \code{IDCNTRY} where needed. If \code{FALSE}
+#' (the default), data will be loaded as is.
+#' Country information will be retrieved from GitHub if possible. If not, it will
+#' use the package internal data. Please, bear in mind, that if there is no internet
+#' connection, the country information is not necessarily the latest available.
 #'
 #' @returns A list of tibbles.
 #'
@@ -27,7 +34,8 @@
 
 
 
-justload <- function(inputdir = getwd(), population, justattributes = FALSE){
+justload <- function(inputdir = getwd(), population, justattributes = FALSE,
+                     addcountries = FALSE){
   
   # Example & Test ----
   
@@ -102,6 +110,38 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE){
                               .name_repair = "unique",
                               encoding = 'latin1')
     }
+    
+    
+    if(addcountries){
+      where = "/Users/andreschristiansen/RandA Dropbox/Andrés Christiansen/khipuverse/ILSAmerge/build/ilsacou.xlsx"
+      ILSAcou <- as.data.frame(readxl::read_xlsx(where))
+      ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
+      couL <- ILSAcou$IEAcode
+      names(couL) <- ILSAcou$Name
+      couLS <- sort(couL[ILSAcou$toLabel%in%1])
+      couL <- sort(couL)
+      
+      
+      
+      # add labels to IDCNTRY
+      attr(outj$IDCNTRY,'labels') <- couLS
+      
+      # Add country string
+      if(!"IDCNTRY_STR"%in%colnames(outj)){
+        cl <- class(outj)
+        outj <- cbind(IDCNTRY_STR = names(couL)[match(as.numeric(outj$IDCNTRY),couL)], outj)
+        class(outj) <- cl
+      }
+      
+      if(!"CNTRY"%in%colnames(outj)){
+        cl <- class(outj)
+        outj <- cbind(CNTRY = toupper(cou[j])[!justattributes], outj)
+        class(outj) <- cl
+      }
+      
+    }
+    
+    
     
     outj
   })

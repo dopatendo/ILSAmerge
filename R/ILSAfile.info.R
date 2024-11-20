@@ -35,7 +35,7 @@ ILSAfile.info <- function(inputdir = getwd()){
   erk <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZAV",full.names = TRUE)
 
   if(length(ark)==0)
-    stop(c("\nNo files found."),call. = FALSE)
+    stop(c("\nNo ILSA raw files found."),call. = FALSE)
 
 
 

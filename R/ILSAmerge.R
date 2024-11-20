@@ -3,6 +3,11 @@
 #' Merges 'SPSS' data from different International Large-Scale Assessments (ILSA).
 #' This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
 #' 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
+#' 
+#' For files merged within R it will also add country information where needed. 
+#' Country information will be retrieved from GitHub if possible. If not, it will
+#' use the package internal data. Please, bear in mind, that if there is no internet
+#' connection, the country information is not necessarily the latest available
 #'
 #' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
 #' @param outputdir the directory where the merged data will be saved.
@@ -43,8 +48,6 @@
 #' ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
 #'
 #' @export
-
-
 
 
 
@@ -148,7 +151,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
 
   if(!quiet){
-    cat(paste0(length(ark)," files detected. Merging into ",
+    cat(paste0(sum(popstu%in%upopstu)," files detected. Merging into ",
                length(upopstu)," files.\n"))
   }
   
@@ -166,6 +169,18 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
 
   ### Merge ----
+  
+  # Add countries
+  
+  where = "/Users/andreschristiansen/RandA Dropbox/Andrés Christiansen/khipuverse/ILSAmerge/build/ilsacou.xlsx"
+  ILSAcou <- as.data.frame(readxl::read_xlsx(where,sheet = "dtb"))
+  ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
+  ILSAcou <- ILSAcou[order(ILSAcou$Name),]
+  couL <- ILSAcou$IEAcode
+  names(couL) <- ILSAcou$Name
+  couLS <- (couL[ILSAcou$toLabel%in%1])
+  couL <- (couL)
+  
 
 
   ptime <- proc.time()
@@ -177,6 +192,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
       cat(paste0("Merging ",upopstu[i],". Type ",i," of ",length(upopstu),".\n"))
     }
 
+    coui <- toupper(cou[popstu%in%upopstu[i]])
     erki <- erk[popstu%in%upopstu[i]]
     mbs <- inf[,3][inf[,1]%in%upopstu[i]]
 
@@ -184,7 +200,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
       if(mbs<=(MBlistlimit+0.01)){
 
-        out <- try(.mergebylist(files = erki,verbose = !quiet),silent = TRUE)
+        out <- try(.mergebylist(files = erki,verbose = !quiet, cous = coui),silent = TRUE)
 
         if("try-error"%in%class(out)){
           out <- .mergebymatrix(files = erki,verbose = !quiet)
@@ -245,6 +261,8 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
 
 .mergebymatrix <- function(files,verbose = TRUE){
+  
+  print("bymatrix")
   # first file to load attributes
 
   if(verbose)
@@ -301,6 +319,9 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     nrow(load)
   })
   
+  COU <- substr(basename(files[unlist(last)>0]),4,6)
+  COUWD <- last[unlist(last)>0]
+  COU <- unlist(lapply(1:length(COU),function(co) rep(COU[co],COUWD[[co]])))
   hasdata <- sapply(last,function(j) j!=0)
   
 
@@ -315,7 +336,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   out <- (matrix(NA,nrow = max(last),ncol = ncol(out1)))
   colnames(out) <- toupper(colnames(out1))
 
-
+  
 
   for(j in 1:length(files)){
 
@@ -390,6 +411,27 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   }
   
   out <- rbind(out1,out)[-1,]
+  
+
+  
+  # add labels to IDCNTRY
+  attr(out$IDCNTRY,'labels') <- couLS
+  
+  # Add country string
+  if(!"IDCNTRY_STR"%in%colnames(out)){
+    cl <- class(out)
+    out <- cbind(IDCNTRY_STR = names(couL)[match(as.numeric(out$IDCNTRY),couL)], out)
+    class(out) <- cl
+  }
+  
+  if(!"CNTRY"%in%colnames(out)){
+    cl <- class(out)
+    # mtc <- match(as.numeric(out$IDCNTRY),ILSAcou$IEAcode)
+    # CNTRY <- rep(NA,length(mtc))
+    # CNTRY[!is.na(mtc)] <- ILSAcou$N3code[!is.na(mtc)]
+    out <- cbind(CNTRY = COU, out)
+    class(out) <- cl
+  }
 
 
   return(out)
@@ -397,9 +439,9 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 }
 
 
-.mergebylist <- function(files,verbose = TRUE){
+.mergebylist <- function(files,verbose = TRUE, cous){
 
-
+print("bylist")
 
   out <- lapply(1:length(files),function(j){
 
@@ -409,6 +451,27 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     outj <- haven::read_spss(file = files[j], user_na = TRUE, col_select = NULL,
                      skip = 0, n_max = Inf, .name_repair = "unique")
     colnames(outj) <- toupper(colnames(outj))
+    
+    
+    
+    
+    # add labels to IDCNTRY
+    attr(outj$IDCNTRY,'labels') <- couL
+    
+    # Add country string
+    if(!"IDCNTRY_STR"%in%colnames(outj)){
+      cl <- class(outj)
+      outj <- cbind(IDCNTRY_STR = names(couL)[match(as.numeric(outj$IDCNTRY),couL)], outj)
+      class(outj) <- cl
+    }
+    
+    if(!"CNTRY"%in%colnames(outj)){
+      cl <- class(outj)
+      outj <- cbind(CNTRY = cous[j], outj)
+      class(outj) <- cl
+    }
+    
+    
     outj
   })
 
@@ -417,6 +480,5 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   return(out)
 
 }
-
 
 
