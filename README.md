@@ -19,7 +19,7 @@ straightforward as possible.
 
 <!-- badges: start -->
 
-[![CRAN](https://www.r-pkg.org/badges/version/RcppParallel)](https://cran.r-project.org/package=RcppParallel)
+[![CRAN](https://www.r-pkg.org/badges/version/ILSAmerge)](https://cran.r-project.org/package=ILSAmerge)
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
