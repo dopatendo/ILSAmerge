@@ -4,7 +4,7 @@ library(khipu)
 
 
 user <- 2
-mod <- '1.2.5'
+mod <- '1.2.6'
 VIG = T
 
 setwd('/Users/andreschristiansen/RandA Dropbox/Andrés Christiansen/khipuverse')
@@ -77,11 +77,12 @@ devtools::document()
 
 # build
 devtools::build(path = versions,vignettes = VIG)
+devtools::install() 
+devtools::build_manual(system.file(package="ILSAmerge"),
+                       path = versions)
 
-devtools::install(build_vignettes = VIG) 
-
-install.packages(paste0(file.path(versions,"ILSAmerge_"),mod,".tar.gz"),
-                 repos = NULL, type = "source")
+# install.packages(paste0(file.path(versions,"ILSAmerge_"),mod,".tar.gz"),
+#                  repos = NULL, type = "source")
 .rs.restartR()
 
 # aa=mini.data[,-(1:2)]
@@ -97,6 +98,8 @@ devtools::check(cran = TRUE,vignettes = VIG)
 
 # Manual ------------------------------------------------------------------
 devtools::check(cran = TRUE,vignettes = VIG)
+
+
 
 
 devtools::build_manual(path = versions)
