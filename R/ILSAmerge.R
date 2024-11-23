@@ -8,7 +8,7 @@
 #' Country information will be retrieved from 'GitHub' if possible. If not, it will
 #' use the package internal data. 
 #'
-#' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
+#' @param inputdir a string indicating the path where ILSA 'SPSS' files are stored.
 #' @param outputdir the directory where the merged data will be saved.
 #' @param filetype a string indicating the type of file to be saved, it can
 #' be \code{"rds"}, \code{"zsav"}, or \code{"sav"}.
@@ -30,16 +30,16 @@
 #' but uses less memory. Default is \code{200}.
 #' @param SPSSlimit a numerical value indicating the limit of files per command
 #' of 'SPSS', typically \code{50}.
-#' @param quiet a logical value indicating if status of progress should be
+#' @param quiet a logical value indicating if progress status should be
 #' shown. Default is \code{FALSE}.
 #'
 #' @returns Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
 #'
 #' @examples
-#' # Path were raw 'SPSS' files are
+#' # Path where raw 'SPSS' files are
 #' input <- system.file("extdata/reds", package = "ILSAmerge")
 #' 
-#' # Path were merged files will be saved
+#' # Path where merged files will be saved
 #' dir.create(file.path(tempdir(),"ILSAmerge"))
 #' output <- file.path(tempdir(),"ILSAmerge")
 #' 
@@ -111,8 +111,8 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
 
   filetype <- match.arg(filetype,c("rds", "zsav", "sav"))
 
-  ark <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV",recursive = FALSE)
-  erk <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV",full.names = TRUE,recursive = FALSE)
+  ark <- list.files(path = inputdir,pattern = ".SAV$|.ZSAV$",ignore.case = TRUE,recursive = FALSE)
+  erk <- list.files(path = inputdir,pattern = ".SAV$|.ZSAV$",ignore.case = TRUE,full.names = TRUE,recursive = FALSE)
 
   pop <- substr(ark,1,3)
   cou <- substr(ark,4,6)

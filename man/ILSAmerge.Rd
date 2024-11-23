@@ -16,7 +16,7 @@ ILSAmerge(
 )
 }
 \arguments{
-\item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}
+\item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
 
 \item{outputdir}{the directory where the merged data will be saved.}
 
@@ -45,7 +45,7 @@ but uses less memory. Default is \code{200}.}
 \item{SPSSlimit}{a numerical value indicating the limit of files per command
 of 'SPSS', typically \code{50}.}
 
-\item{quiet}{a logical value indicating if status of progress should be
+\item{quiet}{a logical value indicating if progress status should be
 shown. Default is \code{FALSE}.}
 }
 \value{
@@ -62,10 +62,10 @@ Country information will be retrieved from 'GitHub' if possible. If not, it will
 use the package internal data.
 }
 \examples{
-# Path were raw 'SPSS' files are
+# Path where raw 'SPSS' files are
 input <- system.file("extdata/reds", package = "ILSAmerge")
 
-# Path were merged files will be saved
+# Path where merged files will be saved
 dir.create(file.path(tempdir(),"ILSAmerge"))
 output <- file.path(tempdir(),"ILSAmerge")
 

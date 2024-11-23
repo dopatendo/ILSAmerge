@@ -7,7 +7,7 @@
 ILSAfile.info(inputdir = getwd())
 }
 \arguments{
-\item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}
+\item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
 }
 \value{
 A data frame with the number of files and MBs per population.
@@ -16,7 +16,7 @@ A data frame with the number of files and MBs per population.
 Aggregates International Large-Scale Assessments (ILSA) data files information by population.
 }
 \examples{
-# Path were raw 'SPSS' files are
+# Path where raw 'SPSS' files are
 input <- system.file("extdata/reds", package = "ILSAmerge")
 
 # Get file information

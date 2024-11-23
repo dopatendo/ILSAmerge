@@ -15,7 +15,7 @@ License: GPL (>= 3.0)
 URL: https://github.com/dopatendo/ILSAmerge, https://dopatendo.github.io/ILSAmerge/
 Imports: haven
 Encoding: UTF-8
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown

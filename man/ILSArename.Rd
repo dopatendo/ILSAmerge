@@ -12,7 +12,7 @@ ILSArename(
 )
 }
 \arguments{
-\item{inputdir}{a string indicating the path were \code{\link{ILSAmerge}} files are stored.}
+\item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
 
 \item{codeTOname}{a logical value indicating if files should be renamed from
 codes to names (\code{TRUE}) or from names to codes (\code{FALSE}).
@@ -21,7 +21,7 @@ Default is \code{TRUE}.}
 \item{overwrite}{a logical value indicating if files should be overwritten.
 If \code{FALSE}, files will be copied with the new names. Default is \code{TRUE}.}
 
-\item{quiet}{a logical value if progress should be
+\item{quiet}{a logical value indicating if progress status should be
 shown. Default is \code{FALSE}.}
 }
 \value{

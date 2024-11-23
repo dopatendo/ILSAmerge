@@ -5,14 +5,12 @@
 #' This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
 #' 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 #' 
-#' @param inputdir a string indicating the path were \code{\link{ILSAmerge}} files are stored.
+#' @inheritParams ILSAmerge
 #' @param codeTOname a logical value indicating if files should be renamed from
 #' codes to names (\code{TRUE}) or from names to codes (\code{FALSE}).
 #' Default is \code{TRUE}.
 #' @param overwrite a logical value indicating if files should be overwritten.
 #' If \code{FALSE}, files will be copied with the new names. Default is \code{TRUE}.
-#' @param quiet a logical value if progress should be
-#' shown. Default is \code{FALSE}.
 #'
 #' @returns Renames or copies files produced by \code{\link{ILSAmerge}}.
 #'
@@ -72,8 +70,8 @@ ILSArename <- function(inputdir = getwd(), codeTOname = TRUE, overwrite = TRUE, 
   where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
   if("try-error"%in%class(where)){
-    stop(paste0("Could not read population information from 'GitHub'.",
-                "\nInternal data will be used to combine respondents.",
+    warning(paste0("Could not read population information from 'GitHub'.",
+                "\nInternal data will be used to rename files.",
                 "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
     
     ILSApops <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSApops.csv"))

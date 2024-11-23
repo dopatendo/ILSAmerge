@@ -20,7 +20,7 @@ check the description of this function.}
 
 \item{year}{a numeric value indicating the year of the study.}
 
-\item{outputdir}{the directory where the merged data will be saved.}
+\item{outputdir}{the directory where data will be downloaded.}
 
 \item{unzip}{a logical value indicating if files should be unzipped.
 Default is \code{FALSE}.}
@@ -28,7 +28,7 @@ Default is \code{FALSE}.}
 \item{maxtime}{a numeric value indicating the maximum time allowed for 
 downloading a file. Default is \code{999}.}
 
-\item{quiet}{a logical value indicating if status of progress should be
+\item{quiet}{a logical value indicating if progress status should be
 shown. If a study has sub-studies, e.g. 'PISA' 2009 and this is \code{TRUE},
 only the main study will be downloaded.
 Default is \code{FALSE}.}
@@ -51,7 +51,7 @@ read and accept its terms and conditions to proceed with the download.
 \examples{
 # For example, to download 'RLII' 1991 data:
 
-# Path were files will be saved
+# Path where files will be saved
 dir.create(file.path(tempdir(),"ILSAdownload"))
 output <- file.path(tempdir(),"ILSAdownload")
 

@@ -19,7 +19,7 @@ merged file will be saved.}
 be compressed with zsav. Default is \code{TRUE}.}
 
 \item{SPSSlimit}{a numerical value indicating the limit of files per command
-of 'SPSS', typically 50.}
+of 'SPSS', typically \code{50}.}
 }
 \value{
 Saves an \code{.sps} file with the 'SPSS' syntax for merging the
@@ -29,10 +29,10 @@ desired files.
 Produces and saves an 'SPSS' merge syntax given a list of files.
 }
 \examples{
-# Path were raw 'SPSS' files are
+# Path where raw 'SPSS' files are
 input <- system.file("extdata/reds", package = "ILSAmerge")
 
-# Path were merged files will be saved
+# Path where merged files will be saved
 dir.create(file.path(tempdir(),"spsssyntax"))
 output <- file.path(tempdir(),"spsssyntax")
 

@@ -3,18 +3,17 @@
 #' Combines achievement and background student data merged by \code{\link{ILSAmerge}}.
 #' To see which ILSA are available for combining use \code{\link{availableILSA}}.
 #'
-#' @param inputdir a string indicating the path were \code{\link{ILSAmerge}} files are stored.
+#' @param inputdir a string indicating the path where \code{\link{ILSAmerge}} files are stored.
 #' @param outputdir a string indicating where the combined data will be saved.
-#' @param quiet a logical value indicating if status of progress should be
-#' shown. Default is \code{FALSE}.
+#' @inheritParams ILSAmerge
 #'
 #' @returns Saves combined student data produced by \code{\link{ILSAmerge}}.
 #'
 #' @examples
-#' # Path were raw 'SPSS' files are
+#' # Path where raw 'SPSS' files are
 #' input <- system.file("extdata/timssadv", package = "ILSAmerge")
 #' 
-#' # Path were merged files will be saved
+#' # Path where merged files will be saved
 #' dir.create(file.path(tempdir(),"combineStudents"))
 #' output <- file.path(tempdir(),"combineStudents")
 #' 
@@ -49,7 +48,7 @@ combineStudents <- function(inputdir = getwd(),
     stop(c("\nInvalid input for 'inputdir'.",
            "\nPath does not exist."),call. = FALSE)
   
-  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav",recursive = FALSE)
+  inpfiles <- list.files(path = inputdir,pattern = ".rds$|.zsav$|.sav$",recursive = FALSE)
   
   
   .combineStudents(inputdir = inputdir,
@@ -104,7 +103,7 @@ combineStudents <- function(inputdir = getwd(),
   where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
   if("try-error"%in%class(where)){
-    stop(paste0("Could not read population information from 'GitHub'.",
+    warning(paste0("Could not read population information from 'GitHub'.",
                 "\nInternal data will be used to combine respondents.",
                 "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
     

@@ -9,12 +9,12 @@
 #' @param study a string indicating the name of the study. For available studies
 #' check the description of this function.
 #' @param year a numeric value indicating the year of the study.
-#' @param outputdir the directory where the merged data will be saved.
+#' @param outputdir the directory where data will be downloaded.
 #' @param unzip a logical value indicating if files should be unzipped.
 #' Default is \code{FALSE}.
 #' @param maxtime a numeric value indicating the maximum time allowed for 
 #' downloading a file. Default is \code{999}.
-#' @param quiet a logical value indicating if status of progress should be
+#' @param quiet a logical value indicating if progress status should be
 #' shown. If a study has sub-studies, e.g. 'PISA' 2009 and this is \code{TRUE},
 #' only the main study will be downloaded.
 #' Default is \code{FALSE}.
@@ -29,7 +29,7 @@
 #' @examples
 #' # For example, to download 'RLII' 1991 data:
 #'
-#' # Path were files will be saved
+#' # Path where files will be saved
 #' dir.create(file.path(tempdir(),"ILSAdownload"))
 #' output <- file.path(tempdir(),"ILSAdownload")
 #'

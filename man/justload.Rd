@@ -12,9 +12,9 @@ justload(
 )
 }
 \arguments{
-\item{inputdir}{a string indicating the path were ILSA 'SPSS' files are stored.}
+\item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
 
-\item{population}{a character value indicating which files should be merged. 
+\item{population}{a character value indicating which files should be loaded. 
 For more information on available populations, run \code{ILSAfile.info()} first.}
 
 \item{justattributes}{a logical value indicating if 0 rows should be loaded.
@@ -37,7 +37,7 @@ including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS',
 and 'SITES' (2006) into a list.
 }
 \examples{
-# Path were raw 'SPSS' files are
+# Path where raw 'SPSS' files are
 input <- system.file("extdata/reds", package = "ILSAmerge")
 
 # Load only attributes

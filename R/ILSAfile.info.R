@@ -2,12 +2,12 @@
 #'
 #' Aggregates International Large-Scale Assessments (ILSA) data files information by population.
 #'
-#' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
+#' @inheritParams ILSAmerge
 #'
 #' @returns A data frame with the number of files and MBs per population.
 #'
 #' @examples
-#' # Path were raw 'SPSS' files are
+#' # Path where raw 'SPSS' files are
 #' input <- system.file("extdata/reds", package = "ILSAmerge")
 #'
 #' # Get file information
@@ -31,8 +31,8 @@ ILSAfile.info <- function(inputdir = getwd()){
 
   # Process & Output ----
 
-  ark <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZAV",recursive = FALSE)
-  erk <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZAV",full.names = TRUE,recursive = FALSE)
+  ark <- list.files(path = inputdir,pattern = ".SAV$|.ZSAV$",ignore.case = TRUE,recursive = FALSE)
+  erk <- list.files(path = inputdir,pattern = ".SAV$|.ZSAV$",ignore.case = TRUE,full.names = TRUE,recursive = FALSE)
 
   if(length(ark)==0)
     stop(c("\nNo ILSA raw files found."),call. = FALSE)

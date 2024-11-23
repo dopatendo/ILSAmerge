@@ -4,18 +4,15 @@
 #' It will run \code{\link{combineStudents}} internally.
 #' To see which ILSA are available for adding school data use \code{\link{availableILSA}}.
 #'
-#' @param inputdir a string indicating the path were \code{\link{ILSAmerge}} files are stored.
-#' @param outputdir a string indicating where the combined data will be saved.
-#' @param quiet a logical value indicating if status of progress should be
-#' shown. Default is \code{FALSE}.
+#' @inheritParams combineStudents
 #'
 #' @returns Saves combined student data and teacher data with added school data.
 #'
 #' @examples
-#' # Path were raw 'SPSS' files are
+#' # Path where raw 'SPSS' files are
 #' input <- system.file("extdata/timssadv", package = "ILSAmerge")
 #' 
-#' # Path were merged files will be saved
+#' # Path where merged files will be saved
 #' dir.create(file.path(tempdir(),"addSchools"))
 #' output <- file.path(tempdir(),"addSchools")
 #' 
@@ -37,7 +34,54 @@
 
 
 
-addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
+addSchools <- function(inputdir = getwd(),
+                        outputdir = getwd(),
+                        quiet = FALSE){
+  
+  ## inputdir
+  if(!(is.vector(inputdir)&&is.character(inputdir)&&length(inputdir)==1))
+    stop(c("\nInvalid input for 'inputdir'.",
+           "\nIt should be a string."),call. = FALSE)
+  
+  if(!file.exists(inputdir))
+    stop(c("\nInvalid input for 'inputdir'.",
+           "\nPath does not exist."),call. = FALSE)
+  
+  inpfiles <- list.files(path = inputdir,pattern = ".rds$|.zsav$|.sav$",recursive = FALSE)
+  
+  
+  
+  .addSchools(inputdir = inputdir,
+              inpfiles = inpfiles,
+              outputdir = outputdir,
+              quiet = quiet,
+              save = TRUE)
+  
+}
+
+.addSchools <- function(inputdir = getwd(), inpfiles, 
+                        outputdir = getwd(), quiet = FALSE, save = TRUE){
+  
+  ## outputdir
+  if(!(is.vector(outputdir)&&is.character(outputdir)&&length(outputdir)==1))
+    stop(c("\nInvalid input for 'outputdir'.",
+           "\nIt should be a string."),call. = FALSE)
+  
+  if(!file.exists(outputdir))
+    stop(c("\nInvalid input for 'outputdir'.",
+           "\nPath does not exist."),call. = FALSE)
+  
+  ## quiet
+  if(!(isTRUE(quiet)|isFALSE(quiet)))
+    stop(c("\nInvalid input for 'quiet'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
+  
+  ## save
+  if(!(isTRUE(save)|isFALSE(save)))
+    stop(c("\nInvalid input for 'save'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
   # Load data ---------------------------------------------------------------
   
   
@@ -47,7 +91,7 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
   where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
   if("try-error"%in%class(where)){
-    stop(paste0("Could not read population information from 'GitHub'.",
+    warning(paste0("Could not read population information from 'GitHub'.",
                 "\nInternal data will be used to combine respondents.",
                 "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
     
@@ -56,13 +100,15 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
     ILSApops <- where
   }
   
-
+  
+  
+  
   
   # Identify populations ----------------------------------------------------
   
   ptime <- proc.time()
   
-  inpfiles <- list.files(path = inputdir,pattern = ".rds|.zsav|.sav",recursive = FALSE)
+  
   ext <- lapply(inpfiles,function(i){
     dot <- max(gregexpr("\\.",i)[[1]])
     list(substr(i,1,dot-1),substring(i,dot+1))
@@ -121,7 +167,7 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
     tocom <- as.vector(unlist(lapply(tocom, function(j) strsplit(j,split = ";"))))
     tocom <- setdiff(tocom,"-")
     # tocom <- c(tocom,bindto$Pop[i])
-
+    
     
     # Combining students if needed --------------------------------------------
     if(length(tocom)>0){
@@ -153,7 +199,7 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
       
       
       
-
+      
       
     }
     
@@ -191,7 +237,8 @@ addSchools <- function(inputdir = getwd(), outputdir = getwd(), quiet = FALSE){
       fname <- paste0(bindto$Name[i])
     }
     
-    
+    if(!save)
+      return(addto)
     
     if(extto[i]%in%"zsav"){
       haven::write_sav(data = addto,compress = "zsav",

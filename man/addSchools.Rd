@@ -7,11 +7,11 @@
 addSchools(inputdir = getwd(), outputdir = getwd(), quiet = FALSE)
 }
 \arguments{
-\item{inputdir}{a string indicating the path were \code{\link{ILSAmerge}} files are stored.}
+\item{inputdir}{a string indicating the path where \code{\link{ILSAmerge}} files are stored.}
 
 \item{outputdir}{a string indicating where the combined data will be saved.}
 
-\item{quiet}{a logical value indicating if status of progress should be
+\item{quiet}{a logical value indicating if progress status should be
 shown. Default is \code{FALSE}.}
 }
 \value{
@@ -23,10 +23,10 @@ It will run \code{\link{combineStudents}} internally.
 To see which ILSA are available for adding school data use \code{\link{availableILSA}}.
 }
 \examples{
-# Path were raw 'SPSS' files are
+# Path where raw 'SPSS' files are
 input <- system.file("extdata/timssadv", package = "ILSAmerge")
 
-# Path were merged files will be saved
+# Path where merged files will be saved
 dir.create(file.path(tempdir(),"addSchools"))
 output <- file.path(tempdir(),"addSchools")
 

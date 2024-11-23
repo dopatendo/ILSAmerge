@@ -9,17 +9,16 @@
 #' merged file will be saved.
 #' @param zsav a logical value indicating if the the merged file should
 #' be compressed with zsav. Default is \code{TRUE}.
-#' @param SPSSlimit a numerical value indicating the limit of files per command
-#' of 'SPSS', typically 50.
+#' @inheritParams ILSAmerge
 #'
 #' @returns Saves an \code{.sps} file with the 'SPSS' syntax for merging the
 #' desired files.
 #'
 #' @examples
-#' # Path were raw 'SPSS' files are
+#' # Path where raw 'SPSS' files are
 #' input <- system.file("extdata/reds", package = "ILSAmerge")
 #' 
-#' # Path were merged files will be saved
+#' # Path where merged files will be saved
 #' dir.create(file.path(tempdir(),"spsssyntax"))
 #' output <- file.path(tempdir(),"spsssyntax")
 #' 

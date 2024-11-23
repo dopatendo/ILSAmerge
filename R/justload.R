@@ -4,8 +4,8 @@
 #' including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII',
 #' and 'SITES' (2006) into a list.
 #'
-#' @param inputdir a string indicating the path were ILSA 'SPSS' files are stored.
-#' @param population a character value indicating which files should be merged. 
+#' @inheritParams ILSAmerge
+#' @param population a character value indicating which files should be loaded. 
 #' For more information on available populations, run \code{ILSAfile.info()} first.
 #' @param justattributes a logical value indicating if 0 rows should be loaded.
 #' This can be used when we just need to check column attributes. Default is 
@@ -20,7 +20,7 @@
 #' @returns A list of tibbles.
 #'
 #' @examples
-#' # Path were raw 'SPSS' files are
+#' # Path where raw 'SPSS' files are
 #' input <- system.file("extdata/reds", package = "ILSAmerge")
 #' 
 #' # Load only attributes
@@ -65,8 +65,8 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
   ## Process ----
   
   
-  ark <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV")
-  erk <- list.files(path = inputdir,pattern = ".sav|.zsav|.SAV|.ZSAV",full.names = TRUE)
+  ark <- list.files(path = inputdir,pattern = ".SAV$|.ZSAV$",ignore.case = TRUE)
+  erk <- list.files(path = inputdir,pattern = ".SAV$|.ZSAV$",ignore.case = TRUE, full.names = TRUE)
   
   pop <- substr(ark,1,3)
   cou <- substr(ark,4,6)
