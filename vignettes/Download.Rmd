@@ -2,7 +2,7 @@
 title: "Download ILSA files"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Download}
+  %\VignetteIndexEntry{Download ILSA files}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

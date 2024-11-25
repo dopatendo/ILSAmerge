@@ -19,7 +19,8 @@ straightforward as possible.
 
 <!-- badges: start -->
 
-[![CRAN](https://www.r-pkg.org/badges/version/ILSAmerge)](https://cran.r-project.org/package=ILSAmerge)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ILSAmerge)](https://CRAN.R-project.org/package=ILSAmerge)
 ![GitHub R package
 version](https://img.shields.io/github/r-package/v/dopatendo/ILSAmerge)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
@@ -43,11 +44,6 @@ Or, if you wish to install the development version of `ILSAmerge`:
 remotes::install_github("dopatendo/ILSAmerge")
 ```
 
-## Merge files
-
-For merging ILSA data, we can use `ILSAmerge()`. For an example see
-`vignette("Merge")`.
-
 ## Downloading files
 
 For downloading ILSA data, we can use `ILSAdownload()`. For an example
@@ -62,3 +58,18 @@ For identifying populations within a study, we can use
 
 If we need to load ILSA data but not save it, we can use `justload()`.
 For an example see `vignette("Load")`.
+
+## Merge files
+
+For merging ILSA data, we can use `ILSAmerge()`. For an example see
+`vignette("Merge")`.
+
+## Rename files
+
+For rename ILSA data, we can use `ILSArename()`. For an example see
+`vignette("Rename")`.
+
+## Rename files
+
+We can combine all these steps using `ILSAready()`. For an example see
+`vignette("Onestep")`.

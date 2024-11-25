@@ -44,10 +44,11 @@ availableILSA <- function(print = TRUE,
   # Process ----
   
   where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
-  
-  
+
+
   ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
+
   if("try-error"%in%class(ILSAlinks)){
     stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
                 "\nPlease be sure that you are connected to the Internet.",

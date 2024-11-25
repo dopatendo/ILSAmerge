@@ -23,6 +23,10 @@ names to merged files.
 
 First, we need to use `ILSAmerge()` to merge the files:
 
+```{r,echo=FALSE}
+unlink(file.path(tempdir(),"REDS2021"),recursive = TRUE)
+```
+
 ```{r, eval=TRUE}
 dir.create(file.path(tempdir(),"REDS2021"),showWarnings = FALSE)
 
@@ -43,4 +47,7 @@ With `ILSArename()` we can convert these names:
 ILSArename(inputdir = file.path(tempdir(),"REDS2021"))
 list.files(file.path(tempdir(),"REDS2021"))
 
+```
+```{r,echo=FALSE}
+unlink(file.path(tempdir(),"REDS2021"),recursive = TRUE)
 ```

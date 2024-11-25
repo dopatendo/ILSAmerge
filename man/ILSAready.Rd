@@ -58,3 +58,12 @@ This function is a wrapper for \code{\link{ILSAdownload}}, \code{\link{ILSAmerge
 To see which ILSA are available for this function use \code{\link{availableILSA}}.
 If data is already downloaded you can use \code{\link{ILSAreadylocal}}.
 }
+\examples{
+dir.create(file.path(tempdir(),"timssadv"),showWarnings = FALSE)
+output <- file.path(tempdir(),"timssadv")
+
+input <- system.file("extdata/timssadv", package = "ILSAmerge")
+
+ILSAreadylocal(inputdir = input, outputdir = output)
+
+}

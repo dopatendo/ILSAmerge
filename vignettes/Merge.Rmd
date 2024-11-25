@@ -85,6 +85,9 @@ Two functions are available to merge respondents: `combineStudents()`, and
 
 `combineStudents()` combines multiple student files, e.g., achievement
 and background questionnaires, using 'TIMSS' Advanced 1995:
+```{r,echo=FALSE, include = FALSE}
+unlink(file.path(tempdir(),"combineStudents"),recursive = TRUE)
+```
 ```{r}
 # Path were raw 'SPSS' files are
 input <- system.file("extdata/timssadv", package = "ILSAmerge")
@@ -127,7 +130,9 @@ addSchools(inputdir = output, outputdir = output)
 # Check file names
 list.files(output,pattern = ".rds")
 ```
-
+```{r,echo=FALSE, include = FALSE}
+unlink(file.path(tempdir(),"combineStudents"),recursive = TRUE)
+```
 
 As we can see, a new file was created combining the information of students
 and schools.

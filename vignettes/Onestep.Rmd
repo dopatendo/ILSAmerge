@@ -1,0 +1,53 @@
+---
+title: "One-step solution"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{One-step solution}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE
+)
+```
+
+```{r setup, echo=FALSE}
+library(ILSAmerge)
+```
+
+
+We can also combine all the steps for preparing ILSA data (downloading, merging,
+combining respondents, and renaming) with the function `ILSAready()`:
+
+```{r,echo=FALSE, include = FALSE}
+unlist(file.path(tempdir(),"rlii1991"),recursive = TRUE)
+```
+```{r}
+dir.create(file.path(tempdir(),"rlii1991"),showWarnings = FALSE)
+output <- file.path(tempdir(),"rlii1991")
+ILSAready(study = "RLII", year = 1991,outputdir = output, agreeLicense = TRUE)
+```
+```{r,echo=FALSE, include = FALSE}
+unlist(file.path(tempdir(),"rlii1991"),recursive = TRUE)
+```
+
+
+Also if data is already downloaded we can use `ILSAreadylocal()`:
+```{r,echo=FALSE, include = FALSE}
+unlist(file.path(tempdir(),"timssadv"),recursive = TRUE)
+```
+
+```{r}
+dir.create(file.path(tempdir(),"timssadv"),showWarnings = FALSE)
+output <- file.path(tempdir(),"timssadv")
+
+input <- system.file("extdata/timssadv", package = "ILSAmerge")
+
+ILSAreadylocal(inputdir = input, outputdir = output)
+```
+
+```{r,echo=FALSE, include = FALSE}
+unlist(file.path(tempdir(),"timssadv"),recursive = TRUE)
+```

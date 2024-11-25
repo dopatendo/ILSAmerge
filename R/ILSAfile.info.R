@@ -60,7 +60,8 @@ ILSAfile.info <- function(inputdir = getwd()){
   out <- as.data.frame(table(popstu),stringsAsFactors = FALSE)
   colnames(out) <- c('Population','Files')
   out <- cbind.data.frame(out,MB = round(siz[,2]/1000/1000,1))
-
+  
+  
   # Output ----
   return(out)
 }

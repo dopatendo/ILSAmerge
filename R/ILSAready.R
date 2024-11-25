@@ -9,8 +9,14 @@
 #' @inheritParams ILSAmerge
 #' @inheritParams ILSAdownload
 #' 
+#' @examples
+#' dir.create(file.path(tempdir(),"timssadv"),showWarnings = FALSE)
+#' output <- file.path(tempdir(),"timssadv")
 #' 
-#'
+#' input <- system.file("extdata/timssadv", package = "ILSAmerge")
+#' 
+#' ILSAreadylocal(inputdir = input, outputdir = output)
+#' 
 #' @returns Saves merged and renamed ILSA data.
 #' 
 #' @export
@@ -25,17 +31,33 @@ ILSAready <- function(study, year, outputdir = getwd(),
   # Read external ----
   
   where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
-  
-  
+
+
   ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
-  
+
   if("try-error"%in%class(ILSAlinks)){
     stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
                 "\nPlease be sure that you are connected to the Internet.",
                 "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
   }
   
+
   ILSAlinks <- ILSAlinks[ILSAlinks$ILSAready%in%1,]
+
+  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
+  
+  where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+  
+  if("try-error"%in%class(where)){
+    warning(paste0("Could not read population information from 'GitHub'.",
+                   "\nInternal data will be used to rename files.",
+                   "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
+    
+    ILSApops <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSApops.csv"))
+  }else{
+    ILSApops <- where
+  }
+  
   
   
   # Checks ----
@@ -114,6 +136,7 @@ ILSAready <- function(study, year, outputdir = getwd(),
   Name = NULL; Year = NULL
   whdownloaded <- subset(ILSAlinks,Name%in%study&Year%in%year)
   whdownloaded <- gsub(".zip","",basename(whdownloaded$Data_SPSS))
+  whdownloaded <- gsub("%26","&",whdownloaded)
   
   
   
@@ -131,6 +154,8 @@ ILSAready <- function(study, year, outputdir = getwd(),
     
     j=1
     dirs <- unique(dirs)
+    dirs <- dirs[unlist(lapply(dirs,function(j){all(ILSAfile.info(j)$Population%in%ILSApops$Pop)}))]
+
     for(j in 1:length(dirs)){
       .ILSAreadylocal(inputdir = dirs[j], outputdir = ndir, 
                       quiet = quiet, MBlistlimit = MBlistlimit)
@@ -139,6 +164,9 @@ ILSAready <- function(study, year, outputdir = getwd(),
   }
   
   
+  
+  
+
   
   # End ---------------------------------------------------------------------
   

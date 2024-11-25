@@ -2,7 +2,7 @@
 title: "Load ILSA files"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Load}
+  %\VignetteIndexEntry{Load ILSA files}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
