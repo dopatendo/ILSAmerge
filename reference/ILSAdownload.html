@@ -15,7 +15,7 @@ read and accept its terms and conditions to proceed with the download."><meta pr
 
     <a class="navbar-brand me-2" href="../index.html">ILSAmerge</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,10 +27,11 @@ read and accept its terms and conditions to proceed with the download."><meta pr
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Download.html">Download ILSA files</a></li>
-    <li><a class="dropdown-item" href="../articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
-    <li><a class="dropdown-item" href="../articles/Load.html">Load ILSA files</a></li>
-    <li><a class="dropdown-item" href="../articles/Merge.html">Merge ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Rename.html">Rename ILSAmerge files</a></li>
+    <li><a class="dropdown-item" href="../articles/Load.html">Load ILSA files</a></li>
+    <li><a class="dropdown-item" href="../articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
+    <li><a class="dropdown-item" href="../articles/Merge.html">Merge ILSA files</a></li>
+    <li><a class="dropdown-item" href="../articles/Onestep.html">One-step solution</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -89,7 +90,7 @@ check the description of this function.</p></dd>
 
 
 <dt id="arg-outputdir">outputdir<a class="anchor" aria-label="anchor" href="#arg-outputdir"></a></dt>
-<dd><p>the directory where the merged data will be saved.</p></dd>
+<dd><p>the directory where data will be downloaded.</p></dd>
 
 
 <dt id="arg-unzip">unzip<a class="anchor" aria-label="anchor" href="#arg-unzip"></a></dt>
@@ -103,7 +104,7 @@ downloading a file. Default is <code>999</code>.</p></dd>
 
 
 <dt id="arg-quiet">quiet<a class="anchor" aria-label="anchor" href="#arg-quiet"></a></dt>
-<dd><p>a logical value indicating if status of progress should be
+<dd><p>a logical value indicating if progress status should be
 shown. If a study has sub-studies, e.g. 'PISA' 2009 and this is <code>TRUE</code>,
 only the main study will be downloaded.
 Default is <code>FALSE</code>.</p></dd>
@@ -125,7 +126,7 @@ Default is <code>FALSE</code>.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># For example, to download 'RLII' 1991 data:</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Path were files will be saved</span></span></span>
+<span class="r-in"><span><span class="co"># Path where files will be saved</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"ILSAdownload"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"ILSAdownload"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">ILSAmerge</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,10 +43,11 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/Download.html">Download ILSA files</a></li>
-    <li><a class="dropdown-item" href="articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
-    <li><a class="dropdown-item" href="articles/Load.html">Load ILSA files</a></li>
-    <li><a class="dropdown-item" href="articles/Merge.html">Merge ILSA files</a></li>
     <li><a class="dropdown-item" href="articles/Rename.html">Rename ILSAmerge files</a></li>
+    <li><a class="dropdown-item" href="articles/Load.html">Load ILSA files</a></li>
+    <li><a class="dropdown-item" href="articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
+    <li><a class="dropdown-item" href="articles/Merge.html">Merge ILSA files</a></li>
+    <li><a class="dropdown-item" href="articles/Onestep.html">One-step solution</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -93,11 +94,6 @@
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"dopatendo/ILSAmerge"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="merge-files">Merge files<a class="anchor" aria-label="anchor" href="#merge-files"></a>
-</h2>
-<p>For merging ILSA data, we can use <code><a href="reference/ILSAmerge.html">ILSAmerge()</a></code>. For an example see <code><a href="articles/Merge.html">vignette("Merge")</a></code>.</p>
-</div>
-<div class="section level2">
 <h2 id="downloading-files">Downloading files<a class="anchor" aria-label="anchor" href="#downloading-files"></a>
 </h2>
 <p>For downloading ILSA data, we can use <code><a href="reference/ILSAdownload.html">ILSAdownload()</a></code>. For an example see <code><a href="articles/Download.html">vignette("Download")</a></code>.</p>
@@ -111,6 +107,21 @@
 <h2 id="load-data-without-merging">Load data without merging<a class="anchor" aria-label="anchor" href="#load-data-without-merging"></a>
 </h2>
 <p>If we need to load ILSA data but not save it, we can use <code><a href="reference/justload.html">justload()</a></code>. For an example see <code><a href="articles/Load.html">vignette("Load")</a></code>.</p>
+</div>
+<div class="section level2">
+<h2 id="merge-files">Merge files<a class="anchor" aria-label="anchor" href="#merge-files"></a>
+</h2>
+<p>For merging ILSA data, we can use <code><a href="reference/ILSAmerge.html">ILSAmerge()</a></code>. For an example see <code><a href="articles/Merge.html">vignette("Merge")</a></code>.</p>
+</div>
+<div class="section level2">
+<h2 id="rename-files">Rename files<a class="anchor" aria-label="anchor" href="#rename-files"></a>
+</h2>
+<p>For rename ILSA data, we can use <code><a href="reference/ILSArename.html">ILSArename()</a></code>. For an example see <code><a href="articles/Rename.html">vignette("Rename")</a></code>.</p>
+</div>
+<div class="section level2">
+<h2 id="rename-files-1">Rename files<a class="anchor" aria-label="anchor" href="#rename-files-1"></a>
+</h2>
+<p>We can combine all these steps using <code><a href="reference/ILSAready.html">ILSAready()</a></code>. For an example see <code><a href="articles/Onestep.html">vignette("Onestep")</a></code>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -147,7 +158,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=ILSAmerge" class="external-link"><img src="https://www.r-pkg.org/badges/version/ILSAmerge" alt="CRAN"></a></li>
+<li><a href="https://CRAN.R-project.org/package=ILSAmerge" class="external-link"><img src="https://www.r-pkg.org/badges/version/ILSAmerge" alt="CRAN status"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
 <li><a href="https://doi.org/10.32614/CRAN.package.ILSAmerge" class="external-link"><img src="https://img.shields.io/badge/doi-10.32614/CRAN.package.ILSAmerge-green.svg"></a></li>
 </ul>
