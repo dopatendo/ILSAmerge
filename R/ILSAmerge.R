@@ -221,6 +221,20 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
       }else{
         out <- .mergebymatrix(files = erki,verbose = !quiet, couL = couL, couLS = couLS)
       }
+      
+      
+      # Fix IDCNTRY
+      nav <- attr(out$IDCNTRY,"na_values")
+      lbl <- attr(out$IDCNTRY,"labels")
+      vlb <- attr(out$IDCNTRY,"label")
+      
+      
+      out$IDCNTRY <- as.numeric(as.character(out$IDCNTRY))
+      attr(out$IDCNTRY,"label") <- vlb
+      attr(out$IDCNTRY,"na_values") <- nav
+      attr(out$IDCNTRY,"class") <- c("haven_labelled_spss","haven_labelled","vctrs_vctr","double")
+      attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
+      attr(out$IDCNTRY,"labels") <- c(couLS,lbl)
 
       if(filetype%in%"zsav"){
         haven::write_sav(data = out,compress = "zsav",
@@ -448,8 +462,10 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   # if(is.character(out$IDCNTRY)){
   #   out$IDCNTRY <- as.numeric(out$IDCNTRY)
   # }
-  # attr(out$IDCNTRY,'labels') <- as.numeric(couLS)
-  attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(attr(out$IDCNTRY,"na_values")),4),".0")
+  # out$IDCNTRY <- as.numeric(as.character(out$IDCNTRY))
+  # class(out$IDCNTRY) <- c("haven_labelled_spss","haven_labelled","vctrs_vctr","double")
+  # attr(out$IDCNTRY,'labels') <- couLS
+  # attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(attr(out$IDCNTRY,"na_values")),4),".0")
 
   
   # Add country string
@@ -493,7 +509,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     
     # add labels to IDCNTRY
     # attr(outj$IDCNTRY,'labels') <- as.numeric(couLS)
-    attr(outj$IDCNTRY,"format.spss") <- paste0("F",max(nchar(attr(out$IDCNTRY,"na_values")),4),".0")
+    # attr(outj$IDCNTRY,"format.spss") <- paste0("F",max(nchar(attr(out$IDCNTRY,"na_values")),4),".0")
     
     # Add country string
     if(!"IDCNTRY_STR"%in%colnames(outj)){
