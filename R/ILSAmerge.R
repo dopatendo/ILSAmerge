@@ -449,7 +449,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   #   out$IDCNTRY <- as.numeric(out$IDCNTRY)
   # }
   # attr(out$IDCNTRY,'labels') <- as.numeric(couLS)
-  attr(out$IDCNTRY,"format.spss") <- "F4.0"
+  attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(attr(out$IDCNTRY,"na_values")),4),".0")
 
   
   # Add country string
@@ -493,7 +493,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     
     # add labels to IDCNTRY
     # attr(outj$IDCNTRY,'labels') <- as.numeric(couLS)
-    attr(outj$IDCNTRY,"format.spss") <- "F4.0"
+    attr(outj$IDCNTRY,"format.spss") <- paste0("F",max(nchar(attr(out$IDCNTRY,"na_values")),4),".0")
     
     # Add country string
     if(!"IDCNTRY_STR"%in%colnames(outj)){
