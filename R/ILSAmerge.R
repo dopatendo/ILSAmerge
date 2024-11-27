@@ -188,9 +188,10 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   
   
   ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]
+  ILSAcou <- ILSAcou[order(ILSAcou$Name),]
   couL <- as.numeric(ILSAcou$IEAcode)
   names(couL) <- ILSAcou$Name
-  couLS <- sort(couL[ILSAcou$toLabel%in%1])
+  couLS <- (couL[ILSAcou$toLabel%in%1])
   couL <- sort(couL)
   
 
@@ -222,19 +223,15 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
         out <- .mergebymatrix(files = erki,verbose = !quiet, couL = couL, couLS = couLS)
       }
       
-      
       # Fix IDCNTRY
       nav <- attr(out$IDCNTRY,"na_values")
       lbl <- attr(out$IDCNTRY,"labels")
       vlb <- attr(out$IDCNTRY,"label")
-      
-      
-      out$IDCNTRY <- as.numeric(as.character(out$IDCNTRY))
-      attr(out$IDCNTRY,"label") <- vlb
-      attr(out$IDCNTRY,"na_values") <- nav
-      attr(out$IDCNTRY,"class") <- c("haven_labelled_spss","haven_labelled","vctrs_vctr","double")
+      out <- cbindtb(IDCNTRY,out[,-which(colnames(out)=="IDCNTRY")])
       attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
       attr(out$IDCNTRY,"labels") <- c(couLS,lbl)
+      tail(out)
+
 
       if(filetype%in%"zsav"){
         haven::write_sav(data = out,compress = "zsav",
@@ -327,7 +324,7 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     out1 <- haven::read_sav(file = files[whtoload], user_na = TRUE, col_select = NULL,
                             skip = 0, n_max = 0, .name_repair = "unique",
                             encoding = 'latin1')
-    
+
 
   }
   colnames(out1) <- toupper(colnames(out1))
@@ -440,9 +437,25 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
     
   }
   
+  # convert to numeric
+  
   out <- as.data.frame(out)
+  # out=dd
+  whnum <- unlist(lapply(atrs,function(i){
+    "double"%in%i$class
+  }))
+  whnum <- which(whnum)
+  for(j in whnum){
+    newvar <- suppressWarnings(as.double(out[,j]))
+    if(all(is.na(newvar)==is.na(out[,j]))){
+      out[,j] <- newvar
+    }
+    
+  }
+
   
   # REPAIR attributes
+  
   
     class(out) <- class(out1)
     for(h in 1:ncol(out)){
