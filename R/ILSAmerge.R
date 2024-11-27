@@ -227,10 +227,8 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
       nav <- attr(out$IDCNTRY,"na_values")
       lbl <- attr(out$IDCNTRY,"labels")
       vlb <- attr(out$IDCNTRY,"label")
-      out <- cbindtb(IDCNTRY,out[,-which(colnames(out)=="IDCNTRY")])
       attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
       attr(out$IDCNTRY,"labels") <- c(couLS,lbl)
-      tail(out)
 
 
       if(filetype%in%"zsav"){
