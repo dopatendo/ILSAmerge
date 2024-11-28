@@ -1,7 +1,7 @@
 #' Download ILSA data
 #'
 #' Downloads 'SPSS' data from different International Large-Scale Assessments (ILSA).
-#' This functions supports the following ILSA: 'PISA', 'TIMSS', 'TIMSS Advanced', 'PIRLS', 
+#' This functions supports the following ILSA: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 
 #' 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
 #' you will need to decide which data to download, and
 #' read and accept its terms and conditions to proceed with the download.
@@ -15,8 +15,9 @@
 #' @param maxtime a numeric value indicating the maximum time allowed for 
 #' downloading a file. Default is \code{999}.
 #' @param quiet a logical value indicating if progress status should be
-#' shown. If a study has sub-studies, e.g. 'PISA' 2009 and this is \code{TRUE},
-#' only the main study will be downloaded.
+#' shown. 
+#If a study has sub-studies, e.g. 'PISA' 2009 and this is \code{TRUE},
+# only the main study will be downloaded.
 #' Default is \code{FALSE}.
 #' @param agreeLicense a logical value indicating if you agree with
 #' the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
