@@ -10,7 +10,7 @@ Authors@R: c(person(given = "Andrés",
                     person(given = "Andrés", family = "Strello",
                     role = c("ctb"),comment = c(ORCID = "0000-0002-5613-8338")))
 Maintainer: Andrés Christiansen <andres.christiansen@iea-hamburg.de>
-Description: Merges and downloads 'SPSS' data from different International Large-Scale Assessments (ILSA), including: Trends in International Mathematics and Science Study (TIMSS), Progress in International Reading Literacy Study (PIRLS), Programme for International Student Assessment (PISA), and others.
+Description: Merges and downloads 'SPSS' data from different International Large-Scale Assessments (ILSA), including: Trends in International Mathematics and Science Study (TIMSS), Progress in International Reading Literacy Study (PIRLS), and others.
 License: GPL (>= 3.0)
 URL: https://github.com/dopatendo/ILSAmerge, https://dopatendo.github.io/ILSAmerge/
 Imports: haven

@@ -1,3 +1,6 @@
+# ILSAmerge 1.3.2
+- Download files for PISA 2000 to 2018 has been removed. 
+
 # ILSAmerge 1.3.0
 - Added `ILSAready()` and `ILSAreadylocal()` as wrappers for downloading, 
 merging, combining respondents, and renaming.
