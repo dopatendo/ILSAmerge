@@ -1,5 +1,6 @@
 # ILSAmerge 1.3.2
-- Download files for PISA 2000 to 2018 has been removed. 
+- Fixed an issue for saving 'SPSS' files.
+- Download links for PISA 2000 to 2018 have been removed. 
 
 # ILSAmerge 1.3.0
 - Added `ILSAready()` and `ILSAreadylocal()` as wrappers for downloading, 
