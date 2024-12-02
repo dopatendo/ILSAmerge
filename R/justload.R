@@ -142,11 +142,16 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
     if(addcountries){
       
   
+      # Fix IDCNTRY
+      nav <- attr(outj$IDCNTRY,"na_values")
+      lbl <- attr(outj$IDCNTRY,"labels")
+      vlb <- attr(outj$IDCNTRY,"label")
+      attr(outj$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
+      attr(outj$IDCNTRY,"labels") <- c(couLS,lbl)
       
       
-      
-      # add labels to IDCNTRY
-      attr(outj$IDCNTRY,'labels') <- couLS
+      # # add labels to IDCNTRY
+      # attr(outj$IDCNTRY,'labels') <- couLS
       
       # Add country string
       if(!"IDCNTRY_STR"%in%colnames(outj)){

@@ -1,6 +1,8 @@
-# ILSAmerge 1.3.2
+# ILSAmerge 1.3.3
 - Fixed an issue for saving 'SPSS' files.
 - Download links for PISA 2000 to 2018 have been removed. 
+- Added new functions for tibble management: `asthistibble()`,
+`get.atr()`, `get.nas()`, `get.varlab()`, `whichcol()`, and `mistoNAs()`.
 
 # ILSAmerge 1.3.0
 - Added `ILSAready()` and `ILSAreadylocal()` as wrappers for downloading, 

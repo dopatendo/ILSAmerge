@@ -9,6 +9,7 @@ ILSAready(
   study,
   year,
   outputdir = getwd(),
+  filetype = c("rds", "zsav", "sav"),
   MBlistlimit = 200,
   quiet = FALSE,
   agreeLicense = FALSE
@@ -30,6 +31,9 @@ check the description of this function.}
 
 \item{outputdir}{the directory where the merged data will be saved.}
 
+\item{filetype}{a string indicating the type of file to be saved, it can
+be \code{"rds"}, \code{"zsav"}, or \code{"sav"}.}
+
 \item{MBlistlimit}{a numerical value indicating the allowed limit of the
 combined storage of the files of one type for merging through a list.
 Values over the limit will be merged through a matrix, which will be slower
@@ -44,9 +48,6 @@ you will be prompted to agree with it or else data will not be downloaded.
 Default is \code{FALSE}.}
 
 \item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
-
-\item{filetype}{a string indicating the type of file to be saved, it can
-be \code{"rds"}, \code{"zsav"}, or \code{"sav"}.}
 }
 \value{
 Saves merged and renamed ILSA data.
@@ -64,6 +65,6 @@ output <- file.path(tempdir(),"timssadv")
 
 input <- system.file("extdata/timssadv", package = "ILSAmerge")
 
-ILSAreadylocal(inputdir = input, outputdir = output)
+ILSAreadylocal(inputdir = input, outputdir = output, filetype = "zsav")
 
 }

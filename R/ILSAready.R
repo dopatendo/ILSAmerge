@@ -15,7 +15,7 @@
 #' 
 #' input <- system.file("extdata/timssadv", package = "ILSAmerge")
 #' 
-#' ILSAreadylocal(inputdir = input, outputdir = output)
+#' ILSAreadylocal(inputdir = input, outputdir = output, filetype = "zsav")
 #' 
 #' @returns Saves merged and renamed ILSA data.
 #' 
@@ -26,6 +26,7 @@
 #' @rdname ILSAready
 #' @export
 ILSAready <- function(study, year, outputdir = getwd(), 
+                      filetype = c("rds", "zsav", "sav"), 
                       MBlistlimit = 200, quiet = FALSE, 
                       agreeLicense = FALSE){
   # Read external ----
@@ -61,6 +62,10 @@ ILSAready <- function(study, year, outputdir = getwd(),
   
   
   # Checks ----
+  
+  if(min(filetype%in%c("rds", "zsav", "sav"))!=1)
+    stop(c("\nInvalid input for 'filetype'.",
+           "\nIt should be a 'rds', 'zsav', or 'sav'."),call. = FALSE)
   
   ## study
   if(!(is.vector(study)&&is.character(study)&&length(study)==1))
@@ -158,7 +163,7 @@ ILSAready <- function(study, year, outputdir = getwd(),
 
     for(j in 1:length(dirs)){
       .ILSAreadylocal(inputdir = dirs[j], outputdir = ndir, 
-                      quiet = quiet, MBlistlimit = MBlistlimit)
+                      quiet = quiet, MBlistlimit = MBlistlimit,filetype = filetype)
       
     }
   }
