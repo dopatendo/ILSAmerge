@@ -68,7 +68,7 @@ For merging ILSA data, we can use `ILSAmerge()`. For an example see
 For rename ILSA data, we can use `ILSArename()`. For an example see
 `vignette("Rename")`.
 
-## Rename files
+## Download, merge and combine in one step
 
-We can combine all these steps using `ILSAready()`. For an example see
-`vignette("Onestep")`.
+We can also combine all the steps for preparing ILSA data (downloading, merging,
+combining respondents, and renaming) using `ILSAready()`.
