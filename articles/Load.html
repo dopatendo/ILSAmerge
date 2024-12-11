@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ILSAmerge</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,14 +153,26 @@ setting <code>justattributes = TRUE</code>:</p>
 <span><span class="co">## [1] 4</span></span>
 <span></span>
 <span><span class="va">loaded</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="co">## <span style="color: #949494;"># A tibble: 0 × 314</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 314 variables: IDCNTRY &lt;dbl+lbl&gt;, IDSCHOOL &lt;dbl+lbl&gt;, ITLANGC &lt;dbl+lbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   IP1G00A &lt;dbl+lbl&gt;, IP1G00B &lt;dbl+lbl&gt;, IP1G00C &lt;dbl+lbl&gt;, IP1G00D &lt;dbl+lbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   IP1GIAA &lt;dbl+lbl&gt;, IP1GIAB &lt;dbl+lbl&gt;, IP1GIAC &lt;dbl+lbl&gt;, IP1GIAD &lt;dbl+lbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   IP1GIAE &lt;dbl+lbl&gt;, IP1GIAF &lt;dbl+lbl&gt;, IP1GIAG &lt;dbl+lbl&gt;, IP1GIBA &lt;dbl+lbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   IP1GIBB &lt;dbl+lbl&gt;, IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   IP1G01B &lt;dbl+lbl&gt;, IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   IP2G01A1 &lt;dbl+lbl&gt;, IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, …</span></span></span></code></pre></div>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 10 × 314</span></span></span>
+<span><span class="co">##    IDCNTRY             IDSCHOOL ITLANGC      IP1G00A   IP1G00B      IP1G00C     </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl+lb&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>001     53<span style="color: #949494;"> [Arabic]</span>  2<span style="color: #949494;"> [Mid]</span>   3<span style="color: #949494;"> [March]</span>    9<span style="color: #BB0000;"> (NA)</span><span style="color: #949494;"> [Omi…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>002     53<span style="color: #949494;"> [Arabic]</span>  1<span style="color: #949494;"> [Early]</span> 2<span style="color: #949494;"> [February]</span> 3<span style="color: #949494;"> [Late]</span>    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>003     53<span style="color: #949494;"> [Arabic]</span>  1<span style="color: #949494;"> [Early]</span> 2<span style="color: #949494;"> [February]</span> 3<span style="color: #949494;"> [Late]</span>    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>004      1<span style="color: #949494;"> [English]</span> 3<span style="color: #949494;"> [Late]</span>  2<span style="color: #949494;"> [February]</span> 3<span style="color: #949494;"> [Late]</span>    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>005     53<span style="color: #949494;"> [Arabic]</span>  1<span style="color: #949494;"> [Early]</span> 3<span style="color: #949494;"> [March]</span>    3<span style="color: #949494;"> [Late]</span>    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>006     53<span style="color: #949494;"> [Arabic]</span>  2<span style="color: #949494;"> [Mid]</span>   2<span style="color: #949494;"> [February]</span> 2<span style="color: #949494;"> [Mid]</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>007     53<span style="color: #949494;"> [Arabic]</span>  1<span style="color: #949494;"> [Early]</span> 3<span style="color: #949494;"> [March]</span>    3<span style="color: #949494;"> [Late]</span>    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>008     53<span style="color: #949494;"> [Arabic]</span>  1<span style="color: #949494;"> [Early]</span> 3<span style="color: #949494;"> [March]</span>    2<span style="color: #949494;"> [Mid]</span>     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>009     53<span style="color: #949494;"> [Arabic]</span>  2<span style="color: #949494;"> [Mid]</span>   3<span style="color: #949494;"> [March]</span>    1<span style="color: #949494;"> [Early]</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> 784<span style="color: #949494;"> [United Arab E…</span> <span style="text-decoration: underline;">1</span>010     53<span style="color: #949494;"> [Arabic]</span>  2<span style="color: #949494;"> [Mid]</span>   6<span style="color: #949494;"> [June]</span>     3<span style="color: #949494;"> [Late]</span>    </span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 308 more variables: IP1G00D &lt;dbl+lbl&gt;, IP1GIAA &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IP1GIAB &lt;dbl+lbl&gt;, IP1GIAC &lt;dbl+lbl&gt;, IP1GIAD &lt;dbl+lbl&gt;, IP1GIAE &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IP1GIAF &lt;dbl+lbl&gt;, IP1GIAG &lt;dbl+lbl&gt;, IP1GIBA &lt;dbl+lbl&gt;, IP1GIBB &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;, IP1G01B &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;, IP2G01A1 &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, IP1G02B &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IP1G02C &lt;dbl+lbl&gt;, IP1G02D &lt;dbl+lbl&gt;, IP1G02E &lt;dbl+lbl&gt;, …</span></span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
