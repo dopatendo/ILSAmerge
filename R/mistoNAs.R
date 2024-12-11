@@ -21,22 +21,12 @@
 #
 
 mistoNAs <- function(tibble){
-  getnas <- get.nas(tibble)
   
-  unt <- tibble
-  unt <- lapply(1:ncol(unt), function(X) {
-    as.vector(unt[, X, drop = TRUE])
-  })
-  unt <- do.call(cbind.data.frame, unt)
-  colnames(unt) <- colnames(tibble)
+  if(!inherits(tibble, "tbl_df"))
+    stop(c("\nInvalid input for 'tibble'.",
+           "\nIt should be a tibble."),call. = FALSE)
   
-  isna <- matrix(NA,nrow = nrow(unt), ncol = ncol(unt))
-  for(i in 1:ncol(unt)){
-    isna[,i] <- unt[,i]%in%getnas[[i]]
-    
-  }
-  unt[isna] <- NA
-  
-  asthistibble(tibble,unt)
+  tibble[is.na(tibble)] <- NA
+  return(tibble)
   
 }

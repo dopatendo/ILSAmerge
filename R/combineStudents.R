@@ -176,7 +176,7 @@ combineStudents <- function(inputdir = getwd(),
       cat(paste0("Combining student ",i," of ",nrow(bindto),".\n"))
     }
     
-    ach <- readILSA(file.path(inputdir,inpto[i]))
+    ach <- .readILSA(file.path(inputdir,inpto[i]))
     klass <- class(ach)
     ach <- cbind(uID = uID(x = ach, uID = bindto$uID[i]), ach)
     
@@ -187,7 +187,7 @@ combineStudents <- function(inputdir = getwd(),
     ## cbind ----
     j=1
     for(j in 1:length(cb)){
-      bgr <- readILSA(file.path(inputdir,inpfiles[pop%in%cb[j]][1]))
+      bgr <- .readILSA(file.path(inputdir,inpfiles[pop%in%cb[j]][1]))
       uID <- uID(x = bgr, uID = bindto$uID[i])
       bgr <- bgr[,-which(colnames(bgr)%in%intersect(colnames(ach),colnames(bgr)))]
       bgr <- cbind(uID, bgr)
@@ -202,11 +202,11 @@ combineStudents <- function(inputdir = getwd(),
     ## rbind ----
     
     if(length(rb)>0){
-      one <- readILSA(file.path(inputdir,inpfiles[pop%in%rb[1]][1]))
+      one <- .readILSA(file.path(inputdir,inpfiles[pop%in%rb[1]][1]))
       
       if(length(rb)>1){
         for(j in 2:length(rb)){
-          two <- readILSA(file.path(inputdir,inpfiles[pop%in%rb[j]][1]))
+          two <- .readILSA(file.path(inputdir,inpfiles[pop%in%rb[j]][1]))
           com <- intersect(colnames(one),colnames(two))
           nc1 <- setdiff(colnames(one),colnames(two))
           nc2 <- setdiff(colnames(two),colnames(one))

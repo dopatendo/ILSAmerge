@@ -13,6 +13,7 @@
 #'
 #' @returns Saves an \code{.sps} file with the 'SPSS' syntax for merging the
 #' desired files.
+#' 
 #'
 #' @examples
 #' # Path where raw 'SPSS' files are

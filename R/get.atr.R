@@ -37,6 +37,20 @@
 #' @rdname get.atr
 #' @export
 get.atr <- function(tibble, which, NULLasNA = TRUE, exact = FALSE){
+  
+  # Checks ------------------------------------------------------------------
+  
+  if(!inherits(tibble, "tbl_df"))
+    stop(c("\nInvalid input for 'tibble'.",
+           "\nIt should be a tibble."),call. = FALSE)
+  
+  if(!(isTRUE(NULLasNA)|isFALSE(NULLasNA)))
+    stop(c("\nInvalid input for 'NULLasNA'.",
+           "\nIt should be a logical value."),call. = FALSE)
+
+# Process & Output --------------------------------------------------------
+
+  
   out <- lapply(1:ncol(tibble), function(i){
     atr <- attr(tibble[,i,drop = TRUE],which, exact = exact)
     
@@ -54,6 +68,20 @@ get.atr <- function(tibble, which, NULLasNA = TRUE, exact = FALSE){
 #' @rdname get.atr
 #' @export
 get.nas <- function(tibble, aslist = TRUE){
+  
+  # Checks ------------------------------------------------------------------
+  
+  if(!inherits(tibble, "tbl_df"))
+    stop(c("\nInvalid input for 'tibble'.",
+           "\nIt should be a tibble."),call. = FALSE)
+  
+  if(!(isTRUE(aslist)|isFALSE(aslist)))
+    stop(c("\nInvalid input for 'aslist'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
+  
+  # Process & Output --------------------------------------------------------
+  
   nav <- get.atr(tibble,"na_values",NULLasNA = FALSE)
   nar <- get.atr(tibble,"na_range",NULLasNA = FALSE)
   nar <- lapply(nar,function(i) if(is.null(i)){NULL}else{min(i):max(i)})
@@ -76,6 +104,17 @@ get.nas <- function(tibble, aslist = TRUE){
 #' @rdname get.atr
 #' @export
 get.varlab <- function(tibble){
+  
+
+# Checks ------------------------------------------------------------------
+
+  if(!inherits(tibble, "tbl_df"))
+    stop(c("\nInvalid input for 'tibble'.",
+           "\nIt should be a tibble."),call. = FALSE)
+  
+  
+  # Process & Output --------------------------------------------------------
+  
   out <- unlist(get.atr(tibble,"label",NULLasNA = TRUE))
   out <- cbind.data.frame(name = names(out),
                           varlab = out)

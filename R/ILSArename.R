@@ -13,6 +13,7 @@
 #' If \code{FALSE}, files will be copied with the new names. Default is \code{TRUE}.
 #'
 #' @returns Renames or copies files produced by \code{\link{ILSAmerge}}.
+#' 
 #'
 #' @examples
 #' 

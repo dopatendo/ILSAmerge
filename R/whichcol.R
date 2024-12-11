@@ -25,6 +25,20 @@
 #
 
 whichcol <- function(pattern, tibble, label = TRUE, ignore.case = TRUE, ...){
+  
+  
+  # Checks ------------------------------------------------------------------
+  
+  if(!inherits(tibble, "tbl_df"))
+    stop(c("\nInvalid input for 'tibble'.",
+           "\nIt should be a tibble."),call. = FALSE)
+  
+  if(!(isTRUE(label)|isFALSE(label)))
+    stop(c("\nInvalid input for 'label'.",
+           "\nIt should be a logical value."),call. = FALSE)
+  
+  # Process & Output --------------------------------------------------------
+  
  
   cols <- unlist(get.atr(tibble, "label", NULLasNA = TRUE))
   

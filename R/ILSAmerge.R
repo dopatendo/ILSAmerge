@@ -34,6 +34,8 @@
 #' shown. Default is \code{FALSE}.
 #'
 #' @returns Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
+#' 
+#' @keywords ILSA
 #'
 #' @examples
 #' # Path where raw 'SPSS' files are

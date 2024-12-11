@@ -73,3 +73,4 @@ output <- file.path(tempdir(),"ILSAmerge")
 ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
 
 }
+\keyword{ILSA}

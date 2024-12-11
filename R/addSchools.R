@@ -181,7 +181,7 @@ addSchools <- function(inputdir = getwd(),
           cat(paste0("Combined students found for ",bindto$Pop[i],".\n"))
         }
         
-        addto <- readILSA(file.path(outputdir,srch))
+        addto <- .readILSA(file.path(outputdir,srch))
       }else{
         if(!all(tocom%in%pop))
           stop(paste0("\nNo ILSAmerge() student files for combining found in 'inputdir'.",
@@ -207,7 +207,7 @@ addSchools <- function(inputdir = getwd(),
     # Not combine students ----------------------------------------------------
     
     if(length(tocom)==0){
-      addto <- readILSA(file.path(inputdir,inpto[i]))
+      addto <- .readILSA(file.path(inputdir,inpto[i]))
     }
     
     
@@ -218,7 +218,7 @@ addSchools <- function(inputdir = getwd(),
     }
     
     klass <- class(addto)
-    schoo <- readILSA(file.path(inputdir,inpfiles[pop%in%bindto$SCHcbind[i]][1]))
+    schoo <- .readILSA(file.path(inputdir,inpfiles[pop%in%bindto$SCHcbind[i]][1]))
     uids <- ILSApops$uID[ILSApops$Pop%in%bindto$SCHcbind[i]]
     addto <- cbind(uIDs = uID(x = addto, uID = uids), addto)
     uIDs <- uID(x = schoo, uID = uids)

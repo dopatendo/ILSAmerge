@@ -44,7 +44,7 @@ input <- system.file("extdata/reds", package = "ILSAmerge")
 emptylist <- justload(inputdir = input, population = "BCGV1", justattributes = TRUE)
 
 # Load complete data
-fullist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
+fulllist <- justload(inputdir = input, population = "BCGV1", justattributes = FALSE)
 
 # Load complete data and add country labels
 withcou <- justload(inputdir = input, population = "BCGV1", addcountries = TRUE)

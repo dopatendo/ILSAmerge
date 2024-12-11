@@ -9,7 +9,7 @@ asthistibble(tibble, x)
 \arguments{
 \item{tibble}{a tibble object.}
 
-\item{x}{a data frame.}
+\item{x}{a data frame with the same columns of \code{tibble}.}
 }
 \value{
 A tibble.

@@ -3,7 +3,7 @@
 #' Converts a data frame into a tibble copying all attributes.
 #' 
 #' @param tibble a tibble object.
-#' @param x a data frame.
+#' @param x a data frame with the same columns of \code{tibble}.
 #'
 #' @returns A tibble.
 #' 
@@ -35,6 +35,15 @@
 
 asthistibble <- function(tibble,x){
   
+  if(!inherits(tibble, "tbl_df"))
+    stop(c("\nInvalid input for 'tibble'.",
+           "\nIt should be a tibble."),call. = FALSE)
+  
+  if(!(inherits(x,"data.frame")&length(class(x))==1))
+    stop(c("\nInvalid input for 'x'.",
+           "\nIt should be a plain data frame."),call. = FALSE)
+  
+  
   if(ncol(x)!=ncol(tibble))
     stop("Invalid input, 'tibble' and 'x' should have the same number of columns.",call. = FALSE)
   
@@ -60,9 +69,6 @@ asthistibble <- function(tibble,x){
   
   out
 }
-
-
-
 
 
 
