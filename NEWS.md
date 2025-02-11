@@ -3,12 +3,14 @@
 - Added new functions for tibble management: `asthistibble()`,
 `get.atr()`, `get.nas()`, `get.varlab()`, `mistoNAs()`, `untibble()`, and `whichcol()`.
 
+### Remaining issues
+- No unzip of PISA and TALIS downloads.
+
+
 # ILSAmerge 1.3.0
 - Added `ILSAready()` and `ILSAreadylocal()` as wrappers for downloading, 
 merging, combining respondents, and renaming.
 
-### Remaining issues
-- No unzip of PISA and TALIS downloads.
 
 # ILSAmerge 1.2.5
 - Added `combineStudents()` for combining achievement and  background questionnaires.
