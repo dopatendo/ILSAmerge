@@ -42,5 +42,5 @@
 "TALIS","2013","https://www.oecd.org/en/data/datasets/talis-2013-database.html","https://webfs.oecd.org/talis/SPSS_2013_international.zip","1","1","0","0","0"
 "TALIS","2018","https://www.oecd.org/en/data/datasets/talis-2018-database.html","https://webfs.oecd.org/talis/SPSS_2018_international.zip","1","1","0","0","0"
 "Other","-","-","https://www.iea.nl/sites/default/files/2019-05/Disclaimer%20and%20License%20Agreement.pdf","0","0","0","0","0"
-"TIMSS","2023","https://www.iea.nl/data-tools/repository/timss","https://www.iea.nl/sites/default/files/data-repository/TIMSS/TIMSS2023/TIMSS2023_IDB_SPSS_G4.zip","0","1","0","0","0"
-"TIMSS","2023","https://www.iea.nl/data-tools/repository/timss","https://www.iea.nl/sites/default/files/data-repository/TIMSS/TIMSS2023/TIMSS2023_IDB_SPSS_G8.zip","0","1","0","0","0"
+"TIMSS","2023","https://www.iea.nl/data-tools/repository/timss","https://www.iea.nl/sites/default/files/data-repository/TIMSS/TIMSS2023/TIMSS2023_IDB_SPSS_G4.zip","0","1","1","1","1"
+"TIMSS","2023","https://www.iea.nl/data-tools/repository/timss","https://www.iea.nl/sites/default/files/data-repository/TIMSS/TIMSS2023/TIMSS2023_IDB_SPSS_G8.zip","0","1","1","1","1"
