@@ -43,7 +43,7 @@ readILSA <- function(file, mistoNAs = FALSE, untibble = FALSE){
            "\nFile does not exist."),call. = FALSE)
   
   ext <- tolower(substring(file,max(gregexpr("\\.",file)[[1]])+1))
-  if(!ext%in%c("rds","sav",".zsav"))
+  if(!ext%in%c("rds","sav","zsav"))
     stop(c("\nInvalid input for 'file'.",
            "\nFile extension should be 'rds', 'sav', or 'zsav'."),call. = FALSE)
   
@@ -72,7 +72,7 @@ readILSA <- function(file, mistoNAs = FALSE, untibble = FALSE){
 }
 
 
-.readILSA <- function(x){
+.readILSA <- function(x,n_max = Inf){
   ext <- tolower(substring(x,max(gregexpr("\\.",x)[[1]])+1))
   
 
@@ -86,7 +86,7 @@ readILSA <- function(file, mistoNAs = FALSE, untibble = FALSE){
                                 user_na = TRUE,
                                 col_select = NULL,
                                 skip = 0,
-                                n_max = Inf,
+                                n_max = n_max,
                                 .name_repair = "unique"),
                silent = TRUE)
     
@@ -95,7 +95,7 @@ readILSA <- function(file, mistoNAs = FALSE, untibble = FALSE){
                              user_na = TRUE,
                              col_select = NULL,
                              skip = 0,
-                             n_max = Inf,
+                             n_max = n_max,
                              .name_repair = "unique",
                              encoding = "latin1")
     }

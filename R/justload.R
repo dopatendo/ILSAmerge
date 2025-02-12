@@ -141,7 +141,12 @@ justload <- function(inputdir = getwd(), population, justattributes = FALSE,
     #                           encoding = 'latin1')
     # }
     
-    outj <- .readILSA(x = erki[j])
+
+      outj <- .readILSA(x = erki[j],n_max = ifelse(justattributes, 0, Inf))
+
+  
+    
+    
     
     
     if(addcountries){

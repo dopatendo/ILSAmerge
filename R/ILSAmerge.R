@@ -224,16 +224,22 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
         out <- .mergebymatrix(files = erki,verbose = !quiet, couL = couL, couLS = couLS)
       }
       
+
       # Fix IDCNTRY
       nav <- attr(out$IDCNTRY,"na_values")
       lbl <- attr(out$IDCNTRY,"labels")
       vlb <- attr(out$IDCNTRY,"label")
-      attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
-      attr(out$IDCNTRY,"labels") <- c(couLS,lbl)
+     
       
       adcl <- c("haven_labelled_spss","haven_labelled","vctrs_vctr")
       clid <- class(out$IDCNTRY)
+      
+      out$IDCNTRY <- as.numeric(as.vector(out$IDCNTRY))
+      attr(out$IDCNTRY,"format.spss") <- paste0("F",max(nchar(c(nav,lbl,couLS))),".0")
+      attr(out$IDCNTRY,"labels") <- c(couLS,lbl)
       class(out$IDCNTRY) <- c(setdiff(adcl,clid),clid)
+      
+      # 
 
 
       if(filetype%in%"zsav"){
