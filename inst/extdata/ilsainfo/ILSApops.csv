@@ -290,3 +290,6 @@
 "TIMSS","-","2023","8","BSTM8","TIMSS_2023_G8","TIMSS_2023_G8_link","link","IDCNTRY;IDSTUD;IDLINK","-","-","-"
 "TIMSS","-","2023","8","BTMM8","TIMSS_2023_G8","TIMSS_2023_G8_teacher_math","teacher","IDCNTRY;IDTEACH;IDLINK","-","-","BCGM8"
 "TIMSS","-","2023","8","BTSM8","TIMSS_2023_G8","TIMSS_2023_G8_teacher_science","teacher","IDCNTRY;IDTEACH;IDLINK","-","-","BCGM8"
+"ICILS","-","2023","-","BCGI3","ICILS_2023","ICILS_2023_school","school","IDCNTRY;IDSCHOOL","-","-","-"
+"ICILS","-","2023","-","BSGI3","ICILS_2023","ICILS_2023_student","student","IDCNTRY;IDSTUD","-","-","BCGI3"
+"ICILS","-","2023","-","BTGI3","ICILS_2023","ICILS_2023_teacher","teacher","IDCNTRY;IDTEACH","-","-","BCGI3"
