@@ -1,10 +1,16 @@
+# ILSAmerge 1.3.6
+- Added support for TIMSS 2023.
+- Fixed bug in `justload()`.
+- Fixed bug in `readILSA()`.
+
+### Remaining issues
+- No unzip of PISA and TALIS downloads.
+
 # ILSAmerge 1.3.5
 - Fixed an issue for saving 'SPSS' files.
 - Added new functions for tibble management: `asthistibble()`,
 `get.atr()`, `get.nas()`, `get.varlab()`, `mistoNAs()`, `untibble()`, and `whichcol()`.
 
-### Remaining issues
-- No unzip of PISA and TALIS downloads.
 
 
 # ILSAmerge 1.3.0
