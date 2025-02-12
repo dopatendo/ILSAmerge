@@ -57,7 +57,9 @@ availableILSA <- function(print = TRUE,
 
   
   if(FOR=="download"){
-    ilsas <- unique(ILSAlinks[,1:2])
+    ilsas <- ILSAlinks[ILSAlinks$ILSAdownload%in%1,]
+    
+    ilsas <- unique(ilsas[,1:2])
     ilsas <- ilsas[!ilsas$Name%in%"Other",]
   }
   
