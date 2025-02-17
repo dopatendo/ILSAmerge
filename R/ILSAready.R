@@ -68,6 +68,8 @@ ILSAready <- function(study, year, outputdir = getwd(),
     stop(c("\nInvalid input for 'filetype'.",
            "\nIt should be a 'rds', 'zsav', or 'sav'."),call. = FALSE)
   
+  filetype = match.arg(filetype, c("rds", "zsav", "sav"))  
+  
   ## study
   if(!(is.vector(study)&&is.character(study)&&length(study)==1))
     stop("\nInvalid input for 'study'.\nIt should be a character value.",call. = FALSE)
@@ -241,8 +243,14 @@ filetype = match.arg(filetype, c("rds", "zsav", "sav"))
   try(.addSchools(inputdir = outputdir,
                                    inpfiles = inf,
                                    outputdir = outputdir,
-                                   quiet = quiet, 
+                                   quiet = quiet,
                                    save = TRUE),silent = TRUE)
+  
+  # .addSchools(inputdir = outputdir,
+  #                 inpfiles = inf,
+  #                 outputdir = outputdir,
+  #                 quiet = quiet, 
+  #                 save = TRUE)
   
   # Rename ------------------------------------------------------------------
   

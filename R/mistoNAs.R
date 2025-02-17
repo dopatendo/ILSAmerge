@@ -22,6 +22,11 @@
 
 mistoNAs <- function(tibble){
   
+  # requireNamespace(haven)
+  # library(haven)
+  
+  try(haven::print_labels(),silent = TRUE)
+  
   if(!inherits(tibble, "tbl_df"))
     stop(c("\nInvalid input for 'tibble'.",
            "\nIt should be a tibble."),call. = FALSE)

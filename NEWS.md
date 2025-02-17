@@ -1,3 +1,7 @@
+# ILSAmerge 1.3.7
+- Solved an issue with `mistoNAs()` when haven was not loaded.
+
+
 # ILSAmerge 1.3.6
 - Added support for TIMSS 2023.
 - Added support for ICILS 2020 Teacher Panel.
