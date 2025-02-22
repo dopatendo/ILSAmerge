@@ -24,6 +24,7 @@ mistoNAs <- function(tibble){
   
   # requireNamespace(haven)
   # library(haven)
+  # tibble = data[,c(1:224,226:300)]
   
   try(haven::print_labels(),silent = TRUE)
   

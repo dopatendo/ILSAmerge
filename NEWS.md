@@ -1,5 +1,6 @@
 # ILSAmerge 1.3.7
 - Solved an issue with `mistoNAs()` when haven was not loaded.
+- Solved an issue for weird behavior of `mistoNAs()` with ICILS 2013.
 - Solved an issue with `ILSAready()` when filetype is not declared.
 
 

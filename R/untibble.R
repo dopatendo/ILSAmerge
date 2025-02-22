@@ -67,13 +67,20 @@ untibble <- function(tibble, mistoNAs = FALSE){
 
 .untibble <- function(tibble, mistoNAs = FALSE){
   
-  if(mistoNAs){tibble <- mistoNAs(tibble)}
-  
-  tibble <- as.data.frame(tibble)
+
+  otibble <- as.data.frame(tibble)
   for(i in 1:ncol(tibble)){
-    tibble[,i] <- as.vector(tibble[,i,drop = TRUE])
+    otibble[,i] <- as.vector(otibble[,i,drop = TRUE])
   }
-  return(tibble)
+  
+  if(mistoNAs){
+    
+    otibble[is.na(tibble)] <- NA
+    
+  }
+  
+  
+  return(otibble)
   
 }
 
