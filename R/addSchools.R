@@ -225,7 +225,7 @@ addSchools <- function(inputdir = getwd(),
     schoo <- schoo[,-which(colnames(schoo)%in%intersect(colnames(addto),colnames(schoo)))]
     schoo <- cbind(uIDs, schoo)
     
-    addto <- merge(addto,schoo,by = "uIDs",all = TRUE,sort = FALSE)
+    addto <- merge(addto,schoo,by = "uIDs",all.x = TRUE,sort = FALSE)
     
     
     addto <- addto[,-1]
