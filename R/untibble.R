@@ -75,6 +75,8 @@ untibble <- function(tibble, mistoNAs = FALSE){
   
   if(mistoNAs){
     
+    try(haven::print_labels(),silent = TRUE)
+    
     otibble[is.na(tibble)] <- NA
     
   }
