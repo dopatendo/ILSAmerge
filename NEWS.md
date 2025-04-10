@@ -1,7 +1,9 @@
-# ILSAmerge 1.3.7
+# ILSAmerge 1.3.8
 - Solved an issue with `mistoNAs()` when haven was not loaded.
 - Solved an issue for weird behavior of `mistoNAs()` with ICILS 2013.
 - Solved an issue with `ILSAready()` when filetype is not declared.
+- Fixed a bug in `untibble()`.
+- Fixed a bug in `addSchools()`.
 
 
 # ILSAmerge 1.3.6
