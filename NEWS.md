@@ -1,3 +1,6 @@
+# ILSAmerge 1.3.8-1
+- Added support for ICCS 2022.
+
 # ILSAmerge 1.3.8
 - Solved an issue with `mistoNAs()` when haven was not loaded.
 - Solved an issue for weird behavior of `mistoNAs()` with ICILS 2013.
