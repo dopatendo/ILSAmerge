@@ -29,7 +29,7 @@
 ILSAready <- function(study, year, outputdir = getwd(), 
                       filetype = c("rds", "zsav", "sav"), 
                       MBlistlimit = 200, quiet = FALSE, 
-                      agreeLicense = FALSE){
+                      agreeLicense = FALSE, maxtime = 999){
   # Read external ----
   
   where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
@@ -132,7 +132,7 @@ ILSAready <- function(study, year, outputdir = getwd(),
   
   
   ILSAdownload(study = study, year = year, outputdir = outputdir, unzip = TRUE,
-               maxtime = Inf, quiet = quiet, agreeLicense = agreeLicense)
+               maxtime = maxtime, quiet = quiet, agreeLicense = agreeLicense)
   
   
   

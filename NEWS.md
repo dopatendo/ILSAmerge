@@ -1,3 +1,6 @@
+# ILSAstats 1.3.802
+- Added maxtime argument to `ILSAready()`.
+
 # ILSAmerge 1.3.8-1
 - Added support for ICCS 2022.
 
