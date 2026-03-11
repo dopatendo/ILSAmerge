@@ -2,7 +2,7 @@
 #'
 #' Downloads 'SPSS' data from different International Large-Scale Assessments (ILSA).
 #' This functions supports the following ILSA: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 
-#' 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
+#' 'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
 #' you will need to decide which data to download, and
 #' read and accept its terms and conditions to proceed with the download.
 #'
@@ -126,7 +126,7 @@ ILSAdownload <- function(study, year, outputdir = getwd(),
     inst <- "OECD"
   
   
-  if(STUDY%in%c('CIVED', 'ICCS', 'ICILS', 'PIRLS', 'REDS', 'RLII', 'SITES', 'TIMSS', 'TIMSSADVANCED'))
+  if(STUDY%in%c('CIVED', 'ICCS', 'ICILS', 'LANA','PIRLS', 'REDS', 'RLII', 'SITES', 'TIMSS', 'TIMSSADVANCED'))
     inst <- "IEA"
   
   if(is.null(inst))

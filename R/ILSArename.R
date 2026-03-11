@@ -3,7 +3,7 @@
 #' Renames files produced by \code{\link{ILSAmerge}} from name codes to comprehensible names 
 #' including the study name, year and respondent.
 #' This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
-#' 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
+#' 'PIRLS', 'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 #' 
 #' @inheritParams ILSAmerge
 #' @param codeTOname a logical value indicating if files should be renamed from

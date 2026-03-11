@@ -1,7 +1,7 @@
 #' Loading ILSA data into a list
 #'
 #' Load 'SPSS' data from different International Large-Scale Assessments (ILSA),
-#' including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII',
+#' including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII',
 #' and 'SITES' (2006) into a list.
 #'
 #' @inheritParams ILSAmerge
