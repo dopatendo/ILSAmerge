@@ -12,7 +12,8 @@ ILSAready(
   filetype = c("rds", "zsav", "sav"),
   MBlistlimit = 200,
   quiet = FALSE,
-  agreeLicense = FALSE
+  agreeLicense = FALSE,
+  maxtime = 999
 )
 
 ILSAreadylocal(
@@ -46,6 +47,9 @@ shown. Default is \code{FALSE}.}
 the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
 you will be prompted to agree with it or else data will not be downloaded.
 Default is \code{FALSE}.}
+
+\item{maxtime}{a numeric value indicating the maximum time allowed for 
+downloading a file. Default is \code{999}.}
 
 \item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
 }
