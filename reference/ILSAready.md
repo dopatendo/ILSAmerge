@@ -128,5 +128,5 @@ ILSAreadylocal(inputdir = input, outputdir = output, filetype = "zsav")
 #> Adding schools took 0 seconds or 0 minutes.
 #> 3  ILSAmerge() file(s) found.
 #> 3  ILSAmerge() file(s) renamed.
-#> Preparing data took 1 seconds or 0.01 minutes.
+#> Preparing data took 1 seconds or 0.02 minutes.
 ```
