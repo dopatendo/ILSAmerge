@@ -2,8 +2,8 @@
 
 Merges 'SPSS' data from different International Large-Scale Assessments
 (ILSA). This function has been tested to behave correctly for: 'TIMSS',
-'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS', 'RLII', and
-'SITES' (2006).
+'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'LANA', CIVED', 'REDS',
+'RLII', and 'SITES' (2006).
 
 ## Usage
 

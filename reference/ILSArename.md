@@ -4,8 +4,8 @@ Renames files produced by
 [`ILSAmerge`](https://dopatendo.github.io/ILSAmerge/reference/ILSAmerge.md)
 from name codes to comprehensible names including the study name, year
 and respondent. This function has been tested to behave correctly for:
-'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'CIVED', 'REDS',
-'RLII', and 'SITES' (2006).
+'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'LANA', 'CIVED',
+'REDS', 'RLII', and 'SITES' (2006).
 
 ## Usage
 

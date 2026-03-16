@@ -2,7 +2,7 @@
 
 Load 'SPSS' data from different International Large-Scale Assessments
 (ILSA), including: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS',
-'CIVED', 'REDS', 'RLII', and 'SITES' (2006) into a list.
+'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006) into a list.
 
 ## Usage
 
