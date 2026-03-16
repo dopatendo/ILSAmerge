@@ -1,7 +1,7 @@
 Package: ILSAmerge
 Type: Package
-Title: Merge and Download International Large-Scale Assessments (ILSA) Data
-Version: 1.4.0
+Title: Merge and Dowload International Large-Scale Assessments (ILSA) Data
+Version: 1.4.1
 Authors@R: c(person(given = "Andrés",
                     family = "Christiansen",
                     role = c("aut", "cre"),
