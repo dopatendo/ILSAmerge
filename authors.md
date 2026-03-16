@@ -13,14 +13,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/dopatendo/ILSAmerge/blob/main/DESCRIPTION)
 
-Christiansen A (2026). *ILSAmerge: Merge and Download International
-Large-Scale Assessments (ILSA) Data*. R package version 1.4.0,
+Christiansen A (2026). *ILSAmerge: Merge and Dowload International
+Large-Scale Assessments (ILSA) Data*. R package version 1.4.1,
 <https://github.com/dopatendo/ILSAmerge>.
 
     @Manual{,
-      title = {ILSAmerge: Merge and Download International Large-Scale Assessments (ILSA) Data},
+      title = {ILSAmerge: Merge and Dowload International Large-Scale Assessments (ILSA) Data},
       author = {Andrés Christiansen},
       year = {2026},
-      note = {R package version 1.4.0},
+      note = {R package version 1.4.1},
       url = {https://github.com/dopatendo/ILSAmerge},
     }

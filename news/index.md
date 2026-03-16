@@ -1,5 +1,9 @@
 # Changelog
 
+## ILSAmerge 1.4.1
+
+- Added support for TIMSS Longitudinal 2023.
+
 ## ILSAmerge 1.4.0
 
 CRAN release: 2026-03-11
