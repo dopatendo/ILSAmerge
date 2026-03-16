@@ -126,7 +126,7 @@ ILSAdownload <- function(study, year, outputdir = getwd(),
     inst <- "OECD"
   
   
-  if(STUDY%in%c('CIVED', 'ICCS', 'ICILS', 'LANA','PIRLS', 'REDS', 'RLII', 'SITES', 'TIMSS', 'TIMSSADVANCED'))
+  if(STUDY%in%c('CIVED', 'ICCS', 'ICILS', 'LANA','PIRLS', 'REDS', 'RLII', 'SITES', 'TIMSS', 'TIMSSADVANCED','TIMSSLONG'))
     inst <- "IEA"
   
   if(is.null(inst))

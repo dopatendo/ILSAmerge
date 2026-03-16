@@ -2,7 +2,7 @@
 - Added support for TIMSS Longitudinal 2023.
 
 # ILSAmerge 1.4.0
-- Added support for LANA 2023.
+- Added support for LaNA 2023.
 - Added maxtime argument to `ILSAready()`.
 - Added support for ICCS 2022.
 
