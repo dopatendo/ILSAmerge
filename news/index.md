@@ -8,7 +8,7 @@
 
 CRAN release: 2026-03-11
 
-- Added support for LANA 2023.
+- Added support for LaNA 2023.
 - Added maxtime argument to
   [`ILSAready()`](https://dopatendo.github.io/ILSAmerge/reference/ILSAready.md).
 - Added support for ICCS 2022.

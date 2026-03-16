@@ -21,11 +21,11 @@ ILSAready(study = "RLII", year = 1991,outputdir = output, agreeLicense = TRUE)
 ## Merging dataset 7 of 9.
 ## Merging dataset 8 of 9.
 ## Merging dataset 9 of 9.
-## Merging ASCT1 took 3 seconds or 0.05 minutes.
-## Merging took 3 seconds or 0.05 minutes.
+## Merging ASCT1 took 3 seconds or 0.06 minutes.
+## Merging took 3 seconds or 0.06 minutes.
 ## 1  ILSAmerge() file(s) found.
 ## 1  ILSAmerge() file(s) renamed.
-## Downloading and preparing data took 6 seconds or 0.1 minutes.
+## Downloading and preparing data took 8 seconds or 0.13 minutes.
 ```
 
 Also if data is already downloaded we can use
@@ -60,7 +60,7 @@ ILSAreadylocal(inputdir = input, outputdir = output)
 ## Merging dataset 4 of 5.
 ## Merging dataset 5 of 5.
 ## Merging MSGM1 took 0 seconds or 0 minutes.
-## Merging took 0 seconds or 0 minutes.
+## Merging took 0 seconds or 0.01 minutes.
 ## 2  ILSAmerge()/ILSArename() student file(s) found. Combining into 1 file(s).
 ## Combining student 1 of 1.
 ## Combining students took 0 seconds or 0 minutes.
@@ -70,5 +70,5 @@ ILSAreadylocal(inputdir = input, outputdir = output)
 ## Adding schools took 0 seconds or 0 minutes.
 ## 3  ILSAmerge() file(s) found.
 ## 3  ILSAmerge() file(s) renamed.
-## Preparing data took 0 seconds or 0.01 minutes.
+## Preparing data took 1 seconds or 0.01 minutes.
 ```

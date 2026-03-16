@@ -74,7 +74,7 @@ ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
 ## Merging dataset 2 of 4.
 ## Merging dataset 3 of 4.
 ## Merging dataset 4 of 4.
-## Merging BCGV1 took 0 seconds or 0 minutes.
+## Merging BCGV1 took 0 seconds or 0.01 minutes.
 ## Merging BSGV1. Type 2 of 3.
 ## Merging dataset 1 of 4.
 ## Merging dataset 2 of 4.
@@ -87,7 +87,7 @@ ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
 ## Merging dataset 3 of 4.
 ## Merging dataset 4 of 4.
 ## Merging BTGV1 took 0 seconds or 0 minutes.
-## Merging took 0 seconds or 0.01 minutes.
+## Merging took 1 seconds or 0.01 minutes.
 ```
 
 ## Merging between respondents
