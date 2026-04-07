@@ -53,10 +53,10 @@ see `vignette("Download")`.
 For identifying populations within a study, we can use
 `ILSAfiles.info()`. For an example see `vignette("IndentifyILSAfiles")`.
 
-## Load data without merging
+## Load and prepare data for analysis
 
-If we need to load ILSA data but not save it, we can use `justload()`.
-For an example see `vignette("Load")`.
+If we need to load or prepare ILSA data, we can use `justload()`,
+`readILSA()`, and `untibble()`. For an example see `vignette("Load")`.
 
 ## Merge files
 
@@ -70,5 +70,5 @@ For rename ILSA data, we can use `ILSArename()`. For an example see
 
 ## Download, merge and combine in one step
 
-We can also combine all the steps for preparing ILSA data (downloading, merging,
-combining respondents, and renaming) using `ILSAready()`.
+We can also combine all the steps for preparing ILSA data (downloading,
+merging, combining respondents, and renaming) using `ILSAready()`.
