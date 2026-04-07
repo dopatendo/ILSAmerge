@@ -1,10 +1,10 @@
 url: https://dopatendo.github.io/ILSAmerge/
-  template:
+template:
   bootstrap: 5
-light-switch: true
+  light-switch: true
 articles:
-  - title: Articles
-navbar: ~
+- title: Articles
+  navbar: ~
   contents:
   - Download
   - Rename
@@ -12,4 +12,3 @@ navbar: ~
   - IdentifyILSAfiles
   - Merge
   - Onestep
-

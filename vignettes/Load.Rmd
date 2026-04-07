@@ -2,7 +2,7 @@
 title: "Load and prepare ILSA files"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Load ILSA files}
+  %\VignetteIndexEntry{Load and prepare ILSA files}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -64,7 +64,7 @@ length(loaded)
 loaded[[1]]
 ```
 
-## Read a single country or a merged file
+## Read a single file
 
 We can also read any SPSS file or any file produced by `ILSAmerge()` by using `readILSA()`.
 For example, to read the student questionnaire of Burkina Faso in REDS 2021:
