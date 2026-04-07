@@ -6,10 +6,10 @@ articles:
   - title: Articles
 navbar: ~
   contents:
-   - Download
-   - Rename
-   - Load
-   - IdentifyILSAfiles
-   - Merge
-   - Onestep
+  - Download
+  - Rename
+  - Load
+  - IdentifyILSAfiles
+  - Merge
+  - Onestep
 
