@@ -95,7 +95,7 @@ stu
 
 ## Remove tibble attributes
 
-As we can see, `bfa`, and `stu` are both tibbles produced by package `haven`. Nonetheless, this type of objects can produce some errors while using other packages for analysis. Therefore, we should always create another object that is a simple data frame so we can treat directly with the numeric data, always trying also to remove all labeled missings. For this, we use `untibble()`:
+As we can see, `bfa`, and `stu` are both tibbles produced by package `haven`. Nonetheless, this type of objects can produce some errors while using other packages for analysis. Therefore, we should always create another object that is a simple data frame so we can treat directly with the numeric data, always trying also to remove all labeled missing values. For this, we use `untibble()`:
 
 ```{r}
 
