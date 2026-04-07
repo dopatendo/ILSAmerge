@@ -1,5 +1,5 @@
 ---
-title: "Load ILSA files"
+title: "Load and prepare ILSA files"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Load ILSA files}
@@ -63,6 +63,54 @@ length(loaded)
 
 loaded[[1]]
 ```
+
+## Read a single country or a merged file
+
+We can also read any SPSS file or any file produced by `ILSAmerge()` by using `readILSA()`.
+For example, to read the student questionnaire of Burkina Faso in REDS 2021:
+
+```{r}
+
+dirdat <- system.file("extdata/reds", package = "ILSAmerge")
+
+bfa <- readILSA(file.path(dirdat,"bsgbfav1.sav"))
+
+bfa
+
+```
+
+Meanwhile, for reading a merged ILSA file, we run also `readILSA()` but on the merged file:
+
+```{r}
+# merge data
+ILSAmerge(inputdir = dirdat,outputdir = tempdir(),filetype = "sav")
+# rename merged files
+ILSArename(inputdir = tempdir())
+
+stu <- readILSA(file.path(tempdir(),"REDS_2021_student.sav"))
+
+stu
+
+```
+
+## Remove tibble attributes
+
+As we can see, `bfa`, and `stu` are both tibbles produced by package `haven`. Nonetheless, this type of objects can produce some errors while using other packages for analysis. Therefore, we should always create another object that is a simple data frame so we can treat directly with the numeric data, always trying also to remove all labeled missings. For this, we use `untibble()`:
+
+```{r}
+
+bfa2 <- untibble(tibble = bfa, mistoNAs = TRUE)
+
+stu2 <- untibble(tibble = stu, mistoNAs = TRUE)
+
+class(bfa)
+class(bfa2)
+
+class(stu)
+class(stu2)
+
+```
+
 
 
 
