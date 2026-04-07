@@ -1,4 +1,4 @@
-# Load ILSA files
+# Load and prepare ILSA files
 
 ## Check what can be loaded
 
@@ -88,4 +88,126 @@ loaded[[1]]
 ## #   IP1GIBB <dbl+lbl>, IP1GIBC <dbl+lbl>, IP1GIBD <dbl+lbl>, IP1G01A <dbl+lbl>,
 ## #   IP1G01B <dbl+lbl>, IP1G01C1 <dbl+lbl>, IP1G01C2 <dbl+lbl>,
 ## #   IP2G01A1 <dbl+lbl>, IP1G01AA <dbl+lbl>, IP1G02A <dbl+lbl>, …
+```
+
+## Read a single file
+
+We can also read any SPSS file or any file produced by
+[`ILSAmerge()`](https://dopatendo.github.io/ILSAmerge/reference/ILSAmerge.md)
+by using
+[`readILSA()`](https://dopatendo.github.io/ILSAmerge/reference/readILSA.md).
+For example, to read the student questionnaire of Burkina Faso in REDS
+2021:
+
+``` r
+
+dirdat <- system.file("extdata/reds", package = "ILSAmerge")
+
+bfa <- readILSA(file.path(dirdat,"bsgbfav1.sav"))
+
+bfa
+## # A tibble: 10 × 334
+##    IDCNTRY            IDSCHOOL IDSTUD SEX        ASDAGE  ITLANGS    IS1G01      
+##    <dbl+lbl>          <dbl+lb> <dbl+> <dbl+lbl>  <dbl+l> <dbl+lbl>  <dbl+lbl>   
+##  1 854 [Burkina Faso] 1001     1.00e7 1 [Female] 13.8    2 [French] 0 [I did no…
+##  2 854 [Burkina Faso] 1001     1.00e7 1 [Female] 18.3    2 [French] 0 [I did no…
+##  3 854 [Burkina Faso] 1001     1.00e7 1 [Female] 14.2    2 [French] 0 [I did no…
+##  4 854 [Burkina Faso] 1001     1.00e7 1 [Female] 13.8    2 [French] 0 [I did no…
+##  5 854 [Burkina Faso] 1001     1.00e7 1 [Female] 15.3    2 [French] 0 [I did no…
+##  6 854 [Burkina Faso] 1001     1.00e7 1 [Female] 15      2 [French] 0 [I did no…
+##  7 854 [Burkina Faso] 1001     1.00e7 1 [Female] 13.9    2 [French] 0 [I did no…
+##  8 854 [Burkina Faso] 1001     1.00e7 2 [Male]   12.4    2 [French] 0 [I did no…
+##  9 854 [Burkina Faso] 1001     1.00e7 2 [Male]   16.3    2 [French] 0 [I did no…
+## 10 854 [Burkina Faso] 1001     1.00e7 2 [Male]   14.1    2 [French] 0 [I did no…
+## # ℹ 327 more variables: IS1G02A <dbl+lbl>, IS1G02B <dbl+lbl>,
+## #   IS1G02C <dbl+lbl>, IS1G03 <dbl+lbl>, IS1G04A <dbl+lbl>, IS1G04B <dbl+lbl>,
+## #   IS1G04C <dbl+lbl>, IS1G04D <dbl+lbl>, IS1G04E <dbl+lbl>, IS2G04F <dbl+lbl>,
+## #   IS2G04G <dbl+lbl>, IS1G05A <dbl+lbl>, IS1G05B <dbl+lbl>, IS1G05C <dbl+lbl>,
+## #   IS1G06 <dbl+lbl>, IS1G07A <dbl+lbl>, IS1G07B <dbl+lbl>, IS1G07C <dbl+lbl>,
+## #   IS1G07D <dbl+lbl>, IS1G07E <dbl+lbl>, IS1G07F <dbl+lbl>, IS1G07G <dbl+lbl>,
+## #   IS1G07H <dbl+lbl>, IS1G07I <dbl+lbl>, IS2G07J <dbl+lbl>, …
+```
+
+Meanwhile, for reading a merged ILSA file, we run also
+[`readILSA()`](https://dopatendo.github.io/ILSAmerge/reference/readILSA.md)
+but on the merged file:
+
+``` r
+# merge data
+ILSAmerge(inputdir = dirdat,outputdir = tempdir(),filetype = "sav")
+## 12 files detected. Merging into 3 files.
+## Merging BCGV1. Type 1 of 3.
+## Merging dataset 1 of 4.
+## Merging dataset 2 of 4.
+## Merging dataset 3 of 4.
+## Merging dataset 4 of 4.
+## Merging BCGV1 took 0 seconds or 0 minutes.
+## Merging BSGV1. Type 2 of 3.
+## Merging dataset 1 of 4.
+## Merging dataset 2 of 4.
+## Merging dataset 3 of 4.
+## Merging dataset 4 of 4.
+## Merging BSGV1 took 0 seconds or 0 minutes.
+## Merging BTGV1. Type 3 of 3.
+## Merging dataset 1 of 4.
+## Merging dataset 2 of 4.
+## Merging dataset 3 of 4.
+## Merging dataset 4 of 4.
+## Merging BTGV1 took 0 seconds or 0 minutes.
+## Merging took 0 seconds or 0 minutes.
+# rename merged files
+ILSArename(inputdir = tempdir())
+## 3  ILSAmerge() file(s) found.
+## 3  ILSAmerge() file(s) renamed.
+
+stu <- readILSA(file.path(tempdir(),"REDS_2021_student.sav"))
+
+stu
+## # A tibble: 40 × 336
+##    CNTRY IDCNTRY_STR   IDCNTRY   IDSCHOOL IDSTUD SEX       ASDAGE   ITLANGS    
+##    <chr> <chr>         <dbl+lbl> <dbl+lb> <dbl+> <dbl+lbl> <dbl+lb> <dbl+lbl>  
+##  1 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13       53 [Arabic]
+##  2 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  12.7     53 [Arabic]
+##  3 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13.4     53 [Arabic]
+##  4 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13.8     53 [Arabic]
+##  5 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13.4     53 [Arabic]
+##  6 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13.4     53 [Arabic]
+##  7 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13.2     53 [Arabic]
+##  8 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13.8     53 [Arabic]
+##  9 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  13.8     53 [Arabic]
+## 10 ARE   United Arab … 784 [Uni… 1001     1.00e7 2 [Male]  12.2     53 [Arabic]
+## # ℹ 30 more rows
+## # ℹ 328 more variables: IS1G01 <dbl+lbl>, IS1G02A <dbl+lbl>, IS1G02B <dbl+lbl>,
+## #   IS1G02C <dbl+lbl>, IS1G03 <dbl+lbl>, IS1G04A <dbl+lbl>, IS1G04B <dbl+lbl>,
+## #   IS1G04C <dbl+lbl>, IS1G04D <dbl+lbl>, IS1G04E <dbl+lbl>, IS2G04F <dbl+lbl>,
+## #   IS2G04G <dbl+lbl>, IS1G05A <dbl+lbl>, IS1G05B <dbl+lbl>, IS1G05C <dbl+lbl>,
+## #   IS1G06 <dbl+lbl>, IS1G07A <dbl+lbl>, IS1G07B <dbl+lbl>, IS1G07C <dbl+lbl>,
+## #   IS1G07D <dbl+lbl>, IS1G07E <dbl+lbl>, IS1G07F <dbl+lbl>, …
+```
+
+## Remove tibble attributes
+
+As we can see, `bfa`, and `stu` are both tibbles produced by package
+`haven`. Nonetheless, this type of objects can produce some errors while
+using other packages for analysis. Therefore, we should always create
+another object that is a simple data frame so we can treat directly with
+the numeric data, always trying also to remove all labeled missing
+values. For this, we use
+[`untibble()`](https://dopatendo.github.io/ILSAmerge/reference/untibble.md):
+
+``` r
+
+bfa2 <- untibble(tibble = bfa, mistoNAs = TRUE)
+
+stu2 <- untibble(tibble = stu, mistoNAs = TRUE)
+
+class(bfa)
+## [1] "tbl_df"     "tbl"        "data.frame"
+class(bfa2)
+## [1] "data.frame"
+
+class(stu)
+## [1] "tbl_df"     "tbl"        "data.frame"
+class(stu2)
+## [1] "data.frame"
 ```

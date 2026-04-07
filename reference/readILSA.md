@@ -60,7 +60,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
 #> Merging dataset 3 of 4.
 #> Merging dataset 4 of 4.
 #> Merging BTGV1 took 0 seconds or 0 minutes.
-#> Merging took 0 seconds or 0.01 minutes.
+#> Merging took 0 seconds or 0 minutes.
 
 # Read student file
 readILSA(file = file.path(output,"BSGV1.rds"))

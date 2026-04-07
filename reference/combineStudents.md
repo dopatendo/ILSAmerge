@@ -67,7 +67,7 @@ ILSAmerge(inputdir = input, outputdir = output, filetype = "rds", quiet = FALSE)
 #> Merging dataset 4 of 5.
 #> Merging dataset 5 of 5.
 #> Merging MSGM1 took 0 seconds or 0 minutes.
-#> Merging took 0 seconds or 0.01 minutes.
+#> Merging took 0 seconds or 0 minutes.
 
 # Rename files
 ILSArename(output)

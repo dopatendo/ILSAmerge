@@ -6,7 +6,7 @@
   files](https://dopatendo.github.io/ILSAmerge/articles/Download.md):
 - [Rename ILSAmerge
   files](https://dopatendo.github.io/ILSAmerge/articles/Rename.md):
-- [Load ILSA
+- [Load and prepare ILSA
   files](https://dopatendo.github.io/ILSAmerge/articles/Load.md):
 - [Identify ILSA
   files](https://dopatendo.github.io/ILSAmerge/articles/IdentifyILSAfiles.md):

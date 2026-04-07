@@ -70,7 +70,7 @@ outputdir = file.path(tempdir(),"REDS2021"))
 #> Merging dataset 3 of 4.
 #> Merging dataset 4 of 4.
 #> Merging BTGV1 took 0 seconds or 0 minutes.
-#> Merging took 0 seconds or 0.01 minutes.
+#> Merging took 0 seconds or 0 minutes.
 
 # Show files with raw names
 list.files(file.path(tempdir(),"REDS2021"))

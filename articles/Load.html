@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Load ILSA files • ILSAmerge</title>
+<title>Load and prepare ILSA files • ILSAmerge</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Load ILSA files">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Load and prepare ILSA files">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -40,7 +40,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/Download.html">Download ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Rename.html">Rename ILSAmerge files</a></li>
-    <li><a class="dropdown-item" href="../articles/Load.html">Load ILSA files</a></li>
+    <li><a class="dropdown-item" href="../articles/Load.html">Load and prepare ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/IdentifyILSAfiles.html">Identify ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Merge.html">Merge ILSA files</a></li>
     <li><a class="dropdown-item" href="../articles/Onestep.html">One-step solution</a></li>
@@ -73,7 +73,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Load ILSA files</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Load and prepare ILSA files</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/dopatendo/ILSAmerge/blob/main/vignettes/Load.Rmd" class="external-link"><code>vignettes/Load.Rmd</code></a></small>
@@ -160,6 +160,119 @@ setting <code>justattributes = TRUE</code>:</p>
 <span><span class="co">## <span style="color: #949494;">#   IP1GIBB &lt;dbl+lbl&gt;, IP1GIBC &lt;dbl+lbl&gt;, IP1GIBD &lt;dbl+lbl&gt;, IP1G01A &lt;dbl+lbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   IP1G01B &lt;dbl+lbl&gt;, IP1G01C1 &lt;dbl+lbl&gt;, IP1G01C2 &lt;dbl+lbl&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   IP2G01A1 &lt;dbl+lbl&gt;, IP1G01AA &lt;dbl+lbl&gt;, IP1G02A &lt;dbl+lbl&gt;, …</span></span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="read-a-single-file">Read a single file<a class="anchor" aria-label="anchor" href="#read-a-single-file"></a>
+</h2>
+<p>We can also read any SPSS file or any file produced by
+<code><a href="../reference/ILSAmerge.html">ILSAmerge()</a></code> by using <code><a href="../reference/readILSA.html">readILSA()</a></code>. For example,
+to read the student questionnaire of Burkina Faso in REDS 2021:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">dirdat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/reds"</span>, package <span class="op">=</span> <span class="st">"ILSAmerge"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bfa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/readILSA.html">readILSA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">dirdat</span>,<span class="st">"bsgbfav1.sav"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bfa</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 10 × 334</span></span></span>
+<span><span class="co">##    IDCNTRY            IDSCHOOL IDSTUD SEX        ASDAGE  ITLANGS    IS1G01      </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl+lb&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl+l&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 1<span style="color: #949494;"> [Female]</span> 13.8    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 1<span style="color: #949494;"> [Female]</span> 18.3    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 1<span style="color: #949494;"> [Female]</span> 14.2    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 1<span style="color: #949494;"> [Female]</span> 13.8    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 1<span style="color: #949494;"> [Female]</span> 15.3    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 1<span style="color: #949494;"> [Female]</span> 15      2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 1<span style="color: #949494;"> [Female]</span> 13.9    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>   12.4    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>   16.3    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> 854<span style="color: #949494;"> [Burkina Faso]</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>   14.1    2<span style="color: #949494;"> [French]</span> 0<span style="color: #949494;"> [I did no…</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 327 more variables: IS1G02A &lt;dbl+lbl&gt;, IS1G02B &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G02C &lt;dbl+lbl&gt;, IS1G03 &lt;dbl+lbl&gt;, IS1G04A &lt;dbl+lbl&gt;, IS1G04B &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G04C &lt;dbl+lbl&gt;, IS1G04D &lt;dbl+lbl&gt;, IS1G04E &lt;dbl+lbl&gt;, IS2G04F &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS2G04G &lt;dbl+lbl&gt;, IS1G05A &lt;dbl+lbl&gt;, IS1G05B &lt;dbl+lbl&gt;, IS1G05C &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G06 &lt;dbl+lbl&gt;, IS1G07A &lt;dbl+lbl&gt;, IS1G07B &lt;dbl+lbl&gt;, IS1G07C &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G07D &lt;dbl+lbl&gt;, IS1G07E &lt;dbl+lbl&gt;, IS1G07F &lt;dbl+lbl&gt;, IS1G07G &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G07H &lt;dbl+lbl&gt;, IS1G07I &lt;dbl+lbl&gt;, IS2G07J &lt;dbl+lbl&gt;, …</span></span></span></code></pre></div>
+<p>Meanwhile, for reading a merged ILSA file, we run also
+<code><a href="../reference/readILSA.html">readILSA()</a></code> but on the merged file:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># merge data</span></span>
+<span><span class="fu"><a href="../reference/ILSAmerge.html">ILSAmerge</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="va">dirdat</span>,outputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,filetype <span class="op">=</span> <span class="st">"sav"</span><span class="op">)</span></span>
+<span><span class="co">## 12 files detected. Merging into 3 files.</span></span>
+<span><span class="co">## Merging BCGV1. Type 1 of 3.</span></span>
+<span><span class="co">## Merging dataset 1 of 4.</span></span>
+<span><span class="co">## Merging dataset 2 of 4.</span></span>
+<span><span class="co">## Merging dataset 3 of 4.</span></span>
+<span><span class="co">## Merging dataset 4 of 4.</span></span>
+<span><span class="co">## Merging BCGV1 took 0 seconds or 0 minutes.</span></span>
+<span><span class="co">## Merging BSGV1. Type 2 of 3.</span></span>
+<span><span class="co">## Merging dataset 1 of 4.</span></span>
+<span><span class="co">## Merging dataset 2 of 4.</span></span>
+<span><span class="co">## Merging dataset 3 of 4.</span></span>
+<span><span class="co">## Merging dataset 4 of 4.</span></span>
+<span><span class="co">## Merging BSGV1 took 0 seconds or 0 minutes.</span></span>
+<span><span class="co">## Merging BTGV1. Type 3 of 3.</span></span>
+<span><span class="co">## Merging dataset 1 of 4.</span></span>
+<span><span class="co">## Merging dataset 2 of 4.</span></span>
+<span><span class="co">## Merging dataset 3 of 4.</span></span>
+<span><span class="co">## Merging dataset 4 of 4.</span></span>
+<span><span class="co">## Merging BTGV1 took 0 seconds or 0 minutes.</span></span>
+<span><span class="co">## Merging took 0 seconds or 0 minutes.</span></span>
+<span><span class="co"># rename merged files</span></span>
+<span><span class="fu"><a href="../reference/ILSArename.html">ILSArename</a></span><span class="op">(</span>inputdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## 3  ILSAmerge() file(s) found.</span></span>
+<span><span class="co">## 3  ILSAmerge() file(s) renamed.</span></span>
+<span></span>
+<span><span class="va">stu</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/readILSA.html">readILSA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"REDS_2021_student.sav"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">stu</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 40 × 336</span></span></span>
+<span><span class="co">##    CNTRY IDCNTRY_STR   IDCNTRY   IDSCHOOL IDSTUD SEX       ASDAGE   ITLANGS    </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lb&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lb&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13       53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  12.7     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13.4     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13.8     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13.4     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13.4     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13.2     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13.8     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  13.8     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> ARE   United Arab … 784<span style="color: #949494;"> [Uni…</span> <span style="text-decoration: underline;">1</span>001     1.00<span style="color: #949494;">e</span>7 2<span style="color: #949494;"> [Male]</span>  12.2     53<span style="color: #949494;"> [Arabic]</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 30 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 328 more variables: IS1G01 &lt;dbl+lbl&gt;, IS1G02A &lt;dbl+lbl&gt;, IS1G02B &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G02C &lt;dbl+lbl&gt;, IS1G03 &lt;dbl+lbl&gt;, IS1G04A &lt;dbl+lbl&gt;, IS1G04B &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G04C &lt;dbl+lbl&gt;, IS1G04D &lt;dbl+lbl&gt;, IS1G04E &lt;dbl+lbl&gt;, IS2G04F &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS2G04G &lt;dbl+lbl&gt;, IS1G05A &lt;dbl+lbl&gt;, IS1G05B &lt;dbl+lbl&gt;, IS1G05C &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G06 &lt;dbl+lbl&gt;, IS1G07A &lt;dbl+lbl&gt;, IS1G07B &lt;dbl+lbl&gt;, IS1G07C &lt;dbl+lbl&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   IS1G07D &lt;dbl+lbl&gt;, IS1G07E &lt;dbl+lbl&gt;, IS1G07F &lt;dbl+lbl&gt;, …</span></span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="remove-tibble-attributes">Remove tibble attributes<a class="anchor" aria-label="anchor" href="#remove-tibble-attributes"></a>
+</h2>
+<p>As we can see, <code>bfa</code>, and <code>stu</code> are both
+tibbles produced by package <code>haven</code>. Nonetheless, this type
+of objects can produce some errors while using other packages for
+analysis. Therefore, we should always create another object that is a
+simple data frame so we can treat directly with the numeric data, always
+trying also to remove all labeled missing values. For this, we use
+<code><a href="../reference/untibble.html">untibble()</a></code>:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">bfa2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/untibble.html">untibble</a></span><span class="op">(</span>tibble <span class="op">=</span> <span class="va">bfa</span>, mistoNAs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">stu2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/untibble.html">untibble</a></span><span class="op">(</span>tibble <span class="op">=</span> <span class="va">stu</span>, mistoNAs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">bfa</span><span class="op">)</span></span>
+<span><span class="co">## [1] "tbl_df"     "tbl"        "data.frame"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">bfa2</span><span class="op">)</span></span>
+<span><span class="co">## [1] "data.frame"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">stu</span><span class="op">)</span></span>
+<span><span class="co">## [1] "tbl_df"     "tbl"        "data.frame"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">stu2</span><span class="op">)</span></span>
+<span><span class="co">## [1] "data.frame"</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

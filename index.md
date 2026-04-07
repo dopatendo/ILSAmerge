@@ -40,10 +40,13 @@ For an example see
 For identifying populations within a study, we can use
 `ILSAfiles.info()`. For an example see `vignette("IndentifyILSAfiles")`.
 
-## Load data without merging
+## Load and prepare data for analysis
 
-If we need to load ILSA data but not save it, we can use
-[`justload()`](https://dopatendo.github.io/ILSAmerge/reference/justload.md).
+If we need to load or prepare ILSA data, we can use
+[`justload()`](https://dopatendo.github.io/ILSAmerge/reference/justload.md),
+[`readILSA()`](https://dopatendo.github.io/ILSAmerge/reference/readILSA.md),
+and
+[`untibble()`](https://dopatendo.github.io/ILSAmerge/reference/untibble.md).
 For an example see
 [`vignette("Load")`](https://dopatendo.github.io/ILSAmerge/articles/Load.md).
 
