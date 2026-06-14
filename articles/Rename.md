@@ -10,6 +10,7 @@ First, we need to use
 to merge the files:
 
 ``` r
+
 dir.create(file.path(tempdir(),"REDS2021"),showWarnings = FALSE)
 
 ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 
@@ -20,6 +21,7 @@ ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
 This will create 3 files with codes for respondent and cycle:
 
 ``` r
+
 list.files(file.path(tempdir(),"REDS2021"))
 ## [1] "BCGV1.rds" "BSGV1.rds" "BTGV1.rds"
 ```
@@ -29,6 +31,7 @@ With
 we can convert these names:
 
 ``` r
+
 ILSArename(inputdir = file.path(tempdir(),"REDS2021"))
 ## 3  ILSAmerge() file(s) found.
 ## 3  ILSAmerge() file(s) renamed.

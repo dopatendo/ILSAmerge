@@ -16,6 +16,7 @@ With
 we can check which datasets are available:
 
 ``` r
+
 availableILSA()
 ## CIVED: 1999.
 ## ICCS: 2009, 2016, 2022.
@@ -43,6 +44,7 @@ As an example, we let us say we want to download the data of ‘RLII’
 `year`, and `outputdir`:
 
 ``` r
+
 ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir())
 ```
 
@@ -58,6 +60,7 @@ you know that you will agree with the study terms, then you can also
 avoid this prompt via `agreeLicense = TRUE`:
 
 ``` r
+
 ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
              agreeLicense = TRUE)
 ## By accessing the Data Repository, IDB Analyzer and Data visualizer, you indicate that you agree to the terms and conditions associated with their use. Please read the Disclaimer and License Agreement for full details.
@@ -70,6 +73,7 @@ ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
 This function can also unzip downloaded files using `unzip = TRUE`:
 
 ``` r
+
 ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
              unzip = TRUE)
 ```
@@ -81,6 +85,7 @@ still be prompted to agree. To avoid both prints you can use both
 arguments:
 
 ``` r
+
 ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
              quiet = TRUE, agreeLicense = TRUE)
 ```
@@ -91,6 +96,7 @@ Timeout times for downloading are controlled by `maxtime`, which you can
 set for a desired number of seconds:
 
 ``` r
+
 ILSAdownload(study = "RLII", year = 1991, outputdir = tempdir(),
              maxtime = 60)
 ```

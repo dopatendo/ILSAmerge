@@ -8,6 +8,7 @@ package.
 In the case of ‘REDS’ 2021, we have 12 files and 3 populations:
 
 ``` r
+
 ILSAfile.info(inputdir = system.file("extdata/reds", package = "ILSAmerge"))
 ##   Population Files  MB
 ## 1      BCGV1     4 0.3
@@ -23,6 +24,7 @@ The default type will be an “rds”, but also we can make “zsav” and “sa
 files:
 
 ``` r
+
 ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 
           outputdir = tempdir(), 
           filetype = c("rds", "zsav", "sav"))
@@ -65,6 +67,7 @@ runs, information about the progress of the merging and the running time
 will be produced:
 
 ``` r
+
 ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"), 
           outputdir = tempdir(), 
           filetype = c("rds", "zsav", "sav"))
@@ -74,7 +77,7 @@ ILSAmerge(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
 ## Merging dataset 2 of 4.
 ## Merging dataset 3 of 4.
 ## Merging dataset 4 of 4.
-## Merging BCGV1 took 0 seconds or 0.01 minutes.
+## Merging BCGV1 took 0 seconds or 0 minutes.
 ## Merging BSGV1. Type 2 of 3.
 ## Merging dataset 1 of 4.
 ## Merging dataset 2 of 4.
@@ -106,6 +109,7 @@ combines multiple student files, e.g., achievement and background
 questionnaires, using ‘TIMSS’ Advanced 1995:
 
 ``` r
+
 # Path were raw 'SPSS' files are
 input <- system.file("extdata/timssadv", package = "ILSAmerge")
 
@@ -151,6 +155,7 @@ adds school data to student and teacher files, using ‘TIMSS’ Advanced
 1995:
 
 ``` r
+
 # Check file names
 list.files(output,pattern = ".rds")
 ## [1] "TIMSSADVANCED_Math_1995_school.rds"             

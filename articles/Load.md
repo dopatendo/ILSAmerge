@@ -12,6 +12,7 @@ by this package:
 
 ``` r
 
+
 ILSAfile.info(inputdir = system.file("extdata/reds", package = "ILSAmerge"))
 ##   Population Files  MB
 ## 1      BCGV1     4 0.3
@@ -25,6 +26,7 @@ We can decide to load a population, like `BCGV1`, using
 [`justload()`](https://dopatendo.github.io/ILSAmerge/reference/justload.md):
 
 ``` r
+
 loaded <- justload(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
          population = "BCGV1")
 ```
@@ -33,6 +35,7 @@ This will result in a list of elements loaded by `haven`, in our
 example, a list of 11 elements:
 
 ``` r
+
 class(loaded)
 ## [1] "list"
 
@@ -69,6 +72,7 @@ most probably to check if the attributes are correct. We can do this by
 setting `justattributes = TRUE`:
 
 ``` r
+
 loaded <- justload(inputdir = system.file("extdata/reds", package = "ILSAmerge"),
          population = "BCGV1", justattributes = TRUE)
 ```
@@ -76,6 +80,7 @@ loaded <- justload(inputdir = system.file("extdata/reds", package = "ILSAmerge")
 This will load all 11 datasets with 0 rows each:
 
 ``` r
+
 length(loaded)
 ## [1] 4
 
@@ -100,6 +105,7 @@ For example, to read the student questionnaire of Burkina Faso in REDS
 2021:
 
 ``` r
+
 
 dirdat <- system.file("extdata/reds", package = "ILSAmerge")
 
@@ -133,6 +139,7 @@ Meanwhile, for reading a merged ILSA file, we run also
 but on the merged file:
 
 ``` r
+
 # merge data
 ILSAmerge(inputdir = dirdat,outputdir = tempdir(),filetype = "sav")
 ## 12 files detected. Merging into 3 files.
@@ -154,7 +161,7 @@ ILSAmerge(inputdir = dirdat,outputdir = tempdir(),filetype = "sav")
 ## Merging dataset 3 of 4.
 ## Merging dataset 4 of 4.
 ## Merging BTGV1 took 0 seconds or 0 minutes.
-## Merging took 0 seconds or 0 minutes.
+## Merging took 0 seconds or 0.01 minutes.
 # rename merged files
 ILSArename(inputdir = tempdir())
 ## 3  ILSAmerge() file(s) found.
@@ -196,6 +203,7 @@ values. For this, we use
 [`untibble()`](https://dopatendo.github.io/ILSAmerge/reference/untibble.md):
 
 ``` r
+
 
 bfa2 <- untibble(tibble = bfa, mistoNAs = TRUE)
 

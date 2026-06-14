@@ -1,5 +1,9 @@
 # Changelog
 
+## ILSAmerge 1.4.2
+
+- Replaced errors with messages when online resource is not available.
+
 ## ILSAmerge 1.4.1
 
 - Added support for TIMSS Longitudinal 2023.

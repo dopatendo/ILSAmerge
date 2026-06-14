@@ -12,6 +12,7 @@ targeting the folder with the unzipped data:
 
 ``` r
 
+
 ILSAfile.info(inputdir = system.file("extdata/reds", package = "ILSAmerge"))
 ##   Population Files  MB
 ## 1      BCGV1     4 0.3

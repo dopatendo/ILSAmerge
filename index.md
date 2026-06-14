@@ -19,12 +19,14 @@ straightforward as possible.
 You can install the stable version of `ILSAmerge` directly from CRAN:
 
 ``` r
+
 install.packages("ILSAmerge")
 ```
 
 Or, if you wish to install the development version of `ILSAmerge`:
 
 ``` r
+
 remotes::install_github("dopatendo/ILSAmerge")
 ```
 
