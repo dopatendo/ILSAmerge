@@ -172,20 +172,30 @@ ILSAmerge <- function(inputdir = getwd(), outputdir = getwd(), population = NULL
   
   # Add country
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAcou.csv"
+  hasgh <- checkavailable("github")
   
-  
-  where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
-  
-  if("try-error"%in%class(where)){
-    warning(paste0("Could not read country information from 'GitHub'.",
-                "\nInternal data will be used for adding country labels.",
-                "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
-    
-    ILSAcou <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSAcou.csv"))
+  if(!hasgh){
+    message(paste0("Could not read country information from 'GitHub'.",
+                   "\nInternal data will be used for adding country labels.",
+                   "\nPlease be aware, these data may not be the lastest one."))
   }else{
-    ILSAcou <- where
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAcou.csv"
+    
+    
+    where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+    
+    if("try-error"%in%class(where)){
+      message(paste0("Could not read country information from 'GitHub'.",
+                     "\nInternal data will be used for adding country labels.",
+                     "\nPlease be aware, these data may not be the lastest one."))
+      
+      ILSAcou <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSAcou.csv"))
+    }else{
+      ILSAcou <- where
+    }
   }
+  
+ 
   
   
   ILSAcou <- ILSAcou[ILSAcou$N3code!=0,]

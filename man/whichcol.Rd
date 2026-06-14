@@ -20,18 +20,38 @@ whichcol(pattern, tibble, label = TRUE, ignore.case = TRUE, ...)
 \item{label}{a logical value indicating if pattern should be searched in
 variable label, instead of variable name. Default is \code{TRUE}.}
 
-\item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
+\item{ignore.case}{logical. if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
 
 \item{...}{
-  Arguments passed on to \code{\link[base:grep]{base::grepl}}
+  Arguments passed on to \code{\link[base:grepl]{base::grepl}}
   \describe{
+    \item{\code{x,text}}{a character vector where matches are sought, or an
+    object which can be coerced by \code{as.character} to a character
+    vector.  \link[base]{Long vectors} are supported.}
     \item{\code{perl}}{logical.  Should Perl-compatible regexps be used?}
-    \item{\code{fixed}}{logical.  If \code{TRUE}, \code{pattern} is a string to be
+    \item{\code{value}}{logical. If \code{FALSE}, a vector containing the (\code{integer})
+    indices of the matches determined by \code{grep} is returned, and if
+    \code{TRUE}, a vector containing the matching elements themselves is
+    returned.}
+    \item{\code{fixed}}{logical. If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
     \item{\code{useBytes}}{logical.  If \code{TRUE} the matching is done
     byte-by-byte rather than character-by-character.  See
     \sQuote{Details}.}
+    \item{\code{invert}}{logical. If \code{TRUE} return indices or values for
+    elements that do \emph{not} match.}
+    \item{\code{replacement}}{a replacement for the matched pattern in \code{sub} and
+    \code{gsub}.  Coerced to character if possible.  For
+    \code{fixed = FALSE} this can include backreferences \code{"\1"} to
+    \code{"\9"} to parenthesized subexpressions of \code{pattern}.  For
+    \code{perl = TRUE} only, it can also contain \code{"\U"} or
+    \code{"\L"} to convert the rest of the replacement to upper or
+    lower case and \code{"\E"} to end case conversion.  If a
+    character vector of length 2 or more is supplied, the first element
+    is used with a warning.  If \code{NA}, all elements in the result
+    corresponding to matches will be set to \code{NA}.
+  }
   }}
 }
 \value{

@@ -43,24 +43,37 @@ availableILSA <- function(print = TRUE,
   
   # Process ----
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
-
-  ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
-
-  # if("try-error"%in%class(ILSAlinks)){
-  #   stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
-  #               "\nPlease be sure that you are connected to the Internet.",
-  #               "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
-  # }
-
-  if("try-error"%in%class(ILSAlinks)){
-    warning(paste0("Could not read ILSAlinks information from 'GitHub'.",
-                   "\nInternal data will be used.",
-                   "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
+  hasgh <- checkavailable("github")
+  
+  if(!hasgh){
     
-    ILSAlinks <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSAlinks.csv"))
+    message(paste0("Could not read ILSAlinks information from 'GitHub'.",
+                   "\nInternal data will be used.",
+                   "\nPlease be aware, these data may not be the lastest one."))
+    
+  }else{
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
+    
+    ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+    
+    
+    # if("try-error"%in%class(ILSAlinks)){
+    #   stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
+    #               "\nPlease be sure that you are connected to the Internet.",
+    #               "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
+    # }
+    
+    if("try-error"%in%class(ILSAlinks)){
+      message(paste0("Could not read ILSAlinks information from 'GitHub'.",
+                     "\nInternal data will be used.",
+                     "\nPlease be aware, these data may not be the lastest one."))
+      
+      ILSAlinks <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSAlinks.csv"))
+    }
   }
+  
+  
   
   
   if(FOR=="download"){

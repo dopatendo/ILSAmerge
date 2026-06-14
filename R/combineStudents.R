@@ -98,18 +98,27 @@ combineStudents <- function(inputdir = getwd(),
   
   
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
+  hasgh <- checkavailable("github")
   
-  where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
   
-  if("try-error"%in%class(where)){
-    warning(paste0("Could not read population information from 'GitHub'.",
-                "\nInternal data will be used to combine respondents.",
-                "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
-    
-    ILSApops <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSApops.csv"))
+  if(!hasgh){
+    message(paste0("Could not read population information from 'GitHub'.",
+                   "\nInternal data will be used to combine respondents.",
+                   "\nPlease be aware, these data may not be the lastest one."))
   }else{
-    ILSApops <- where
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
+    
+    where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+    
+    if("try-error"%in%class(where)){
+      message(paste0("Could not read population information from 'GitHub'.",
+                     "\nInternal data will be used to combine respondents.",
+                     "\nPlease be aware, these data may not be the lastest one."))
+      
+      ILSApops <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSApops.csv"))
+    }else{
+      ILSApops <- where
+    }
   }
   
   

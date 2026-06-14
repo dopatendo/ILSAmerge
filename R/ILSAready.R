@@ -32,33 +32,49 @@ ILSAready <- function(study, year, outputdir = getwd(),
                       agreeLicense = FALSE, maxtime = 999){
   # Read external ----
   
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
-
-
-  ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
-
-  if("try-error"%in%class(ILSAlinks)){
-    stop(paste0("Could not read ILSAlinks file from 'GitHub'.",
-                "\nPlease be sure that you are connected to the Internet.",
-                "\nIf you are and this message persists, please contact the mantainer to solve this issue."),call. = FALSE)
-  }
+  hasgh <- checkavailable("github")
   
-
-  ILSAlinks <- ILSAlinks[ILSAlinks$ILSAready%in%1,]
-
-  where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
-  
-  where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
-  
-  if("try-error"%in%class(where)){
-    warning(paste0("Could not read population information from 'GitHub'.",
-                   "\nInternal data will be used to rename files.",
-                   "\nPlease be aware, these data may not be the lastest one."),call. = FALSE)
+  if(!hasgh){
     
-    ILSApops <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSApops.csv"))
+    message(paste0("Could not read ILSAlinks file from 'GitHub'.",
+                   "\nPlease be sure that you are connected to the Internet.",
+                   "\nIf you are and this message persists, please contact the mantainer to solve this issue."))
+    
+    return(NULL)
+    
   }else{
-    ILSApops <- where
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSAlinks.csv"
+    
+    
+    ILSAlinks <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+    
+    if("try-error"%in%class(ILSAlinks)){
+      message(paste0("Could not read ILSAlinks file from 'GitHub'.",
+                     "\nPlease be sure that you are connected to the Internet.",
+                     "\nIf you are and this message persists, please contact the mantainer to solve this issue."))
+      
+      return(NULL)
+    }
+    
+    
+    ILSAlinks <- ILSAlinks[ILSAlinks$ILSAready%in%1,]
+    
+    where <- "https://raw.githubusercontent.com/dopatendo/ILSAmerge/refs/heads/main/data/ILSApops.csv"
+    
+    where <- suppressWarnings(try(utils::read.csv(where),silent = TRUE))
+    
+    if("try-error"%in%class(where)){
+      message(paste0("Could not read population information from 'GitHub'.",
+                     "\nInternal data will be used to rename files.",
+                     "\nPlease be aware, these data may not be the lastest one."))
+      
+      ILSApops <- utils::read.csv(file.path(system.file("extdata/ilsainfo", package = "ILSAmerge"),"ILSApops.csv"))
+    }else{
+      ILSApops <- where
+    }
   }
+  
+  
   
   
   
