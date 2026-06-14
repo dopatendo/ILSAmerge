@@ -22,11 +22,11 @@ ILSAready(study = "RLII", year = 1991,outputdir = output, agreeLicense = TRUE)
 ## Merging dataset 7 of 9.
 ## Merging dataset 8 of 9.
 ## Merging dataset 9 of 9.
-## Merging ASCT1 took 4 seconds or 0.06 minutes.
-## Merging took 4 seconds or 0.06 minutes.
+## Merging ASCT1 took 3 seconds or 0.06 minutes.
+## Merging took 3 seconds or 0.06 minutes.
 ## 1  ILSAmerge() file(s) found.
 ## 1  ILSAmerge() file(s) renamed.
-## Downloading and preparing data took 7 seconds or 0.12 minutes.
+## Downloading and preparing data took 8 seconds or 0.13 minutes.
 ```
 
 Also if data is already downloaded we can use

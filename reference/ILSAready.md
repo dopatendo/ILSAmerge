@@ -70,9 +70,9 @@ ILSAreadylocal(
 - agreeLicense:
 
   a logical value indicating if you agree with the Disclaimer and
-  License Agreement file from www.iea.nl. If `FALSE`, you will be
-  prompted to agree with it or else data will not be downloaded. Default
-  is `FALSE`.
+  License Agreement file from <https://www.iea.nl>. If `FALSE`, you will
+  be prompted to agree with it or else data will not be downloaded.
+  Default is `FALSE`.
 
 - maxtime:
 
@@ -128,5 +128,5 @@ ILSAreadylocal(inputdir = input, outputdir = output, filetype = "zsav")
 #> Adding schools took 0 seconds or 0 minutes.
 #> 3  ILSAmerge() file(s) found.
 #> 3  ILSAmerge() file(s) renamed.
-#> Preparing data took 1 seconds or 0.01 minutes.
+#> Preparing data took 1 seconds or 0.02 minutes.
 ```

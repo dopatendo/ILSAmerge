@@ -5,7 +5,7 @@ Assessments (ILSA). This functions supports the following ILSA: 'TIMSS',
 'TIMSS Advanced', 'PIRLS', 'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS',
 'RLII', and 'SITES.' Depending on the study, you will need to decide
 which data to download, and read and accept its terms and conditions to
-proceed with the download.
+proceed with the download. Data is retrieved from <https://www.iea.nl>.
 
 ## Usage
 
@@ -54,9 +54,9 @@ ILSAdownload(
 - agreeLicense:
 
   a logical value indicating if you agree with the Disclaimer and
-  License Agreement file from www.iea.nl. If `FALSE`, you will be
-  prompted to agree with it or else data will not be downloaded. Default
-  is `FALSE`.
+  License Agreement file from <https://www.iea.nl>. If `FALSE`, you will
+  be prompted to agree with it or else data will not be downloaded.
+  Default is `FALSE`.
 
 ## Value
 
