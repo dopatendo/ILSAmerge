@@ -9,7 +9,7 @@ readILSA(file, mistoNAs = FALSE, untibble = FALSE)
 \arguments{
 \item{file}{a path to an '.rds', '.sav', or '.zsav' file.}
 
-\item{mistoNAs}{a logical value indicating if missing values should be 
+\item{mistoNAs}{a logical value indicating if missing values should be
 converted into NAs. Default is \code{FALSE}.}
 
 \item{untibble}{a logical value indicating if data should be converted into

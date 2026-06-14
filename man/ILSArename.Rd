@@ -28,9 +28,9 @@ shown. Default is \code{FALSE}.}
 Renames or copies files produced by \code{\link{ILSAmerge}}.
 }
 \description{
-Renames files produced by \code{\link{ILSAmerge}} from name codes to comprehensible names 
+Renames files produced by \code{\link{ILSAmerge}} from name codes to comprehensible names
 including the study name, year and respondent.
-This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
+This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced',
 'PIRLS', 'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 }
 \examples{

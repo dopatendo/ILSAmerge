@@ -44,11 +44,11 @@ but uses less memory. Default is \code{200}.}
 shown. Default is \code{FALSE}.}
 
 \item{agreeLicense}{a logical value indicating if you agree with
-the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
+the Disclaimer and License Agreement file from \url{https://www.iea.nl}. If \code{FALSE},
 you will be prompted to agree with it or else data will not be downloaded.
 Default is \code{FALSE}.}
 
-\item{maxtime}{a numeric value indicating the maximum time allowed for 
+\item{maxtime}{a numeric value indicating the maximum time allowed for
 downloading a file. Default is \code{999}.}
 
 \item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
@@ -59,7 +59,7 @@ Saves merged and renamed ILSA data.
 \description{
 Downloads ILSA data, merges it, combines students and adds school information.
 This function is a wrapper for \code{\link{ILSAdownload}}, \code{\link{ILSAmerge}},
-\code{\link{ILSArename}}, \code{\link{combineStudents}}, and \code{\link{addSchools}}. 
+\code{\link{ILSArename}}, \code{\link{combineStudents}}, and \code{\link{addSchools}}.
 To see which ILSA are available for this function use \code{\link{availableILSA}}.
 If data is already downloaded you can use \code{\link{ILSAreadylocal}}.
 }

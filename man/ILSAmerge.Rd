@@ -53,11 +53,11 @@ Saves merged ILSA data or \code{.sps} syntax for merging ILSA data.
 }
 \description{
 Merges 'SPSS' data from different International Large-Scale Assessments (ILSA).
-This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced', 
+This function has been tested to behave correctly for: 'TIMSS', 'TIMSS Advanced',
 'PIRLS', 'ICCS', 'ICILS', 'LANA', CIVED', 'REDS', 'RLII', and 'SITES' (2006).
 }
 \details{
-For files merged within R it will also add country information where needed. 
+For files merged within R it will also add country information where needed.
 Country information will be retrieved from 'GitHub' if possible. If not, it will
 use the package internal data.
 }

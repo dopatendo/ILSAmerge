@@ -9,7 +9,7 @@ untibble(tibble, mistoNAs = FALSE)
 \arguments{
 \item{tibble}{a tibble object or a list of tibbles.}
 
-\item{mistoNAs}{a logical value indicating if missing values should be 
+\item{mistoNAs}{a logical value indicating if missing values should be
 converted into NAs. Default is \code{FALSE}.}
 }
 \value{

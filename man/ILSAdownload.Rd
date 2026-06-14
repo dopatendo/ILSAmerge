@@ -25,15 +25,15 @@ check the description of this function.}
 \item{unzip}{a logical value indicating if files should be unzipped.
 Default is \code{FALSE}.}
 
-\item{maxtime}{a numeric value indicating the maximum time allowed for 
+\item{maxtime}{a numeric value indicating the maximum time allowed for
 downloading a file. Default is \code{999}.}
 
 \item{quiet}{a logical value indicating if progress status should be
-shown. 
+shown.
 Default is \code{FALSE}.}
 
 \item{agreeLicense}{a logical value indicating if you agree with
-the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
+the Disclaimer and License Agreement file from \url{https://www.iea.nl}. If \code{FALSE},
 you will be prompted to agree with it or else data will not be downloaded.
 Default is \code{FALSE}.}
 }
@@ -42,10 +42,11 @@ Saves 'SPSS' ILSA data locally.
 }
 \description{
 Downloads 'SPSS' data from different International Large-Scale Assessments (ILSA).
-This functions supports the following ILSA: 'TIMSS', 'TIMSS Advanced', 'PIRLS', 
-'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
+This functions supports the following ILSA: 'TIMSS', 'TIMSS Advanced', 'PIRLS',
+'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study,
 you will need to decide which data to download, and
 read and accept its terms and conditions to proceed with the download.
+Data is retrieved from \url{https://www.iea.nl}.
 }
 \examples{
 # For example, to download 'RLII' 1991 data:

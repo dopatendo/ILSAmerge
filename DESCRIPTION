@@ -1,13 +1,13 @@
 Package: ILSAmerge
 Type: Package
-Title: Merge and Dowload International Large-Scale Assessments (ILSA) Data
+Title: Merge and Download International Large-Scale Assessments (ILSA) Data
 Version: 1.4.2
 Authors@R: person(given = "Andrés",
                     family = "Christiansen",
                     role = c("aut", "cre"),
                     email = "andres.christiansen@iea-hamburg.de")
 Maintainer: Andrés Christiansen <andres.christiansen@iea-hamburg.de>
-Description: Merges and downloads 'SPSS' data from different International Large-Scale Assessments (ILSA), including: Trends in International Mathematics and Science Study (TIMSS), Progress in International Reading Literacy Study (PIRLS), and others.
+Description: Merges and downloads 'SPSS' data from different International Large-Scale Assessments (ILSA), including: Trends in International Mathematics and Science Study (TIMSS), Progress in International Reading Literacy Study (PIRLS), and other studies from <https://www.iea.nl/>.
 License: GPL (>= 3.0)
 URL: https://github.com/dopatendo/ILSAmerge, https://dopatendo.github.io/ILSAmerge/
 Imports: haven, httr2
@@ -19,3 +19,4 @@ VignetteBuilder: knitr
 Depends: 
     R (>= 4.1)
 Config/roxygen2/version: 8.0.0
+Roxygen: list(markdown = TRUE)

@@ -5,6 +5,7 @@
 #' 'ICCS', 'ICILS', 'LANA', 'CIVED', 'REDS', 'RLII', and 'SITES.' Depending on the study, 
 #' you will need to decide which data to download, and
 #' read and accept its terms and conditions to proceed with the download.
+#' Data is retrieved from <https://www.iea.nl>.
 #'
 #' @param study a string indicating the name of the study. For available studies
 #' check the description of this function.
@@ -20,7 +21,7 @@
 # only the main study will be downloaded.
 #' Default is \code{FALSE}.
 #' @param agreeLicense a logical value indicating if you agree with
-#' the Disclaimer and License Agreement file from www.iea.nl. If \code{FALSE},
+#' the Disclaimer and License Agreement file from <https://www.iea.nl>. If \code{FALSE},
 #' you will be prompted to agree with it or else data will not be downloaded.
 #' Default is \code{FALSE}.
 #' 

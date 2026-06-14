@@ -12,7 +12,7 @@ availableILSA(
 \arguments{
 \item{print}{a logical value indicating if results should be printed or not.}
 
-\item{FOR}{a string indicating the availability of ILSA data for different 
+\item{FOR}{a string indicating the availability of ILSA data for different
 purposes. Valid strings are \code{"download"}, \code{"combine.students"},
 \code{add.schools}, and \code{"ILSAready"}.}
 }

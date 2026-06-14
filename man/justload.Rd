@@ -14,11 +14,11 @@ justload(
 \arguments{
 \item{inputdir}{a string indicating the path where ILSA 'SPSS' files are stored.}
 
-\item{population}{a character value indicating which files should be loaded. 
+\item{population}{a character value indicating which files should be loaded.
 For more information on available populations, run \code{ILSAfile.info()} first.}
 
 \item{justattributes}{a logical value indicating if 0 rows should be loaded.
-This can be used when we just need to check column attributes. Default is 
+This can be used when we just need to check column attributes. Default is
 \code{FALSE}.}
 
 \item{addcountries}{a logical value indicating if country information should
