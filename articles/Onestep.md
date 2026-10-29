@@ -26,7 +26,7 @@ ILSAready(study = "RLII", year = 1991,outputdir = output, agreeLicense = TRUE)
 ## Merging took 3 seconds or 0.06 minutes.
 ## 1  ILSAmerge() file(s) found.
 ## 1  ILSAmerge() file(s) renamed.
-## Downloading and preparing data took 8 seconds or 0.13 minutes.
+## Downloading and preparing data took 7 seconds or 0.11 minutes.
 ```
 
 Also if data is already downloaded we can use

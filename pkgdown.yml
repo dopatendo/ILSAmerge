@@ -1,5 +1,5 @@
 pandoc: 3.8.3
-pkgdown: 2.2.0
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   Download: Download.html
@@ -8,7 +8,7 @@ articles:
   Merge: Merge.html
   Onestep: Onestep.html
   Rename: Rename.html
-last_built: 2026-06-14T18:44Z
+last_built: 2026-10-29T11:12Z
 urls:
   reference: https://dopatendo.github.io/ILSAmerge/reference
   article: https://dopatendo.github.io/ILSAmerge/articles
