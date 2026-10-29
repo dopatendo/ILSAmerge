@@ -17,3 +17,5 @@ ztools/
 ztools2/
 ztex/
 ztex.zip
+^\.positai$
+^\.claude$
